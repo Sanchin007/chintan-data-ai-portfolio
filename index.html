@@ -216,9 +216,7 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
 </style>
 
 <style id="demo-presentation-styles">
-#demo-present-launch{position:fixed;right:18px;bottom:18px;z-index:1000;border:1px solid #b8f36b;background:#b8f36b;color:#14210a;border-radius:999px;padding:12px 17px;font-weight:850;font-size:13px;letter-spacing:.01em;box-shadow:0 12px 34px rgba(0,0,0,.3);cursor:pointer}
-#demo-present-launch:hover{transform:translateY(-2px)}
-#demo-present-launch:focus-visible,#demo-presentation button:focus-visible{outline:3px solid #8bbdff;outline-offset:3px}
+#demo-presentation button:focus-visible{outline:3px solid #8bbdff;outline-offset:3px}
 #reliability-showcase{margin:18px 0 20px;padding:16px;border:1px solid var(--line,#293a51);border-radius:15px;background:rgba(255,255,255,.018)}
 #reliability-showcase .showcase-heading{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px}
 #reliability-showcase .showcase-heading strong{display:block;color:var(--text,#e8eef7);font-size:1rem}
@@ -284,7 +282,6 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
  #reliability-showcase .showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:520px){
- #demo-present-launch{right:10px;bottom:10px;padding:10px 12px}
  #demo-presentation .dp-brand small{display:none}
  #demo-presentation .dp-status{display:none}
  #demo-presentation .dp-timeline{grid-template-columns:1fr}
@@ -2242,7 +2239,6 @@ document.addEventListener('keydown',e=>{
 })();
 </script>
 
-<button type="button" id="demo-present-launch" aria-haspopup="dialog">▣ Present demo</button>
 <section id="demo-presentation" role="dialog" aria-modal="true" aria-label="Reliability demo presentation" hidden>
   <header class="dp-topbar">
     <div class="dp-brand"><span class="dp-mark">CC</span><span><b>AI Operations · Reliability Showcase</b><small>Interview demo · fictional shipping transaction data</small></span></div>
@@ -2345,9 +2341,8 @@ document.addEventListener('keydown',e=>{
  function close(){
   clearTimers();runToken++;overlay.hidden=true;overlay.dataset.open='0';
   if(document.fullscreenElement){document.exitFullscreen().catch(()=>{});}
-  $('demo-present-launch').focus();
+  $('showcase-open-presentation').focus();
  }
- $('demo-present-launch').addEventListener('click',()=>open(scenarios[index].id));
  $('dp-exit').addEventListener('click',close);
  $('dp-prev').addEventListener('click',()=>{if(index>0){clearTimers();runToken++;index--;paint()}});
  $('dp-next').addEventListener('click',()=>{if(index<scenarios.length-1){clearTimers();runToken++;index++;paint()}});
