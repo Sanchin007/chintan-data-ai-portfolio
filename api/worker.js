@@ -138,7 +138,8 @@ async function handleOperations(request, env, origin) {
       createdAt: existing.created_at,
       replayed: !created,
       sideEffect: "NONE — durable demo operation only; no booking provider was called.",
-      providerCreateCalls: created ? 1 : 0
+      demoRecordCreated: created,
+      providerCreateCalls: 0
     }, created ? 201 : 200, origin, env);
   } catch (error) {
     return response({ error: "operation_store_error", message: "Could not persist the demo operation.", traceId: trace }, 500, origin, env);
