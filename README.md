@@ -1,4 +1,4 @@
-# Chintan Changole — Solution Engineering Portfolio v11
+# Chintan Changole — Solution Engineering Portfolio v12
 
 Single-page, dependency-free portfolio prepared for GitHub Pages.
 
@@ -17,6 +17,14 @@ Single-page, dependency-free portfolio prepared for GitHub Pages.
 4. Click **Retry same request + key**; provider create calls and unique provider records should remain at `1`.
 5. Click **Reuse key with changed payload**; the service simulation records an idempotency conflict without a second provider call.
 6. Run **Simulate timeout after provider accepts**, retry with the same key, then **Reconcile operation status**. The same operation transitions from `PENDING_VERIFICATION` to `CONFIRMED` without another create call.
+
+## Presentation mode and expanded scenarios
+
+- Added a screen-share presentation overlay with a compact full-screen layout, animated execution trace, request/response examples, synthetic metrics, keyboard navigation (left/right arrows), and a clear exit action.
+- Added eight fictional use cases: same-key retry, timeout after provider acceptance, same-key/different-payload conflict, duplicate webhook delivery, concurrent submissions, transient provider error with bounded backoff, stale quote/version revalidation, and authorization/explicit-approval gating.
+- All operation IDs, booking references, quote amounts, event IDs, and provider responses shown in this presentation are invented demo data. They are not production records and do not represent live CMA CGM, airline, or Amadeus transactions.
+- The separate **Live API Workbench** makes genuine read-only HTTP calls to Open-Meteo for travel-context weather. This is a real external API call, but it is not an Amadeus flight-search or booking API.
+- The backend in `api/` must be deployed and configured before its health/idempotency controls can call your own Worker. The demo operation endpoint persists synthetic records only and never invokes a booking provider.
 
 ## Production design points
 - Persist the key and canonical request fingerprint atomically before the side effect.
