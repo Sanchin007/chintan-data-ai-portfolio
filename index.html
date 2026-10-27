@@ -150,6 +150,23 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
 @media(max-width:1000px){.journey-project-strip,.journey-stage{grid-template-columns:1fr}.journey-side{grid-template-columns:repeat(3,1fr)}.journey-map-wrap{overflow-x:auto}}
 @media(max-width:720px){.journey-conversation,.journey-side{grid-template-columns:1fr}.journey-project-strip{grid-template-columns:1fr}.journey-main{padding:12px}.journey-map{min-width:820px}}
 
+
+/* Reliability lab: browser-only idempotency and recovery demonstration */
+.reliability-intro{padding:17px 19px;background:linear-gradient(120deg,#eaf2ff,#f4f8ff);border:1px solid #d7e5ff;border-radius:14px;margin-bottom:15px}
+.reliability-intro strong{font-size:14px;color:#173e86}.reliability-intro p{font-size:12px;line-height:1.65;color:#586b87;margin:5px 0 0}
+.reliability-confirm{display:flex;gap:11px;align-items:flex-start;padding:14px;border:1px solid #f0dfb3;background:#fffaf0;border-radius:12px;margin-bottom:14px;cursor:pointer}
+.reliability-confirm input{margin-top:3px;width:16px;height:16px;accent-color:#4285f4}.reliability-confirm b{font-size:11px;display:block}.reliability-confirm small{font-size:10px;color:#8b7853;display:block;margin-top:4px;line-height:1.5}
+.reliability-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}.reliability-actions button,.reliability-ledger-head button{border:1px solid #d7e0ed;background:#fff;color:#34445c;border-radius:9px;padding:10px 12px;font-size:10px;font-weight:800;cursor:pointer}.reliability-actions .primary{width:auto;margin:0;background:#4285f4;color:#fff;border-color:#4285f4}.reliability-actions button:disabled{opacity:.42;cursor:not-allowed}
+.reliability-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}.reliability-metrics article{padding:14px;border:1px solid #e1e7f0;border-radius:12px;background:#fff;min-width:0}.reliability-metrics small{display:block;font-size:9px;letter-spacing:.7px;font-weight:800;color:#7b8aa0}.reliability-metrics b{display:block;font-size:25px;letter-spacing:-.7px;margin:8px 0 4px;color:#14243b;overflow-wrap:anywhere}.reliability-metrics span{display:block;font-size:9px;line-height:1.5;color:#8a98aa}.reliability-metrics .status-neutral{font-size:11px;letter-spacing:0;color:#718096}.reliability-metrics .status-confirmed{font-size:11px;letter-spacing:0;color:#13764f}.reliability-metrics .status-pending{font-size:11px;letter-spacing:0;color:#9a6500}.reliability-metrics .status-conflict{font-size:11px;letter-spacing:0;color:#b42336}
+.reliability-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.reliability-card{border:1px solid #e2e8f1;border-radius:13px;padding:15px;min-width:0;background:#fff}.reliability-card-head,.reliability-ledger-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:11px}.reliability-card-head small,.reliability-ledger-head small{font-size:9px;letter-spacing:1px;font-weight:900;color:#7b8aa0}.reliability-card-head span{font-size:9px;color:#8b98aa}
+.reliability-detail{font-size:10px;line-height:1.6;color:#5f7089;overflow-wrap:anywhere}.reliability-detail>p{color:#8a98aa;margin:0}.reliability-detail-row{display:grid;grid-template-columns:105px minmax(0,1fr);gap:9px;padding:7px 0;border-bottom:1px solid #eef2f7}.reliability-detail-row:last-child{border-bottom:0}.reliability-detail-row span{color:#8996a9}.reliability-detail-row strong{color:#34445c;overflow-wrap:anywhere}
+.reliability-audit{padding:0 0 0 17px;margin:0;display:grid;gap:9px;max-height:260px;overflow:auto}.reliability-audit li{font-size:10px;line-height:1.5;color:#6c7b91;padding-left:2px}.reliability-audit li strong{display:block;color:#33445c;font-size:10px}.reliability-audit li small{display:block;color:#9aa6b6;font-size:9px}.reliability-audit li::marker{color:#4285f4}
+.reliability-ledger-wrap{margin-top:15px;border:1px solid #e2e8f1;border-radius:13px;overflow:hidden}.reliability-ledger-head{margin:0;padding:14px 15px;background:#f7f9fc;border-bottom:1px solid #e2e8f1}.reliability-ledger-head p{font-size:10px;color:#718096;margin:4px 0 0}.reliability-ledger-head button{white-space:nowrap}.table-scroll{overflow-x:auto}.reliability-ledger{width:100%;border-collapse:collapse;min-width:700px;text-align:left}.reliability-ledger th{font-size:9px;letter-spacing:.6px;text-transform:uppercase;color:#7b8aa0;padding:11px;background:#fff;border-bottom:1px solid #e8edf4}.reliability-ledger td{font-size:10px;line-height:1.5;color:#5f7089;padding:11px;border-bottom:1px solid #edf1f6;overflow-wrap:anywhere}.reliability-ledger td:first-child{font-weight:800;color:#34445c}.reliability-ledger tr:last-child td{border-bottom:0}.reliability-ledger td[colspan]{text-align:center;padding:23px;color:#8a98aa}
+.reliability-state{display:inline-block;border-radius:99px;padding:5px 7px;font-size:9px;font-weight:850;white-space:nowrap;background:#edf2f8;color:#64748b}.reliability-state.confirmed{background:#e1f8ed;color:#13764f}.reliability-state.pending{background:#fff3d9;color:#94620a}.reliability-state.conflict{background:#ffe8eb;color:#b42336}
+.reliability-contract{display:flex;gap:14px;align-items:flex-start;margin-top:15px;padding:14px 15px;background:#eef9f3;border:1px solid #d5f0e1;border-radius:12px}.reliability-contract b{white-space:nowrap;font-size:10px;color:#176849}.reliability-contract span{font-size:10px;line-height:1.65;color:#4f7060}.reliability-boundary{font-size:10px;line-height:1.6;color:#7b899d;margin-top:12px}.reliability-boundary b{color:#53637a}
+@media(max-width:900px){.reliability-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.reliability-grid{grid-template-columns:1fr}.reliability-contract{display:block}.reliability-contract span{display:block;margin-top:6px}}
+@media(max-width:600px){.reliability-actions button{flex:1 1 145px}.reliability-metrics{gap:7px}.reliability-metrics article{padding:10px}.reliability-metrics b{font-size:21px}.reliability-ledger-head{align-items:flex-start}.reliability-detail-row{grid-template-columns:88px minmax(0,1fr)}}
+
 </style>
 </head>
 <body>
@@ -257,6 +274,7 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
           <button type="button" data-productlab-tab="demo">Live demo</button>
           <button type="button" data-productlab-tab="architecture">Architecture</button>
           <button type="button" data-productlab-tab="controls">Control plane</button>
+          <button type="button" data-productlab-tab="reliability">Reliability lab</button>
           <button type="button" data-productlab-tab="requirements">Requirements</button>
           <button type="button" data-productlab-tab="stack">Google Cloud</button>
           <button type="button" data-productlab-tab="delivery">Delivery</button>
@@ -423,7 +441,35 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
         <aside class="productlab-detail-panel control-plane-detail" id="controlPlaneDetail" aria-live="polite"></aside>
       </div>
 
-      <div class="productlab-view" data-productlab-panel="requirements">
+      
+      <div class="productlab-view reliability-view" data-productlab-panel="reliability">
+        <div class="productlab-section-title"><span>04A</span><div><small>IDEMPOTENCY & RECOVERY LAB</small><b>Prove that a retry does not repeat the business action</b></div></div>
+        <div class="reliability-intro"><strong>One logical action → one operation.</strong><p>This browser simulation lets you test the success path, replay the same request, reuse a key with a changed payload, and recover when a provider accepts a booking but the response times out.</p></div>
+        <label class="reliability-confirm"><input type="checkbox" id="reliabilityExplicitConfirm"><span><b>I explicitly confirm this simulated booking operation.</b><small>No live booking system is contacted. All records and provider responses are synthetic.</small></span></label>
+        <div class="reliability-actions">
+          <button type="button" class="primary" id="reliabilityRunSuccess" disabled>Run successful request</button>
+          <button type="button" id="reliabilityRunTimeout" disabled>Simulate timeout after provider accepts</button>
+          <button type="button" id="reliabilityRetry" disabled>Retry same request + key</button>
+          <button type="button" id="reliabilityReconcile" disabled>Reconcile operation status</button>
+          <button type="button" id="reliabilityConflict" disabled>Reuse key with changed payload</button>
+          <button type="button" id="reliabilityReset">Reset lab</button>
+        </div>
+        <div class="reliability-metrics" aria-live="polite">
+          <article><small>PROVIDER CREATE CALLS</small><b id="reliabilityProviderCalls">0</b><span>Should remain 1 after a same-key retry</span></article>
+          <article><small>UNIQUE PROVIDER RECORDS</small><b id="reliabilityBookingCount">0</b><span>Duplicate side-effect guard</span></article>
+          <article><small>IDEMPOTENCY HITS</small><b id="reliabilityDedupeHits">0</b><span>Existing operation returned</span></article>
+          <article><small>OPERATION STATUS</small><b id="reliabilityStatus" class="status-neutral">NOT STARTED</b><span id="reliabilityStatusNote">Awaiting explicit confirmation</span></article>
+        </div>
+        <div class="reliability-grid">
+          <article class="reliability-card"><div class="reliability-card-head"><small>CURRENT OPERATION</small><span id="reliabilityTraceBadge">TRACE —</span></div><div id="reliabilityOperationDetails" class="reliability-detail"><p>No operation yet. Confirm the simulated action, then run a scenario.</p></div></article>
+          <article class="reliability-card"><div class="reliability-card-head"><small>AUDIT EVENT TRACE</small><span id="reliabilityEventCount">0 events</span></div><ol id="reliabilityAuditLog" class="reliability-audit" aria-live="polite"><li>Events will appear here as you test the flow.</li></ol></article>
+        </div>
+        <div class="reliability-ledger-wrap"><div class="reliability-ledger-head"><div><small>OPERATION LEDGER</small><p>Operation ID, trace ID, key, request fingerprint, status and provider reference.</p></div><button type="button" id="reliabilityRefreshLedger">Refresh ledger</button></div><div class="table-scroll"><table class="reliability-ledger"><thead><tr><th>Operation ID</th><th>Trace ID</th><th>Idempotency key</th><th>Request</th><th>Status</th><th>Provider reference</th></tr></thead><tbody id="reliabilityLedgerBody"><tr><td colspan="6">No operations yet.</td></tr></tbody></table></div></div>
+        <div class="reliability-contract"><b>Production contract</b><span>Persist the key and canonical request fingerprint atomically before the side effect. Same key + same payload returns the existing operation; same key + different payload returns a conflict. A timeout after acceptance is UNKNOWN, not FAILED: reconcile before reporting success or starting a new logical action.</span></div>
+        <div class="reliability-boundary"><b>Important boundary:</b> this is an in-browser simulation. A production implementation needs durable server-side storage, a concurrency-safe uniqueness constraint, provider-side idempotency where supported, authenticated status lookup and a defined reconciliation policy.</div>
+      </div>
+
+<div class="productlab-view" data-productlab-panel="requirements">
         <div class="productlab-section-title"><span>05</span><div><small>REQUIREMENTS WORKBENCH</small><b>Every requirement is clickable — from product intent to acceptance and edge cases</b></div></div>
         <div class="requirements-layout">
           <div>
@@ -1878,6 +1924,87 @@ document.addEventListener('keydown',e=>{
 
   const handover={brief:['PROBLEM BRIEF','Align the business outcome','User, business problem, scope, assumptions, constraints and success measures become the common starting point.','Product + solution engineering'],spec:['FUNCTIONAL SPEC','Make behaviour unambiguous','User journeys, functional requirements, acceptance criteria, edge cases and open questions describe what must be true.','Solution engineering + product'],contract:['INTEGRATION CONTRACT','Stabilise system boundaries','Schemas, identifiers, validation, errors, idempotency and versioning expectations make integration assumptions explicit.','Solution engineering + API / domain owners'],poc:['PROTOTYPE EVIDENCE','Buy information before commitment','Validate uncertain assumptions around Gemini quality, integration behaviour, latency or failure handling.','Solution engineering + engineering'],build:['BUILD SUPPORT','Protect product intent','Clarify behaviour, review contract changes, support debugging and validate that implementation still solves the original need.','Solution engineering + delivery squad'],observe:['OPERATE & LEARN','Close the feedback loop','Compare production reliability, correction rate, adoption and business outcome against the original success measures.','Product + engineering + operations']};
   const handDetail=q('#handoverDetail');function showHand(id){const d=handover[id];qa('[data-handover]').forEach(x=>x.classList.toggle('active',x.dataset.handover===id));handDetail.innerHTML=`<span class="detail-kicker">${esc(d[0])}</span><h3>${esc(d[1])}</h3><p>${esc(d[2])}</p><div class="detail-list"><div><small>PRIMARY OWNERS</small><span>${esc(d[3])}</span></div><div><small>QUALITY GATE</small><span>Enough evidence exists for the next stage to proceed without hidden assumptions.</span></div></div>`}qa('[data-handover]').forEach(btn=>btn.addEventListener('click',()=>showHand(btn.dataset.handover)));showHand('brief');
+})();
+
+</script>
+<script>
+
+/* ===== Reliability Lab: idempotency, unknown outcomes and reconciliation ===== */
+(()=>{
+ const root=document.querySelector('#productlabConsole'); if(!root)return;
+ const $=id=>document.getElementById(id);
+ const state={key:'CMA-DEMO-KEY-001',store:new Map(),provider:new Map(),operation:null,providerCalls:0,dedupeHits:0,sequence:1,events:[]};
+ const requestBase={bookingReference:'BK-DEMO-874201',action:'AMEND_EQUIPMENT',from:'1 x 40HC',to:'2 x 40HC',route:'SHA-MRS',expectedDeltaEUR:320};
+ function fingerprint(r){return JSON.stringify({bookingReference:r.bookingReference,action:r.action,from:r.from,to:r.to,route:r.route,expectedDeltaEUR:r.expectedDeltaEUR})}
+ function clock(){return new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}
+ function event(name,detail){state.events.unshift({name:name,detail:detail,time:clock()});if(state.events.length>16)state.events.length=16;render()}
+ function reset(keepConsent){state.store.clear();state.provider.clear();state.operation=null;state.providerCalls=0;state.dedupeHits=0;state.sequence=1;state.events=[];if(!keepConsent)$('#reliabilityExplicitConfirm').checked=false;syncButtons();render()}
+ function syncButtons(){const confirmed=$('#reliabilityExplicitConfirm').checked;$('#reliabilityRunSuccess').disabled=!confirmed;$('#reliabilityRunTimeout').disabled=!confirmed;$('#reliabilityRetry').disabled=!state.operation;$('#reliabilityReconcile').disabled=!state.operation||state.operation.status!=='PENDING_VERIFICATION';$('#reliabilityConflict').disabled=!state.operation}
+ function submit(request,key,timeoutAfterAccept){
+  const fp=fingerprint(request);
+  if(state.store.has(key)){
+   const old=state.store.get(key);
+   if(old.fingerprint!==fp){event('IDEMPOTENCY_CONFLICT','409-style conflict: this key is bound to a different request fingerprint. No provider call was made.');return {kind:'conflict',operation:old}}
+   state.dedupeHits++;
+   event('IDEMPOTENCY_HIT','Returned existing operation '+old.operationId+' with its current status. Provider create-call count did not change.');
+   return {kind:'replay',operation:old};
+  }
+  const n=state.sequence++;
+  const op={operationId:'OP-CMA-'+String(n).padStart(3,'0'),traceId:'TRACE-CMA-'+String(n).padStart(3,'0'),idempotencyKey:key,fingerprint:fp,request:Object.assign({},request),status:'SUBMITTING',providerReference:null,internalProviderReference:null,createdAt:clock(),source:'Reliability lab',outcome:'RECEIVED'};
+  state.store.set(key,op);state.operation=op;
+  event('OPERATION_PERSISTED','Persisted operation ID, key and canonical request fingerprint before the simulated side effect.');
+  state.providerCalls++;
+  let providerRecord=state.provider.get(key);
+  if(!providerRecord){providerRecord={reference:'DEMO-CMA-PNR-'+String(state.provider.size+1).padStart(3,'0'),fingerprint:fp};state.provider.set(key,providerRecord)}
+  op.internalProviderReference=providerRecord.reference;
+  event('PROVIDER_ACCEPTED','Synthetic provider accepted the command and created '+providerRecord.reference+'.');
+  if(timeoutAfterAccept){op.status='PENDING_VERIFICATION';op.outcome='TIMEOUT_AFTER_ACCEPT';op.providerReference=null;event('CLIENT_TIMEOUT','Response timed out after provider acceptance. Outcome is UNKNOWN, not FAILED. Do not blindly resubmit.')}
+  else{op.status='CONFIRMED';op.outcome='RECEIVED';op.providerReference=providerRecord.reference;event('BOOKING_CONFIRMED','Authoritative synthetic status returned with '+providerRecord.reference+'.')}
+  syncButtons();renderLedger();render();return {kind:'created',operation:op};
+ }
+ function run(mode){if(!$('#reliabilityExplicitConfirm').checked){return}reset(true);submit(Object.assign({},requestBase),state.key,mode==='timeout')}
+ function render(){
+  $('#reliabilityProviderCalls').textContent=String(state.providerCalls);
+  $('#reliabilityBookingCount').textContent=String(state.provider.size);
+  $('#reliabilityDedupeHits').textContent=String(state.dedupeHits);
+  const op=state.operation,status=$('#reliabilityStatus');
+  status.className='status-neutral';
+  if(!op){status.textContent='NOT STARTED';$('#reliabilityStatusNote').textContent='Awaiting explicit confirmation';$('#reliabilityTraceBadge').textContent='TRACE —';$('#reliabilityOperationDetails').innerHTML='<p>No operation yet. Confirm the simulated action, then run a scenario.</p>'}
+  else{
+   status.textContent=op.status.replaceAll('_',' ');
+   status.className=op.status==='CONFIRMED'?'status-confirmed':op.status==='PENDING_VERIFICATION'?'status-pending':'status-neutral';
+   $('#reliabilityStatusNote').textContent=op.status==='PENDING_VERIFICATION'?'Unknown outcome · reconcile before retry':op.status==='CONFIRMED'?'Authoritative synthetic status received':'Processing';
+   $('#reliabilityTraceBadge').textContent=op.traceId;
+   const rows=[['Operation ID',op.operationId],['Trace ID',op.traceId],['Idempotency key',op.idempotencyKey],['Request fingerprint',op.fingerprint],['Request',op.request.bookingReference+' · '+op.request.action+' · '+op.request.from+' → '+op.request.to+' · +€'+op.request.expectedDeltaEUR],['Status',op.status],['Outcome',op.outcome],['Provider reference',op.providerReference||'Not yet visible to client']];
+   const box=$('#reliabilityOperationDetails');box.replaceChildren();
+   rows.forEach(pair=>{const row=document.createElement('div');row.className='reliability-detail-row';const label=document.createElement('span');label.textContent=pair[0];const value=document.createElement('strong');value.textContent=pair[1];row.append(label,value);box.appendChild(row)});
+  }
+  $('#reliabilityEventCount').textContent=state.events.length+' event'+(state.events.length===1?'':'s');
+  const log=$('#reliabilityAuditLog');log.replaceChildren();
+  if(!state.events.length){const li=document.createElement('li');li.textContent='Events will appear here as you test the flow.';log.appendChild(li)}
+  else state.events.forEach(e=>{const li=document.createElement('li');const strong=document.createElement('strong');strong.textContent=e.name;const detail=document.createElement('span');detail.textContent=e.detail;const small=document.createElement('small');small.textContent=e.time;li.append(strong,detail,small);log.appendChild(li)});
+  syncButtons();renderLedger();
+ }
+ function renderLedger(){
+  const body=$('#reliabilityLedgerBody');body.replaceChildren();
+  const ops=[...state.store.values()];
+  if(!ops.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=6;td.textContent='No operations yet.';tr.appendChild(td);body.appendChild(tr);return}
+  ops.forEach(op=>{const tr=document.createElement('tr');[op.operationId,op.traceId,op.idempotencyKey,op.request.bookingReference+' · '+op.request.action+' · '+op.request.from+' → '+op.request.to+' · +€'+op.request.expectedDeltaEUR].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.appendChild(td)});const statusTd=document.createElement('td'),badge=document.createElement('span');badge.className='reliability-state '+(op.status==='CONFIRMED'?'confirmed':op.status==='PENDING_VERIFICATION'?'pending':'');badge.textContent=op.status.replaceAll('_',' ');statusTd.appendChild(badge);tr.appendChild(statusTd);const ref=document.createElement('td');ref.textContent=op.providerReference||'—';tr.appendChild(ref);body.appendChild(tr)})
+ }
+ $('#reliabilityExplicitConfirm').addEventListener('change',syncButtons);
+ $('#reliabilityRunSuccess').addEventListener('click',()=>run('success'));
+ $('#reliabilityRunTimeout').addEventListener('click',()=>run('timeout'));
+ $('#reliabilityRetry').addEventListener('click',()=>{if(state.operation)submit(Object.assign({},state.operation.request),state.key,false)});
+ $('#reliabilityConflict').addEventListener('click',()=>{if(!state.operation)return;const changed=Object.assign({},state.operation.request,{to:'3 x 40HC',expectedDeltaEUR:510});submit(changed,state.key,false)});
+ $('#reliabilityReconcile').addEventListener('click',()=>{
+  const op=state.operation;if(!op)return;const provider=state.provider.get(op.idempotencyKey);
+  if(!provider){event('RECONCILIATION_PENDING','No authoritative status found. Keep pending, retry the status read with backoff, and escalate if unresolved.');return}
+  op.status='CONFIRMED';op.outcome='RECONCILED';op.providerReference=provider.reference;event('STATUS_RECONCILED','Status lookup resolved the same operation to CONFIRMED with '+provider.reference+'. No new provider create call.');
+  syncButtons();render();
+ });
+ $('#reliabilityReset').addEventListener('click',()=>{reset(false)});
+ $('#reliabilityRefreshLedger').addEventListener('click',()=>{renderLedger()});
+ reset(false);
 })();
 
 </script>
