@@ -214,6 +214,93 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
 #live-api-workbench .api-note{border-left:3px solid #b8f36b;padding:10px 12px;background:rgba(184,243,107,.06);border-radius:0 8px 8px 0;font-size:.86rem;line-height:1.55;margin-top:14px;color:var(--text,#e8eef7)}
 @media(max-width:760px){#live-api-workbench .api-shell{grid-template-columns:1fr}#live-api-workbench .api-card{padding:16px}}
 </style>
+
+<style id="demo-presentation-styles">
+#demo-present-launch{position:fixed;right:18px;bottom:18px;z-index:1000;border:1px solid #b8f36b;background:#b8f36b;color:#14210a;border-radius:999px;padding:12px 17px;font-weight:850;font-size:13px;letter-spacing:.01em;box-shadow:0 12px 34px rgba(0,0,0,.3);cursor:pointer}
+#demo-present-launch:hover{transform:translateY(-2px)}
+#demo-present-launch:focus-visible,#demo-presentation button:focus-visible{outline:3px solid #8bbdff;outline-offset:3px}
+#reliability-showcase{margin:18px 0 20px;padding:16px;border:1px solid var(--line,#293a51);border-radius:15px;background:rgba(255,255,255,.018)}
+#reliability-showcase .showcase-heading{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px}
+#reliability-showcase .showcase-heading strong{display:block;color:var(--text,#e8eef7);font-size:1rem}
+#reliability-showcase .showcase-heading p{margin:5px 0 0;color:var(--muted,#9aabc0);font-size:.86rem;line-height:1.5}
+#reliability-showcase .showcase-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+#reliability-showcase .showcase-case{min-width:0;text-align:left;border:1px solid #33465e;background:#0c1727;color:#e8eef7;border-radius:11px;padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:100px}
+#reliability-showcase .showcase-case:hover,#reliability-showcase .showcase-case.active{border-color:#b8f36b;background:#172637}
+#reliability-showcase .showcase-case small{font-size:.68rem;letter-spacing:.09em;color:#b8f36b;font-weight:850}
+#reliability-showcase .showcase-case b{font-size:.86rem;line-height:1.35}
+#reliability-showcase .showcase-case span{font-size:.75rem;line-height:1.4;color:#aab8cb}
+#reliability-showcase .showcase-open{margin-top:12px;border:1px solid #b8f36b;background:#b8f36b;color:#15220b;border-radius:9px;padding:10px 13px;font-weight:800;cursor:pointer}
+#demo-presentation[hidden]{display:none!important}
+#demo-presentation{position:fixed;inset:0;z-index:2147483000;background:#07111f;color:#edf4ff;display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+#demo-presentation:fullscreen{width:100vw;height:100vh}
+#demo-presentation .dp-topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px clamp(16px,3vw,42px);border-bottom:1px solid #26374e;background:#0a1524}
+#demo-presentation .dp-brand{display:flex;align-items:center;gap:11px;min-width:0}
+#demo-presentation .dp-mark{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#b8f36b;color:#14210a;font-weight:950}
+#demo-presentation .dp-brand b{display:block;font-size:clamp(12px,1.2vw,16px)}
+#demo-presentation .dp-brand small{display:block;color:#9eafc5;font-size:11px;margin-top:3px}
+#demo-presentation .dp-status{display:inline-flex;align-items:center;gap:7px;border:1px solid #34465e;border-radius:999px;padding:7px 10px;color:#b8f36b;font-size:10px;font-weight:850;letter-spacing:.1em;white-space:nowrap}
+#demo-presentation .dp-status i{width:7px;height:7px;border-radius:50%;background:#b8f36b}
+#demo-presentation .dp-exit{border:1px solid #40536e;background:#142238;color:#f4f7fc;border-radius:9px;padding:9px 12px;font-weight:750;cursor:pointer;white-space:nowrap}
+#demo-presentation .dp-main{width:min(1440px,100%);margin:0 auto;box-sizing:border-box;min-height:0;overflow:auto;padding:clamp(16px,3vw,40px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(16px,2.5vw,34px);align-items:stretch}
+#demo-presentation .dp-left,#demo-presentation .dp-right{min-width:0;display:flex;flex-direction:column;gap:14px}
+#demo-presentation .dp-eyebrow{font-size:10px;font-weight:900;letter-spacing:.15em;color:#b8f36b}
+#demo-presentation .dp-title{font-size:clamp(26px,3.2vw,46px);line-height:1.04;letter-spacing:-.04em;margin:0;color:#f3f7ff}
+#demo-presentation .dp-summary{font-size:clamp(13px,1.15vw,17px);line-height:1.6;color:#b5c3d7;margin:0;max-width:62ch}
+#demo-presentation .dp-pill-row{display:flex;gap:7px;flex-wrap:wrap}
+#demo-presentation .dp-pill{border:1px solid #34465e;border-radius:7px;padding:6px 9px;font-size:10px;font-weight:800;color:#d6e2f3}
+#demo-presentation .dp-pill.accent{border-color:#627b3f;color:#d6f8a8;background:#142318}
+#demo-presentation .dp-codecard,#demo-presentation .dp-responsecard,#demo-presentation .dp-timelinecard{border:1px solid #263951;background:#0b1727;border-radius:14px;padding:14px;min-width:0}
+#demo-presentation .dp-cardhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;color:#91a5c0;font-size:10px;letter-spacing:.12em;font-weight:850}
+#demo-presentation pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:26vh;overflow:auto;color:#cde1f7;font:clamp(10px,.88vw,12px)/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}
+#demo-presentation .dp-timeline{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+#demo-presentation .dp-timeline li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:start;border:1px solid #283c55;border-radius:10px;padding:10px;background:#0a1422}
+#demo-presentation .dp-step-num{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:#182940;color:#b8f36b;font-size:11px;font-weight:900}
+#demo-presentation .dp-timeline b{display:block;color:#edf4ff;font-size:clamp(11px,1vw,14px);line-height:1.35}
+#demo-presentation .dp-timeline p{margin:4px 0 0;color:#9eafc5;font-size:clamp(10px,.88vw,12px);line-height:1.5}
+#demo-presentation .dp-timeline li.done{border-color:#587743;background:#101f1b}
+#demo-presentation .dp-timeline li.done .dp-step-num{background:#b8f36b;color:#14210a}
+#demo-presentation .dp-timeline li.current{border-color:#b8f36b;box-shadow:inset 0 0 0 1px rgba(184,243,107,.12)}
+#demo-presentation .dp-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+#demo-presentation .dp-metric{border:1px solid #2c405a;border-radius:10px;padding:10px;min-width:0}
+#demo-presentation .dp-metric b{display:block;font-size:clamp(16px,2vw,25px);line-height:1.1;color:#f2f7ff;overflow-wrap:anywhere}
+#demo-presentation .dp-metric span{display:block;margin-top:5px;color:#9eafc5;font-size:9px;line-height:1.35}
+#demo-presentation .dp-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px clamp(16px,3vw,42px);border-top:1px solid #26374e;background:#0a1524}
+#demo-presentation .dp-bottom-note{font-size:10px;line-height:1.4;color:#8fa2bb;max-width:420px}
+#demo-presentation .dp-controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+#demo-presentation .dp-controls button{border:1px solid #40536e;background:#142238;color:#f4f7fc;border-radius:9px;padding:10px 13px;font-weight:800;cursor:pointer}
+#demo-presentation .dp-controls .dp-run{border-color:#b8f36b;background:#b8f36b;color:#14210a}
+#demo-presentation .dp-controls button:disabled{opacity:.45;cursor:not-allowed}
+#demo-presentation .dp-progress{height:3px;background:#17283e;grid-row:2;display:none}
+#demo-presentation .dp-progress span{display:block;height:100%;width:0;background:#b8f36b;transition:width .25s}
+@media(max-width:850px){
+ #demo-presentation .dp-main{grid-template-columns:1fr;padding:14px;gap:12px}
+ #demo-presentation .dp-title{font-size:clamp(25px,7vw,38px)}
+ #demo-presentation .dp-summary{font-size:13px}
+ #demo-presentation .dp-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #demo-presentation .dp-timeline li{grid-template-columns:24px minmax(0,1fr)}
+ #demo-presentation pre{max-height:180px}
+ #demo-presentation .dp-bottom{align-items:flex-start;flex-direction:column}
+ #demo-presentation .dp-controls{justify-content:flex-start}
+ #reliability-showcase .showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){
+ #demo-present-launch{right:10px;bottom:10px;padding:10px 12px}
+ #demo-presentation .dp-brand small{display:none}
+ #demo-presentation .dp-status{display:none}
+ #demo-presentation .dp-timeline{grid-template-columns:1fr}
+ #demo-presentation .dp-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #demo-presentation .dp-bottom-note{max-width:none}
+}
+@media(min-width:851px) and (max-height:760px){
+ #demo-presentation .dp-main{padding-top:14px;padding-bottom:14px;gap:16px}
+ #demo-presentation .dp-title{font-size:clamp(25px,2.5vw,36px)}
+ #demo-presentation .dp-timeline{gap:5px}
+ #demo-presentation .dp-timeline li{padding:7px}
+ #demo-presentation .dp-codecard,#demo-presentation .dp-responsecard,#demo-presentation .dp-timelinecard{padding:10px}
+ #demo-presentation .dp-metric{padding:7px}
+ #demo-presentation .dp-bottom{padding-top:8px;padding-bottom:8px}
+}
+</style>
 <main>
 <section id="home" class="hero">
   <div class="hero-grid-bg" aria-hidden="true"></div>
@@ -469,6 +556,21 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
       <div class="productlab-view reliability-view" data-productlab-panel="reliability">
         <div class="productlab-section-title"><span>04A</span><div><small>IDEMPOTENCY & RECOVERY LAB</small><b>Prove that a retry does not repeat the business action</b></div></div>
         <div class="reliability-intro"><strong>One logical action → one operation.</strong><p>This browser simulation lets you test the success path, replay the same request, reuse a key with a changed payload, and recover when a provider accepts a booking but the response times out.</p></div>
+
+        <div id="reliability-showcase">
+          <div class="showcase-heading"><div><strong>More reliability use cases</strong><p>Choose a synthetic scenario, then open a screen-share-friendly presentation with animated trace and sample request/response.</p></div><span class="status-pill">FICTIONAL DATA</span></div>
+          <div class="showcase-grid">
+            <button type="button" class="showcase-case active" data-showcase-case="retry"><small>01 · IDEMPOTENCY</small><b>Same-key retry</b><span>Return the original operation; no duplicate side effect.</span></button>
+            <button type="button" class="showcase-case" data-showcase-case="timeout"><small>02 · RECOVERY</small><b>Timeout after acceptance</b><span>Unknown outcome → reconcile before retrying.</span></button>
+            <button type="button" class="showcase-case" data-showcase-case="conflict"><small>03 · CONTRACT</small><b>Changed payload</b><span>Same key, different request → HTTP 409.</span></button>
+            <button type="button" class="showcase-case" data-showcase-case="webhook"><small>04 · EVENTS</small><b>Duplicate webhook</b><span>Deduplicate a redelivered event ID.</span></button>
+            <button type="button" class="showcase-case" data-showcase-case="concurrency"><small>05 · CONCURRENCY</small><b>Parallel submissions</b><span>Atomic uniqueness selects one operation.</span></button>
+            <button type="button" class="showcase-case" data-showcase-case="transient"><small>06 · RESILIENCE</small><b>Transient provider error</b><span>Bounded backoff with the same safe key.</span></button>
+            <button type="button" class="showcase-case" data-showcase-case="stalequote"><small>07 · STATE</small><b>Stale quote / version</b><span>Revalidate and ask for confirmation again.</span></button>
+            <button type="button" class="showcase-case" data-showcase-case="approval"><small>08 · HUMAN GATE</small><b>High-impact change</b><span>Authorization and explicit approval first.</span></button>
+          </div>
+          <button type="button" class="showcase-open" id="showcase-open-presentation">Open selected case in presentation mode ↗</button>
+        </div>
         <label class="reliability-confirm"><input type="checkbox" id="reliabilityExplicitConfirm"><span><b>I explicitly confirm this simulated booking operation.</b><small>This reliability lab simulates provider behavior locally. Use the Live API Workbench for real read-only HTTP requests; the demo operation endpoint never creates a booking.</small></span></label>
         <div class="reliability-actions">
           <button type="button" class="primary" id="reliabilityRunSuccess" disabled>Run successful request</button>
@@ -2137,6 +2239,131 @@ document.addEventListener('keydown',e=>{
  $('api-operation-run').addEventListener('click',()=>runOperation('create'));
  $('api-operation-replay').addEventListener('click',()=>runOperation('replay'));
  $('api-operation-conflict').addEventListener('click',()=>runOperation('conflict'));
+})();
+</script>
+
+<button type="button" id="demo-present-launch" aria-haspopup="dialog">▣ Present demo</button>
+<section id="demo-presentation" role="dialog" aria-modal="true" aria-label="Reliability demo presentation" hidden>
+  <header class="dp-topbar">
+    <div class="dp-brand"><span class="dp-mark">CC</span><span><b>AI Operations · Reliability Showcase</b><small>Interview demo · fictional shipping transaction data</small></span></div>
+    <span class="dp-status"><i></i>SYNTHETIC SCENARIO · NO LIVE BOOKING</span>
+    <button type="button" class="dp-exit" id="dp-exit">Exit presentation ✕</button>
+  </header>
+  <main class="dp-main">
+    <div class="dp-left">
+      <div class="dp-eyebrow" id="dp-kicker">01 / IDEMPOTENCY</div>
+      <h1 class="dp-title" id="dp-title">Same-key retry</h1>
+      <p class="dp-summary" id="dp-summary"></p>
+      <div class="dp-pill-row" id="dp-pills"></div>
+      <div class="dp-codecard"><div class="dp-cardhead"><span>CANONICAL REQUEST · SYNTHETIC</span><span id="dp-key-label">KEY</span></div><pre id="dp-request"></pre></div>
+      <div class="dp-responsecard"><div class="dp-cardhead"><span>EXPECTED RESPONSE</span><span id="dp-http">HTTP —</span></div><pre id="dp-response"></pre></div>
+    </div>
+    <div class="dp-right">
+      <div class="dp-timelinecard">
+        <div class="dp-cardhead"><span>EXECUTION TRACE</span><span id="dp-step-counter">READY TO RUN</span></div>
+        <ol class="dp-timeline" id="dp-timeline"></ol>
+      </div>
+      <div class="dp-metrics">
+        <div class="dp-metric"><b id="dp-metric-operations">0</b><span>LOGICAL OPERATIONS</span></div>
+        <div class="dp-metric"><b id="dp-metric-writes">0</b><span>BUSINESS WRITES</span></div>
+        <div class="dp-metric"><b id="dp-metric-dedupes">0</b><span>DUPLICATE / REPLAY GUARDS</span></div>
+        <div class="dp-metric"><b id="dp-metric-status">READY</b><span>FINAL STATE</span></div>
+      </div>
+      <div class="dp-note" id="dp-explanation" style="border-left:3px solid #b8f36b;padding:11px 13px;background:#0d1c2a;border-radius:0 9px 9px 0;color:#b9c9dd;font-size:12px;line-height:1.55"></div>
+    </div>
+  </main>
+  <footer class="dp-bottom">
+    <div class="dp-bottom-note">All booking references, operation IDs, amounts and provider outcomes on this screen are fictional. This is an explanatory simulation, not a production booking connection.</div>
+    <div class="dp-controls"><button type="button" id="dp-prev">← Previous</button><button type="button" id="dp-reset">Reset scenario</button><button type="button" class="dp-run" id="dp-run">▶ Run animated trace</button><button type="button" id="dp-next">Next scenario →</button></div>
+  </footer>
+</section>
+
+
+<script id="demo-presentation-script">
+(function(){
+ const $=id=>document.getElementById(id);
+ const overlay=$('demo-presentation');
+ if(!overlay)return;
+ const scenarios=[
+  {id:'retry',n:'01',domain:'IDEMPOTENCY',title:'Same-key retry',summary:'The client times out or repeats a submission. The server binds the idempotency key to a canonical request fingerprint and returns the existing operation for the same request.',pills:['Same key + same payload','Replay-safe response','One logical action'],key:'idem-demo-2026-001',http:'201 → 200',request:{method:'POST',path:'/v1/demo/bookings',headers:{'Idempotency-Key':'idem-demo-2026-001'},body:{bookingReference:'BK-DEMO-874201',route:'SHA-MRS',equipment:'2 × 40HC',syntheticQuoteEUR:320}},response:{first:{status:201,operationId:'op_demo_1001',state:'CONFIRMED',businessWrites:1},replay:{status:200,operationId:'op_demo_1001',replayed:true,businessWrites:0}},steps:[['Receive request','Validate the payload and require the client idempotency key.'],['Fingerprint request','Canonicalise the meaningful fields and hash the request.'],['Claim unique key','Persist the key + fingerprint under a uniqueness constraint.'],['Execute once','Synthetic provider accepts operation op_demo_1001. One write recorded.'],['Replay safely','Same key + same fingerprint returns op_demo_1001; no second write.']],metrics:['1','1','1','CONFIRMED'],explanation:'Production detail: persist the idempotency record and operation state durably. A process-local map is not sufficient across restarts or concurrent instances.'},
+  {id:'timeout',n:'02',domain:'RECOVERY',title:'Timeout after provider acceptance',summary:'The provider accepts the action but the response is lost. The client must not interpret a timeout as failure or create a new logical operation.',pills:['Outcome initially unknown','Status reconciliation','No blind resubmit'],key:'idem-demo-timeout-002',http:'504 → 200 status read',request:{operationId:'op_demo_2002',bookingReference:'BK-DEMO-553901',action:'AMEND_EQUIPMENT',route:'MRS-SIN',expectedState:'UNKNOWN_AFTER_TIMEOUT'},response:{initialClientView:{http:504,state:'PENDING_VERIFICATION',message:'Provider outcome unknown'},reconciliation:{http:200,state:'CONFIRMED',providerReference:'PROV-DEMO-7782',newCreateCall:false}},steps:[['Submit once','Request is sent with a stable idempotency key.'],['Provider accepts','Synthetic provider commits the change and assigns PROV-DEMO-7782.'],['Response times out','Client sees no response; operation becomes PENDING_VERIFICATION.'],['Reconcile by reference','Query trusted status using the same operation/key.'],['Resolve existing action','Status lookup confirms the accepted action; no new create call.']],metrics:['1','1','1','CONFIRMED'],explanation:'Production detail: timeout is an unknown outcome, not proof of failure. Use authenticated status lookup and a bounded reconciliation policy before considering another write.'},
+  {id:'conflict',n:'03',domain:'CONTRACT',title:'Same key, changed payload',summary:'A caller accidentally reuses a key for a different request. Reject the request explicitly instead of returning a result that belongs to another intent.',pills:['Canonical fingerprint','HTTP 409 conflict','No new side effect'],key:'idem-demo-conflict-003',http:'409 Conflict',request:{firstRequest:{key:'idem-demo-2026-003',equipment:'1 × 40HC',expectedDeltaEUR:160},changedRequest:{key:'idem-demo-2026-003',equipment:'3 × 40HC',expectedDeltaEUR:480}},response:{status:409,error:'IDEMPOTENCY_KEY_REUSED',message:'Key already bound to a different request fingerprint.',existingOperationId:'op_demo_3003',newBusinessWrites:0},steps:[['Original request stored','Key is bound to the fingerprint for 1 × 40HC.'],['Changed request arrives','Same key is reused for 3 × 40HC.'],['Fingerprint mismatch','Stored and incoming fingerprints differ.'],['Reject with conflict','Return HTTP 409 and the existing operation reference.'],['Protect business state','Do not create a second provider action.']],metrics:['1','1','1','CONFLICT'],explanation:'Production detail: do not silently overwrite the idempotency record. Return a conflict, log the trace and require a new key for a genuinely new intent.'},
+  {id:'webhook',n:'04',domain:'EVENTS',title:'Duplicate webhook delivery',summary:'Event delivery is at-least-once. The same event may arrive more than once, so the consumer deduplicates by provider event ID before applying the domain transition.',pills:['At-least-once delivery','Event ID dedupe','One state transition'],key:'evt-demo-evt_9014',http:'200 ACK · duplicate ignored',request:{eventId:'evt_demo_9014',eventType:'BOOKING_AMENDED',bookingReference:'BK-DEMO-441290',deliveryAttempts:[1,2]},response:{firstDelivery:{status:200,transitionApplied:true},duplicateDelivery:{status:200,duplicate:true,transitionApplied:false},finalBookingVersion:12},steps:[['Receive event','Validate signature and event envelope.'],['Check event ledger','Record or claim evt_demo_9014 under a unique constraint.'],['Apply transition once','Update synthetic booking state from version 11 to 12.'],['Provider redelivers','The same event ID arrives again.'],['Acknowledge duplicate','Return 200 without reapplying the transition.']],metrics:['1','1','1','VERSION 12'],explanation:'Production detail: verify provider signatures, store event IDs durably, make event processing atomic where possible, and preserve replay/audit evidence.'},
+  {id:'concurrency',n:'05',domain:'CONCURRENCY',title:'Two requests arrive together',summary:'Two app instances receive the same key at nearly the same time. A durable uniqueness constraint—not a UI check—must choose one winner.',pills:['Concurrent requests','Atomic unique constraint','One operation ID'],key:'idem-demo-race-005',http:'201 Created + 200 Replay',request:{simultaneousRequests:[{client:'assistant-A',key:'idem-demo-race-005'},{client:'assistant-B',key:'idem-demo-race-005'}],payloadFingerprint:'sha256:demo_fingerprint_a31f'},response:{winner:{status:201,operationId:'op_demo_5005'},loser:{status:200,operationId:'op_demo_5005',replayed:true},uniqueOperations:1,businessWrites:1},steps:[['Requests race','Two clients submit equivalent intent at almost the same time.'],['Atomic claim','Database uniqueness permits only one insert for the key.'],['Winner executes','The winning request owns op_demo_5005.'],['Second request reads','Losing request loads the operation already stored.'],['Same result returned','Both callers receive the same operation ID.']],metrics:['1','1','1','DEDUPED'],explanation:'Production detail: handle insert races by re-reading the winning record and comparing fingerprints. Do not rely on a read-then-write check without an atomic constraint.'},
+  {id:'transient',n:'06',domain:'RESILIENCE',title:'Transient provider error',summary:'A retry is safe only when the operation contract supports idempotency and retry conditions are explicit. Backoff is bounded and the same key is preserved.',pills:['Retry budget','Exponential backoff + jitter','Stable key'],key:'idem-demo-retry-006',http:'503 → 201',request:{method:'POST',path:'/v1/demo/operations',headers:{'Idempotency-Key':'idem-demo-retry-006'},retryPolicy:{maxAttempts:3,baseDelayMs:250,jitter:true},syntheticProviderResponses:[503,201]},response:{attempts:[{n:1,status:503,writeApplied:false},{n:2,status:201,writeApplied:true}],operationId:'op_demo_6006',totalBusinessWrites:1},steps:[['Attempt 1','Provider returns synthetic 503 before applying the action.'],['Classify error','Transient response is retryable under the operation contract.'],['Wait with jitter','Backoff reduces synchronized retry storms.'],['Attempt 2 with same key','Provider accepts the operation once.'],['Stop retrying','Return success; preserve attempt count and trace.']],metrics:['1','1','1','SUCCEEDED'],explanation:'Production detail: do not retry every error. Respect Retry-After, deadlines, retry budgets and operation semantics; avoid automatic retries for unsafe non-idempotent writes.'},
+  {id:'stalequote',n:'07',domain:'STATE VALIDATION',title:'Quote or booking state changed',summary:'A quote expires or the booking version changes between preview and execution. Revalidate authoritative state and ask the user to reconfirm material changes.',pills:['Optimistic concurrency','Fresh quote required','User reconfirmation'],key:'idem-demo-state-007',http:'412 Precondition Failed',request:{bookingReference:'BK-DEMO-728113',expectedBookingVersion:18,quotedDeltaEUR:240,quoteVersion:'Q-DEMO-44'},response:{status:412,error:'STATE_VERSION_MISMATCH',latestBookingVersion:19,latestQuoteDeltaEUR:275,action:'Refresh quote and ask for confirmation',businessWrites:0},steps:[['Show preview','Assistant displays the quote and booking version 18.'],['State changes','Another workflow updates the booking to version 19.'],['Revalidate before write','Trusted service detects the version mismatch.'],['Stop safely','Return a precondition failure; do not execute stale intent.'],['Refresh + confirm','Show updated amount and require a new explicit confirmation.']],metrics:['0','0','0','RECONFIRM'],explanation:'Production detail: quote expiry, inventory and booking state must come from authoritative services. A model-generated value is not a source of truth.'},
+  {id:'approval',n:'08',domain:'HUMAN GATE',title:'High-impact change requires approval',summary:'An action crosses a business or permission boundary. The assistant may prepare the proposal, but it cannot execute until authorization and explicit confirmation are both satisfied.',pills:['AuthN + AuthZ','Explicit confirmation','Audit decision'],key:'idem-demo-approval-008',http:'403 → approved proposal',request:{userRole:'operations.viewer',requestedAction:'CANCEL_BOOKING',bookingReference:'BK-DEMO-193840',confirmationReceived:false},response:{initial:{status:403,error:'INSUFFICIENT_PERMISSION',sideEffect:false},afterAuthorizedApproval:{status:'READY_FOR_APPROVED_EXECUTION',approvalId:'APR-DEMO-204',sideEffect:'not executed in this demo'}},steps:[['Interpret intent','Assistant drafts the proposed cancellation.'],['Authorize actor','Policy service checks identity, role and scope.'],['Deny unauthorized action','Viewer role cannot cancel; no tool write occurs.'],['Request approval','Authorized operator reviews the exact action and impact.'],['Record decision','Audit approval; execution remains out of scope for this simulation.']],metrics:['0','0','1','BLOCKED'],explanation:'Production detail: authorization and user confirmation are separate gates. Log the actor, requested action, policy decision and approval evidence; never imply a write happened when it did not.'}
+ ];
+ let index=0,runToken=0,activeTimers=[],currentStep=-1;
+ const clearTimers=()=>{activeTimers.forEach(clearTimeout);activeTimers=[]};
+ const fmt=o=>JSON.stringify(o,null,2);
+ function paint(){
+  const c=scenarios[index];currentStep=-1;
+  $('dp-kicker').textContent=c.n+' / '+c.domain;
+  $('dp-title').textContent=c.title;
+  $('dp-summary').textContent=c.summary;
+  $('dp-pills').innerHTML=c.pills.map((p,i)=>'<span class="dp-pill'+(i===0?' accent':'')+'">'+p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</span>').join('');
+  $('dp-key-label').textContent='KEY '+c.key;
+  $('dp-request').textContent=fmt(c.request);
+  $('dp-response').textContent=fmt(c.response);
+  $('dp-http').textContent=c.http;
+  $('dp-timeline').innerHTML=c.steps.map((st,i)=>'<li data-step="'+i+'"><span class="dp-step-num">'+(i+1)+'</span><div><b>'+st[0]+'</b><p>'+st[1]+'</p></div></li>').join('');
+  $('dp-step-counter').textContent='READY · '+c.steps.length+' STEPS';
+  $('dp-metric-operations').textContent='—';
+  $('dp-metric-writes').textContent='—';
+  $('dp-metric-dedupes').textContent='—';
+  $('dp-metric-status').textContent='READY';
+  $('dp-explanation').textContent=c.explanation;
+  $('dp-prev').disabled=index===0;$('dp-next').disabled=index===scenarios.length-1;
+  const active=document.querySelectorAll('[data-showcase-case]');
+  active.forEach(el=>el.classList.toggle('active',el.getAttribute('data-showcase-case')===c.id));
+ }
+ function run(){
+  clearTimers();const token=++runToken;const c=scenarios[index];currentStep=-1;
+  const rows=[...$('dp-timeline').querySelectorAll('li')];
+  $('dp-run').disabled=true;$('dp-step-counter').textContent='RUNNING · 0/'+rows.length;
+  $('dp-metric-operations').textContent='0';$('dp-metric-writes').textContent='0';$('dp-metric-dedupes').textContent='0';$('dp-metric-status').textContent='RUNNING';
+  rows.forEach(r=>r.classList.remove('done','current'));
+  c.steps.forEach((st,i)=>{activeTimers.push(setTimeout(()=>{
+    if(token!==runToken)return;
+    rows.forEach(r=>r.classList.remove('current'));
+    rows[i].classList.add('current');
+    if(i>0)rows[i-1].classList.add('done');
+    currentStep=i;$('dp-step-counter').textContent='STEP '+(i+1)+'/'+rows.length;
+    rows[i].scrollIntoView({block:'nearest',behavior:'smooth'});
+    if(i===rows.length-1){
+      rows[i].classList.add('done');$('dp-metric-operations').textContent=c.metrics[0];$('dp-metric-writes').textContent=c.metrics[1];$('dp-metric-dedupes').textContent=c.metrics[2];$('dp-metric-status').textContent=c.metrics[3];$('dp-step-counter').textContent='COMPLETE · '+rows.length+' STEPS';$('dp-run').disabled=false;
+    }
+  },i*620))});
+ }
+ function open(id){
+  const next=scenarios.findIndex(s=>s.id===id);if(next>=0)index=next;
+  overlay.hidden=false;overlay.dataset.open='1';paint();
+  $('dp-run').focus();
+  if(overlay.requestFullscreen){overlay.requestFullscreen().catch(()=>{});}
+ }
+ function close(){
+  clearTimers();runToken++;overlay.hidden=true;overlay.dataset.open='0';
+  if(document.fullscreenElement){document.exitFullscreen().catch(()=>{});}
+  $('demo-present-launch').focus();
+ }
+ $('demo-present-launch').addEventListener('click',()=>open(scenarios[index].id));
+ $('dp-exit').addEventListener('click',close);
+ $('dp-prev').addEventListener('click',()=>{if(index>0){clearTimers();runToken++;index--;paint()}});
+ $('dp-next').addEventListener('click',()=>{if(index<scenarios.length-1){clearTimers();runToken++;index++;paint()}});
+ $('dp-reset').addEventListener('click',()=>{clearTimers();runToken++;paint()});
+ $('dp-run').addEventListener('click',run);
+ document.querySelectorAll('[data-showcase-case]').forEach(el=>el.addEventListener('click',()=>{const id=el.getAttribute('data-showcase-case');const n=scenarios.findIndex(s=>s.id===id);if(n>=0){index=n;document.querySelectorAll('[data-showcase-case]').forEach(x=>x.classList.toggle('active',x===el));}}));
+ $('showcase-open-presentation').addEventListener('click',()=>open(scenarios[index].id));
+ document.addEventListener('keydown',e=>{
+  if(overlay.hidden)return;
+  if(e.key==='Escape'){close();return}
+  if(e.key==='ArrowRight'&&!$('dp-next').disabled){e.preventDefault();clearTimers();runToken++;index++;paint()}
+  if(e.key==='ArrowLeft'&&!$('dp-prev').disabled){e.preventDefault();clearTimers();runToken++;index--;paint()}
+  if(e.key===' '&&document.activeElement===overlay){e.preventDefault();run()}
+ });
+ document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&overlay.dataset.open==='1'){overlay.hidden=true;overlay.dataset.open='0';clearTimers();runToken++;}});
+ paint();
 })();
 </script>
 </body>
