@@ -469,7 +469,7 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
       <div class="productlab-view reliability-view" data-productlab-panel="reliability">
         <div class="productlab-section-title"><span>04A</span><div><small>IDEMPOTENCY & RECOVERY LAB</small><b>Prove that a retry does not repeat the business action</b></div></div>
         <div class="reliability-intro"><strong>One logical action → one operation.</strong><p>This browser simulation lets you test the success path, replay the same request, reuse a key with a changed payload, and recover when a provider accepts a booking but the response times out.</p></div>
-        <label class="reliability-confirm"><input type="checkbox" id="reliabilityExplicitConfirm"><span><b>I explicitly confirm this simulated booking operation.</b><small>No live booking system is contacted. All records and provider responses are synthetic.</small></span></label>
+        <label class="reliability-confirm"><input type="checkbox" id="reliabilityExplicitConfirm"><span><b>I explicitly confirm this simulated booking operation.</b><small>This reliability lab simulates provider behavior locally. Use the Live API Workbench for real read-only HTTP requests; the demo operation endpoint never creates a booking.</small></span></label>
         <div class="reliability-actions">
           <button type="button" class="primary" id="reliabilityRunSuccess" disabled>Run successful request</button>
           <button type="button" id="reliabilityRunTimeout" disabled>Simulate timeout after provider accepts</button>
