@@ -191,29 +191,7 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
 </header>
 
 
-<style id="live-api-workbench-styles">
-#live-api-workbench{padding:clamp(28px,5vw,64px) 0;border-top:1px solid var(--line,#26364d);border-bottom:1px solid var(--line,#26364d)}
-#live-api-workbench .api-shell{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:24px}
-#live-api-workbench .api-card{border:1px solid var(--line,#26364d);border-radius:18px;padding:20px;background:var(--panel,rgba(255,255,255,.025));min-width:0}
-#live-api-workbench .api-card h3{margin:0 0 8px}
-#live-api-workbench .api-muted{color:var(--muted,#9aabc0);font-size:.92rem;line-height:1.55}
-#live-api-workbench .api-field{display:grid;gap:7px;margin:14px 0}
-#live-api-workbench .api-field label{font-size:.88rem;font-weight:700;color:var(--text,#e8eef7)}
-#live-api-workbench .api-field input{width:100%;box-sizing:border-box;border:1px solid #40516b;background:#0a1423;color:#f4f7fb;border-radius:10px;padding:12px;font:inherit}
-#live-api-workbench .api-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
-#live-api-workbench .api-action{border:1px solid #49617f;background:#17263b;color:#f3f7ff;border-radius:10px;padding:10px 13px;font:inherit;font-weight:700;cursor:pointer}
-#live-api-workbench .api-action.primary{background:#b8f36b;color:#15220b;border-color:#b8f36b}
-#live-api-workbench .api-action:disabled{opacity:.55;cursor:wait}
-#live-api-workbench .api-status{display:flex;gap:8px;align-items:center;margin:12px 0;font-size:.88rem;color:var(--muted,#9aabc0)}
-#live-api-workbench .api-dot{width:9px;height:9px;border-radius:50%;background:#8995a5;display:inline-block;flex:none}
-#live-api-workbench .api-dot.ok{background:#74d99f}#live-api-workbench .api-dot.bad{background:#ff8c8c}#live-api-workbench .api-dot.busy{background:#f0c56b}
-#live-api-workbench pre{max-height:290px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:#07101c;border:1px solid #23344b;border-radius:12px;padding:14px;color:#cde1f7;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}
-#live-api-workbench .api-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
-#live-api-workbench .api-metric{border:1px solid #293a51;border-radius:10px;padding:10px}
-#live-api-workbench .api-metric b{display:block;font-size:1.05rem;color:var(--text,#e8eef7)}#live-api-workbench .api-metric span{display:block;font-size:.76rem;color:var(--muted,#9aabc0);margin-top:3px}
-#live-api-workbench .api-note{border-left:3px solid #b8f36b;padding:10px 12px;background:rgba(184,243,107,.06);border-radius:0 8px 8px 0;font-size:.86rem;line-height:1.55;margin-top:14px;color:var(--text,#e8eef7)}
-@media(max-width:760px){#live-api-workbench .api-shell{grid-template-columns:1fr}#live-api-workbench .api-card{padding:16px}}
-</style>
+
 
 <style id="demo-presentation-styles">
 #demo-presentation button:focus-visible{outline:3px solid #8bbdff;outline-offset:3px}
@@ -568,7 +546,7 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
           </div>
           <button type="button" class="showcase-open" id="showcase-open-presentation">Open selected case in presentation mode ↗</button>
         </div>
-        <label class="reliability-confirm"><input type="checkbox" id="reliabilityExplicitConfirm"><span><b>I explicitly confirm this simulated booking operation.</b><small>This reliability lab simulates provider behavior locally. Use the Live API Workbench for real read-only HTTP requests; the demo operation endpoint never creates a booking.</small></span></label>
+        <label class="reliability-confirm"><input type="checkbox" id="reliabilityExplicitConfirm"><span><b>I explicitly confirm this simulated booking operation.</b><small>This reliability lab simulates provider behavior locally; the demo operation endpoint never creates a booking.</small></span></label>
         <div class="reliability-actions">
           <button type="button" class="primary" id="reliabilityRunSuccess" disabled>Run successful request</button>
           <button type="button" id="reliabilityRunTimeout" disabled>Simulate timeout after provider accepts</button>
@@ -912,44 +890,7 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
 </section>
 
 
-<section id="live-api-workbench" aria-labelledby="live-api-title">
-  <div class="container">
-    <div class="eyebrow">Interactive engineering demo · Real HTTP requests</div>
-    <h2 id="live-api-title">Live API Workbench</h2>
-    <p class="section-lead">Make a real read-only request, inspect the JSON response and latency, then connect the secure backend to test persistent idempotency. The weather provider is live; it is not flight or booking data.</p>
-    <div class="api-shell">
-      <article class="api-card">
-        <div class="eyebrow">01 / Live provider call</div>
-        <h3>Travel context lookup</h3>
-        <p class="api-muted">Calls Open-Meteo geocoding and current-weather endpoints over HTTPS. No API key required. The response comes from the external provider, not mock data.</p>
-        <div class="api-field"><label for="api-weather-city">Destination city</label><input id="api-weather-city" value="Marseille" maxlength="80" autocomplete="off" placeholder="e.g. Marseille"></div>
-        <div class="api-actions"><button class="api-action primary" id="api-weather-run" type="button">Call live API</button></div>
-        <div class="api-status" role="status" aria-live="polite"><i class="api-dot" id="api-weather-dot"></i><span id="api-weather-status">Ready · no request made yet</span></div>
-        <div class="api-metrics">
-          <div class="api-metric"><b id="api-weather-http">—</b><span>HTTP status</span></div>
-          <div class="api-metric"><b id="api-weather-latency">—</b><span>Latency</span></div>
-          <div class="api-metric"><b id="api-weather-trace">—</b><span>Request trace</span></div>
-        </div>
-        <pre id="api-weather-json" aria-label="Live API JSON response">Click “Call live API” to make a real request.</pre>
-        <div class="api-note">Data source: Open-Meteo. Weather is contextual information only; it does not represent flight availability, airline schedules, shipping conditions, or an Amadeus API response.</div>
-      </article>
-      <article class="api-card">
-        <div class="eyebrow">02 / Your backend</div>
-        <h3>Secure service + idempotency</h3>
-        <p class="api-muted">Connect the Cloudflare Worker backend from the repository. Provider secrets stay server-side. Until you deploy it and configure its URL, backend tests will clearly report “not connected.”</p>
-        <div class="api-field"><label for="api-backend-url">Backend base URL (Worker URL)</label><input id="api-backend-url" inputmode="url" placeholder="https://your-worker.your-subdomain.workers.dev" autocomplete="url"></div>
-        <div class="api-actions"><button class="api-action" id="api-backend-save" type="button">Use backend URL</button><button class="api-action" id="api-backend-health" type="button">Check health</button></div>
-        <div class="api-status" role="status" aria-live="polite"><i class="api-dot" id="api-backend-dot"></i><span id="api-backend-status">Not connected · configure a deployed Worker</span></div>
-        <div class="api-field"><label for="api-operation-key">Idempotency key</label><input id="api-operation-key" value="interview-demo-key-001" maxlength="128"></div>
-        <div class="api-actions"><button class="api-action primary" id="api-operation-run" type="button">Create demo operation</button><button class="api-action" id="api-operation-replay" type="button">Replay same request</button><button class="api-action" id="api-operation-conflict" type="button">Change payload / same key</button></div>
-        <div class="api-status" role="status" aria-live="polite"><i class="api-dot" id="api-operation-dot"></i><span id="api-operation-status">Waiting for backend</span></div>
-        <pre id="api-operation-json" aria-label="Backend API JSON response">Deploy the Worker and connect its URL to run the persistent idempotency test.</pre>
-        <div class="api-note">This endpoint creates a durable synthetic demo record only. It never creates a real booking or contacts a booking provider. Same key + same payload should replay; same key + changed payload should return HTTP 409.</div>
-      </article>
-    </div>
-    <p class="api-muted" style="margin-top:16px">Amadeus integration status: not configured. Request authorized access through the <a href="https://developers.amadeus.com/" target="_blank" rel="noopener noreferrer">Amadeus Enterprise API portal</a> before wiring real flight search or booking operations.</p>
-  </div>
-</section>
+
 
 <section id="projects" class="projects section">
   <div class="shell">
@@ -2176,68 +2117,7 @@ document.addEventListener('keydown',e=>{
 
 </script>
 
-<script id="live-api-workbench-script">
-(function(){
- const $=id=>document.getElementById(id);
- const safeJson=(obj)=>JSON.stringify(obj,null,2);
- const setStatus=(prefix,msg,kind)=>{const dot=$(prefix+'-dot');if(dot)dot.className='api-dot'+(kind?' '+kind:'');const label=$(prefix+'-status');if(label)label.textContent=msg};
- const baseInput=$('api-backend-url');
- const getBase=()=>{const raw=(baseInput.value||'').trim().replace(/\/+$/,'');if(!raw)return '';let u;try{u=new URL(raw)}catch(_){throw new Error('Enter a valid HTTPS Worker URL (localhost HTTP is allowed for local development).')}if(u.protocol!=='https:'&&!(u.protocol==='http:'&&['localhost','127.0.0.1'].includes(u.hostname)))throw new Error('Backend URL must use HTTPS.');return u.toString().replace(/\/+$/,'')};
- const saved=(()=>{try{return sessionStorage.getItem('portfolio_api_backend')||''}catch(_){return ''}})();if(saved)baseInput.value=saved;
- $('api-backend-save').addEventListener('click',()=>{try{const b=getBase();if(!b){setStatus('api-backend','Enter a deployed Worker URL first.','bad');return}try{sessionStorage.setItem('portfolio_api_backend',b)}catch(_){}setStatus('api-backend','Backend URL saved for this browser session. Run Check health to verify.','ok')}catch(e){setStatus('api-backend',e.message,'bad')}});
- async function callWeather(){
-  const button=$('api-weather-run');const city=$('api-weather-city').value.trim();
-  if(!city||city.length>80||/[<>]/.test(city)){setStatus('api-weather','Enter a valid city name.','bad');return}
-  button.disabled=true;setStatus('api-weather','Calling live provider…','busy');$('api-weather-http').textContent='…';$('api-weather-latency').textContent='…';$('api-weather-trace').textContent='…';
-  const start=performance.now();
-  try{
-   const geoUrl=new URL('https://geocoding-api.open-meteo.com/v1/search');geoUrl.search=new URLSearchParams({name:city,count:'1',language:'en',format:'json'});
-   const gr=await fetch(geoUrl,{signal:AbortSignal.timeout(10000)});const geo=await gr.json();if(!gr.ok)throw new Error('Geocoding HTTP '+gr.status);
-   if(!geo.results||!geo.results.length){$('api-weather-http').textContent=String(gr.status);$('api-weather-latency').textContent=Math.round(performance.now()-start)+' ms';$('api-weather-trace').textContent='—';$('api-weather-json').textContent=safeJson({found:false,city,provider:'Open-Meteo Geocoding',note:'No matching city returned by provider.'});setStatus('api-weather','Live request completed · no matching city.','bad');return}
-   const p=geo.results[0];const forecastUrl=new URL('https://api.open-meteo.com/v1/forecast');forecastUrl.search=new URLSearchParams({latitude:String(p.latitude),longitude:String(p.longitude),current:'temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,weather_code',timezone:'auto',forecast_days:'1'});
-   const fr=await fetch(forecastUrl,{signal:AbortSignal.timeout(10000)});const data=await fr.json();if(!fr.ok)throw new Error('Forecast HTTP '+fr.status);
-   const elapsed=Math.round(performance.now()-start);const trace='wx_'+crypto.randomUUID().slice(0,8);
-   $('api-weather-http').textContent=String(fr.status);$('api-weather-latency').textContent=elapsed+' ms';$('api-weather-trace').textContent=trace;
-   $('api-weather-json').textContent=safeJson({traceId:trace,elapsedMs:elapsed,provider:'Open-Meteo',providerHttpStatus:fr.status,place:{name:p.name,country:p.country,latitude:p.latitude,longitude:p.longitude},current:data.current||null,units:data.current_units||{},attribution:'Weather context only. Not flight availability or an Amadeus response.'});
-   setStatus('api-weather','Live provider response received.','ok');
-  }catch(e){$('api-weather-http').textContent='ERR';$('api-weather-latency').textContent=Math.round(performance.now()-start)+' ms';$('api-weather-trace').textContent='—';$('api-weather-json').textContent=safeJson({error:e.name==='TimeoutError'?'request_timeout':'provider_request_failed',message:e.message});setStatus('api-weather','Request failed · check connection and retry.','bad')}
-  finally{button.disabled=false}
- }
- $('api-weather-run').addEventListener('click',callWeather);
- async function backendFetch(path,options){
-  const base=getBase();if(!base)throw new Error('Backend not connected. Deploy api/worker.js and enter the Worker URL.');
-  return fetch(base+path,Object.assign({signal:AbortSignal.timeout(12000)},options||{}))
- }
- async function checkHealth(){
-  const b=$('api-backend-health');b.disabled=true;setStatus('api-backend','Checking backend health…','busy');
-  try{const r=await backendFetch('/api/health');const d=await r.json();$('api-operation-json').textContent=safeJson(d);setStatus('api-backend',r.ok?'Backend reachable · database '+(d.database||'status unknown'):'Backend responded HTTP '+r.status,r.ok?'ok':'bad')}
-  catch(e){setStatus('api-backend',e.message,'bad');$('api-operation-json').textContent=safeJson({error:'backend_health_check_failed',message:e.message})}finally{b.disabled=false}
- }
- $('api-backend-health').addEventListener('click',checkHealth);
- let payloadDelta=320;
- async function runOperation(mode){
-  const button=mode==='replay'?$('api-operation-replay'):mode==='conflict'?$ ('api-operation-conflict'):$('api-operation-run');
-  const key=$('api-operation-key').value.trim();
-  if(!/^[A-Za-z0-9._:-]{8,128}$/.test(key)){setStatus('api-operation','Use an idempotency key of 8–128 safe characters.','bad');return}
-  const payload={bookingReference:'BK-DEMO-874201',action:'AMEND_EQUIPMENT',from:'1 x 40HC',to:'2 x 40HC',route:'SHA-MRS',expectedDeltaEUR:320};
-  if(mode==='conflict')payload.to='3 x 40HC';
-  button.disabled=true;setStatus('api-operation','Sending real HTTP request to your backend…','busy');
-  const started=performance.now();
-  try{
-   const r=await backendFetch('/api/operations',{method:'POST',headers:{'Content-Type':'application/json','X-Idempotency-Key':key},body:JSON.stringify(payload)});
-   const d=await r.json();d.clientObservedLatencyMs=Math.round(performance.now()-started);d.httpStatus=r.status;
-   $('api-operation-json').textContent=safeJson(d);
-   if(r.status===409)setStatus('api-operation','HTTP 409 · same key with a different payload was rejected.','bad');
-   else if(!r.ok)setStatus('api-operation','Backend returned HTTP '+r.status+'.','bad');
-   else setStatus('api-operation',d.replayed?'Replay confirmed · same durable operation ID.':'Operation persisted · synthetic demo only.', 'ok');
-  }catch(e){$('api-operation-json').textContent=safeJson({error:'backend_request_failed',message:e.message});setStatus('api-operation',e.message,'bad')}
-  finally{button.disabled=false}
- }
- $('api-operation-run').addEventListener('click',()=>runOperation('create'));
- $('api-operation-replay').addEventListener('click',()=>runOperation('replay'));
- $('api-operation-conflict').addEventListener('click',()=>runOperation('conflict'));
-})();
-</script>
+
 
 <section id="demo-presentation" role="dialog" aria-modal="true" aria-label="Reliability demo presentation" hidden>
   <header class="dp-topbar">
