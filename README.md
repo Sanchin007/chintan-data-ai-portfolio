@@ -23,7 +23,6 @@ Single-page, dependency-free portfolio prepared for GitHub Pages.
 - Added a screen-share presentation overlay inside the Reliability Lab, with a compact full-screen layout, animated execution trace, request/response examples, synthetic metrics, keyboard navigation (left/right arrows), and a clear exit action. Open it from **Reliability Lab → Open selected case in presentation mode**; there is no separate floating launcher.
 - Added eight fictional use cases: same-key retry, timeout after provider acceptance, same-key/different-payload conflict, duplicate webhook delivery, concurrent submissions, transient provider error with bounded backoff, stale quote/version revalidation, and authorization/explicit-approval gating.
 - All operation IDs, booking references, quote amounts, event IDs, and provider responses shown in this presentation are invented demo data. They are not production records and do not represent live CMA CGM, airline, or Amadeus transactions.
-- The separate **Live API Workbench** makes genuine read-only HTTP calls to Open-Meteo for travel-context weather. This is a real external API call, but it is not an Amadeus flight-search or booking API.
 - The backend in `api/` must be deployed and configured before its health/idempotency controls can call your own Worker. The demo operation endpoint persists synthetic records only and never invokes a booking provider.
 
 ## Production design points
