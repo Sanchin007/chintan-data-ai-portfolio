@@ -2037,7 +2037,7 @@ document.addEventListener('keydown',e=>{
 (()=>{
  const root=document.querySelector('#productlabConsole'); if(!root)return;
  const $=id=>document.getElementById(id);
- const state={key:'CMA-DEMO-KEY-001',store:new Map(),provider:new Map(),operation:null,providerCalls:0,dedupeHits:0,sequence:1,events:[]};
+ const state={key:'demo-operation-key-001',store:new Map(),provider:new Map(),operation:null,providerCalls:0,dedupeHits:0,sequence:1,events:[]};
  const requestBase={bookingReference:'BK-DEMO-874201',action:'AMEND_EQUIPMENT',from:'1 x 40HC',to:'2 x 40HC',route:'SHA-MRS',expectedDeltaEUR:320};
  function fingerprint(r){return JSON.stringify({bookingReference:r.bookingReference,action:r.action,from:r.from,to:r.to,route:r.route,expectedDeltaEUR:r.expectedDeltaEUR})}
  function clock(){return new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}
@@ -2121,7 +2121,7 @@ document.addEventListener('keydown',e=>{
 
 <section id="demo-presentation" role="dialog" aria-modal="true" aria-label="Reliability demo presentation" hidden>
   <header class="dp-topbar">
-    <div class="dp-brand"><span class="dp-mark">CC</span><span><b>AI Operations · Reliability Showcase</b><small>Interview demo · fictional shipping transaction data</small></span></div>
+    <div class="dp-brand"><span class="dp-mark">CC</span><span><b>AI Operations · Reliability Showcase</b><small>Synthetic shipping transaction data</small></span></div>
     <span class="dp-status"><i></i>SYNTHETIC SCENARIO · NO LIVE BOOKING</span>
     <button type="button" class="dp-exit" id="dp-exit">Exit presentation ✕</button>
   </header>
