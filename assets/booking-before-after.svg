@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
 <title id="title">Shipping booking journey before and with an AI assistant</title>
-<desc id="desc">An illustrative comparison. The documented Click and Book process uses multiple structured sections for route, cargo, routing, special cargo, parties, payment and final review. The proposed AI-assisted experience starts with a conversation, validates details against trusted systems, presents a summary, and asks the user to confirm before a consequential action.</desc>
+<desc id="desc">The documented Click and Book process uses multiple structured sections for route, cargo, routing, special cargo, parties, payment and final review. The AI-assisted experience starts with a conversation, validates details against trusted systems, presents a summary, and asks the user to confirm before a consequential action.</desc>
 <defs>
   <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#102744"/></linearGradient>
   <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3987ff"/><stop offset="1" stop-color="#1a5bc0"/></linearGradient>
@@ -10,7 +10,7 @@
 </defs>
 <rect width="1600" height="900" rx="34" fill="url(#bg)"/>
 <g opacity=".12" stroke="#8ab4f8"><path d="M0 120H1600M0 220H1600M0 320H1600M0 420H1600M0 520H1600M0 620H1600M0 720H1600M0 820H1600"/><path d="M100 0V900M200 0V900M300 0V900M400 0V900M500 0V900M600 0V900M700 0V900M800 0V900M900 0V900M1000 0V900M1100 0V900M1200 0V900M1300 0V900M1400 0V900M1500 0V900"/></g>
-<text x="64" y="62" fill="#72d8ff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="3">BOOKING EXPERIENCE · BEFORE / TARGET CONCEPT</text>
+<text x="64" y="62" fill="#72d8ff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="3">BOOKING EXPERIENCE · BEFORE / WITH AI ASSISTANCE</text>
 <text x="64" y="105" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="32" font-weight="800">Same business controls. A simpler way to start.</text>
 
 <!-- Legacy form card -->
@@ -58,13 +58,13 @@
 <text x="800" y="504" text-anchor="middle" fill="#81d9ff" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800" letter-spacing="1">SIMPLIFY</text>
 </g>
 
-<!-- AI concept card -->
+<!-- AI-assisted booking flow card -->
 <g filter="url(#shadow)">
 <rect x="856" y="145" width="690" height="635" rx="24" fill="#0d1c30" stroke="#2c4564"/>
 <path d="M880 145H1522a24 24 0 0 1 24 24v44H856v-44a24 24 0 0 1 24-24Z" fill="#112743"/>
 <circle cx="884" cy="181" r="6" fill="#ed6b68"/><circle cx="905" cy="181" r="6" fill="#f3c44e"/><circle cx="926" cy="181" r="6" fill="#58c48b"/>
-<text x="956" y="186" fill="#9db3ce" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700">AI-ASSISTED TARGET · CONCEPT</text>
-<rect x="884" y="218" width="176" height="28" rx="14" fill="#15385a" stroke="#315c87"/><text x="972" y="236" fill="#9cddff" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800">PROPOSED EXPERIENCE</text>
+<text x="956" y="186" fill="#9db3ce" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700">AI-ASSISTED BOOKING FLOW</text>
+<rect x="884" y="218" width="176" height="28" rx="14" fill="#15385a" stroke="#315c87"/><text x="972" y="236" fill="#9cddff" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800">AI-ASSISTED FLOW</text>
 <text x="884" y="282" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="800">Start with the outcome</text>
 <text x="884" y="307" fill="#a1b2c8" font-family="Inter,Arial,sans-serif" font-size="14">The assistant coordinates checks behind the conversation.</text>
 <!-- user bubble -->
