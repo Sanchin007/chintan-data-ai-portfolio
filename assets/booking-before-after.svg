@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Shipping booking journey before and with an AI assistant</title>
+<desc id="desc">An illustrative comparison. The documented Click and Book process uses multiple structured sections for route, cargo, routing, special cargo, parties, payment and final review. The proposed AI-assisted experience starts with a conversation, validates details against trusted systems, presents a summary, and asks the user to confirm before a consequential action.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#102744"/></linearGradient>
+  <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3987ff"/><stop offset="1" stop-color="#1a5bc0"/></linearGradient>
+  <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#6fd7ff"/><stop offset="1" stop-color="#7da7ff"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity=".24"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#71d8ff"/></marker>
+</defs>
+<rect width="1600" height="900" rx="34" fill="url(#bg)"/>
+<g opacity=".12" stroke="#8ab4f8"><path d="M0 120H1600M0 220H1600M0 320H1600M0 420H1600M0 520H1600M0 620H1600M0 720H1600M0 820H1600"/><path d="M100 0V900M200 0V900M300 0V900M400 0V900M500 0V900M600 0V900M700 0V900M800 0V900M900 0V900M1000 0V900M1100 0V900M1200 0V900M1300 0V900M1400 0V900M1500 0V900"/></g>
+<text x="64" y="62" fill="#72d8ff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="3">BOOKING EXPERIENCE · BEFORE / TARGET CONCEPT</text>
+<text x="64" y="105" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="32" font-weight="800">Same business controls. A simpler way to start.</text>
+
+<!-- Legacy form card -->
+<g filter="url(#shadow)">
+<rect x="54" y="145" width="690" height="635" rx="24" fill="#f7f9fc"/>
+<path d="M78 145H720a24 24 0 0 1 24 24v44H54v-44a24 24 0 0 1 24-24Z" fill="#e8edf4"/>
+<circle cx="82" cy="181" r="6" fill="#ee6a67"/><circle cx="103" cy="181" r="6" fill="#f4c14f"/><circle cx="124" cy="181" r="6" fill="#57bd86"/>
+<text x="154" y="186" fill="#43536a" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700">CLICK &amp; BOOK · STRUCTURED FORM</text>
+<rect x="82" y="218" width="188" height="28" rx="14" fill="#e2e9f2"/><text x="176" y="236" fill="#45556d" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800">DOCUMENTED FLOW</text>
+<text x="82" y="282" fill="#13233b" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="800">Complete the booking sections</text>
+<text x="82" y="307" fill="#68778b" font-family="Inter,Arial,sans-serif" font-size="14">Each section must be completed and validated.</text>
+<!-- progress -->
+<rect x="82" y="330" width="630" height="6" rx="3" fill="#dfe5ec"/><rect x="82" y="330" width="220" height="6" rx="3" fill="#4a87d8"/>
+<text x="82" y="358" fill="#78869a" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">BOOKING PROGRESS</text><text x="712" y="358" fill="#385d8b" text-anchor="end" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800">STEP 03 / 10</text>
+<!-- form sections -->
+<g font-family="Inter,Arial,sans-serif">
+  <rect x="82" y="378" width="630" height="58" rx="12" fill="#fff" stroke="#dce3eb"/>
+  <circle cx="106" cy="407" r="13" fill="#eaf2ff"/><text x="106" y="411" fill="#2c6ecb" text-anchor="middle" font-size="11" font-weight="800">1</text>
+  <text x="130" y="401" fill="#23344d" font-size="14" font-weight="800">Route details</text><text x="130" y="419" fill="#8491a3" font-size="11">Ports · departure date · contract / quote</text>
+  <text x="682" y="410" fill="#2d75cf" text-anchor="end" font-size="11" font-weight="700">EDIT ↗</text>
+  <rect x="82" y="446" width="630" height="58" rx="12" fill="#eaf3ff" stroke="#8db7ec" stroke-width="1.5"/>
+  <circle cx="106" cy="475" r="13" fill="#2f75cc"/><text x="106" y="479" fill="#fff" text-anchor="middle" font-size="11" font-weight="800">2</text>
+  <text x="130" y="469" fill="#23344d" font-size="14" font-weight="800">Cargo details</text><text x="130" y="487" fill="#61758e" font-size="11">Container type · commodity / HS code · special cargo</text>
+  <text x="682" y="478" fill="#2d75cf" text-anchor="end" font-size="11" font-weight="700">VALIDATE</text>
+  <rect x="82" y="514" width="630" height="58" rx="12" fill="#fff" stroke="#dce3eb"/>
+  <circle cx="106" cy="543" r="13" fill="#eaf2ff"/><text x="106" y="547" fill="#2c6ecb" text-anchor="middle" font-size="11" font-weight="800">3</text>
+  <text x="130" y="537" fill="#23344d" font-size="14" font-weight="800">Route selection</text><text x="130" y="555" fill="#8491a3" font-size="11">Compare available sailings and choose an option</text>
+  <text x="682" y="546" fill="#8491a3" text-anchor="end" font-size="11" font-weight="700">NEXT</text>
+  <rect x="82" y="582" width="630" height="58" rx="12" fill="#fff" stroke="#dce3eb"/>
+  <circle cx="106" cy="611" r="13" fill="#eaf2ff"/><text x="106" y="615" fill="#2c6ecb" text-anchor="middle" font-size="11" font-weight="800">4</text>
+  <text x="130" y="605" fill="#23344d" font-size="14" font-weight="800">Special cargo · parties · payment</text><text x="130" y="623" fill="#8491a3" font-size="11">Extra details, supporting documents and service choices</text>
+  <text x="682" y="614" fill="#8491a3" text-anchor="end" font-size="11" font-weight="700">NEXT</text>
+  <rect x="82" y="650" width="630" height="58" rx="12" fill="#fff" stroke="#dce3eb"/>
+  <circle cx="106" cy="679" r="13" fill="#eaf2ff"/><text x="106" y="683" fill="#2c6ecb" text-anchor="middle" font-size="11" font-weight="800">5</text>
+  <text x="130" y="673" fill="#23344d" font-size="14" font-weight="800">Review summary &amp; submit</text><text x="130" y="691" fill="#8491a3" font-size="11">Check details before placing the booking</text>
+  <text x="682" y="682" fill="#8491a3" text-anchor="end" font-size="11" font-weight="700">REVIEW</text>
+</g>
+<text x="82" y="744" fill="#697a90" font-family="Inter,Arial,sans-serif" font-size="12">Also includes separate dashboard flows for revise / cancel.</text>
+</g>
+
+<!-- Transformation arrow -->
+<g>
+<circle cx="800" cy="440" r="42" fill="#102b49" stroke="#34577d" stroke-width="1.5"/>
+<path d="M777 440H820M806 426L821 440L806 454" fill="none" stroke="#71d8ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="800" y="504" text-anchor="middle" fill="#81d9ff" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800" letter-spacing="1">SIMPLIFY</text>
+</g>
+
+<!-- AI concept card -->
+<g filter="url(#shadow)">
+<rect x="856" y="145" width="690" height="635" rx="24" fill="#0d1c30" stroke="#2c4564"/>
+<path d="M880 145H1522a24 24 0 0 1 24 24v44H856v-44a24 24 0 0 1 24-24Z" fill="#112743"/>
+<circle cx="884" cy="181" r="6" fill="#ed6b68"/><circle cx="905" cy="181" r="6" fill="#f3c44e"/><circle cx="926" cy="181" r="6" fill="#58c48b"/>
+<text x="956" y="186" fill="#9db3ce" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700">AI-ASSISTED TARGET · CONCEPT</text>
+<rect x="884" y="218" width="176" height="28" rx="14" fill="#15385a" stroke="#315c87"/><text x="972" y="236" fill="#9cddff" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800">PROPOSED EXPERIENCE</text>
+<text x="884" y="282" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="800">Start with the outcome</text>
+<text x="884" y="307" fill="#a1b2c8" font-family="Inter,Arial,sans-serif" font-size="14">The assistant coordinates checks behind the conversation.</text>
+<!-- user bubble -->
+<rect x="884" y="332" width="590" height="83" rx="16" fill="#17375a" stroke="#2d5680"/>
+<text x="906" y="356" fill="#75d7ff" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" letter-spacing="1">CUSTOMER</text>
+<text x="906" y="381" fill="#f2f7ff" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="600">“Book one 40' reefer from Shanghai to Rotterdam,</text>
+<text x="906" y="401" fill="#f2f7ff" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="600">departing 12 November.”</text>
+<!-- assistant bubble -->
+<rect x="884" y="428" width="590" height="92" rx="16" fill="#13263d" stroke="#2d4663"/>
+<circle cx="906" cy="450" r="5" fill="#66dfaa"/>
+<text x="921" y="454" fill="#79e4b2" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" letter-spacing="1">ASSISTANT · CLARIFY BEFORE ACTION</text>
+<text x="906" y="480" fill="#e1eaf6" font-family="Inter,Arial,sans-serif" font-size="13">“I’ll check eligible routings and cargo requirements.</text>
+<text x="906" y="500" fill="#e1eaf6" font-family="Inter,Arial,sans-serif" font-size="13">Please confirm the commodity and temperature range.”</text>
+<!-- trusted checks -->
+<g font-family="Inter,Arial,sans-serif">
+  <rect x="884" y="535" width="184" height="54" rx="12" fill="#102b27" stroke="#2e6958"/><circle cx="902" cy="554" r="5" fill="#63d7a3"/><text x="914" y="557" fill="#a8e8cb" font-size="11" font-weight="800">Route + schedule</text><text x="902" y="575" fill="#82bca6" font-size="10">Trusted service check</text>
+  <rect x="1080" y="535" width="184" height="54" rx="12" fill="#102b27" stroke="#2e6958"/><circle cx="1098" cy="554" r="5" fill="#63d7a3"/><text x="1110" y="557" fill="#a8e8cb" font-size="11" font-weight="800">Cargo rules</text><text x="1098" y="575" fill="#82bca6" font-size="10">Validate requirements</text>
+  <rect x="1276" y="535" width="198" height="54" rx="12" fill="#102b27" stroke="#2e6958"/><circle cx="1294" cy="554" r="5" fill="#63d7a3"/><text x="1306" y="557" fill="#a8e8cb" font-size="11" font-weight="800">Commercial terms</text><text x="1294" y="575" fill="#82bca6" font-size="10">Authoritative pricing</text>
+</g>
+<!-- summary -->
+<rect x="884" y="605" width="590" height="103" rx="15" fill="#f5f8fc"/>
+<text x="906" y="629" fill="#65768c" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="800" letter-spacing="1">BOOKING SUMMARY · REVIEW BEFORE SUBMIT</text>
+<text x="906" y="654" fill="#172b45" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="800">Shanghai → Rotterdam</text>
+<text x="906" y="676" fill="#65768c" font-family="Inter,Arial,sans-serif" font-size="12">1 × 40' reefer · ETD 12 Nov · details pending validation</text>
+<rect x="1274" y="642" width="176" height="42" rx="10" fill="url(#blue)"/>
+<text x="1362" y="668" fill="#fff" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="800">Confirm to continue</text>
+<text x="884" y="744" fill="#90a4bf" font-family="Inter,Arial,sans-serif" font-size="12">AI simplifies entry; it does not bypass validation or user approval.</text>
+</g>
+
+<rect x="54" y="805" width="1492" height="54" rx="14" fill="#102741" stroke="#2a4a6d"/>
+<text x="80" y="838" fill="#7ad8ff" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" letter-spacing="1.2">DESIGN PRINCIPLE</text>
+<text x="276" y="838" fill="#e3edf8" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="600">Same booking rules and authoritative systems · fewer form-navigation steps · explicit confirmation before action</text>
+</svg>
