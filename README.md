@@ -1,9 +1,10 @@
-# Chintan Changole — Solution Engineering Portfolio v12
+# Chintan Changole — Solution Engineering Portfolio v13
 
 Single-page, dependency-free portfolio prepared for GitHub Pages.
 
-## What changed in v11
+## What changed in v13
 - Preserved the CMA CGM Gemini Shipping Operations Assistant flagship and its four selectable end-to-end workflows: disruption recovery, instant quote, booking amendment, and document exception.
+- Added a responsive **booking journey before / AI-assisted target comparison** based on the supplied Click & Book guide, showing multi-section form navigation versus a guided conversation while preserving authoritative validation and explicit confirmation. The AI-assisted side is clearly labeled as a conceptual portfolio design, not a live integration or screenshot of a deployed agent.
 - Added a dedicated **Reliability Lab** tab for idempotency, duplicate requests, changed-payload conflicts, timeout-after-acceptance recovery, and status reconciliation.
 - Added a live operation ledger with operation ID, trace ID, idempotency key, request fingerprint, status, and synthetic provider reference.
 - Added an explicit confirmation gate before running simulated transaction scenarios.
