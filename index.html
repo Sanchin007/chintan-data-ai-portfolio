@@ -167,6 +167,26 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
 @media(max-width:900px){.reliability-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.reliability-grid{grid-template-columns:1fr}.reliability-contract{display:block}.reliability-contract span{display:block;margin-top:6px}}
 @media(max-width:600px){.reliability-actions button{flex:1 1 145px}.reliability-metrics{gap:7px}.reliability-metrics article{padding:10px}.reliability-metrics b{font-size:21px}.reliability-ledger-head{align-items:flex-start}.reliability-detail-row{grid-template-columns:88px minmax(0,1fr)}}
 
+/* Booking experience transformation: documented form flow vs proposed AI-assisted entry point */
+.booking-shift{position:relative;margin:0 0 30px;padding:clamp(18px,2.8vw,30px);border:1px solid #2a405d;border-radius:24px;background:linear-gradient(145deg,rgba(13,31,52,.96),rgba(8,20,34,.96));box-shadow:0 24px 60px rgba(0,0,0,.16)}
+.booking-shift-head{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:end}
+.booking-shift-eyebrow{font:700 7px IBM Plex Mono;color:#74d5ff;letter-spacing:.14em;margin:0 0 10px}
+.booking-shift-head h3{font:800 clamp(25px,3vw,38px)/1.05 Manrope;color:#fff;letter-spacing:-.04em;margin:0;max-width:760px}
+.booking-shift-head>div>p:last-child{font-size:10px;line-height:1.8;color:#9aacc2;max-width:790px;margin:13px 0 0}
+.booking-shift-callout{border:1px solid #2d4a6c;background:#10243b;border-radius:16px;padding:17px}
+.booking-shift-callout small,.booking-shift-points small{display:block;font:700 7px IBM Plex Mono;color:#76d6ff;letter-spacing:.12em}
+.booking-shift-callout b{display:block;font:800 17px Manrope;color:#fff;margin:7px 0}
+.booking-shift-callout span{display:block;font-size:9px;line-height:1.65;color:#9fb2ca}
+.booking-shift-figure{margin:20px 0 0}
+.booking-shift-figure img{display:block;width:100%;height:auto;border:1px solid #304863;border-radius:16px;background:#07111f;box-shadow:0 18px 40px rgba(0,0,0,.18)}
+.booking-shift-figure figcaption{font-size:8px;line-height:1.65;color:#8196b0;margin-top:9px}
+.booking-shift-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+.booking-shift-points article{border:1px solid #263c56;background:rgba(9,23,39,.86);border-radius:14px;padding:14px;min-width:0}
+.booking-shift-points b{display:block;font:800 12px Manrope;color:#f4f8ff;margin:7px 0}
+.booking-shift-points p{font-size:8.5px;line-height:1.7;color:#93a7bf;margin:0}
+@media(max-width:900px){.booking-shift-head{grid-template-columns:1fr}.booking-shift-points{grid-template-columns:1fr}}
+@media(max-width:560px){.booking-shift{padding:15px;border-radius:18px}.booking-shift-head h3{font-size:27px}.booking-shift-figure img{border-radius:11px}}
+
 </style>
 </head>
 <body>
@@ -343,6 +363,30 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
         <p>The requirements, workflow logic, solution design and deployment are from my CMA CGM project work. This portfolio demo uses representative synthetic transaction data and a non-confidential architecture view; confidential identifiers, topology and exact interfaces are intentionally omitted.</p>
       </aside>
     </div>
+
+    <section class="booking-shift reveal" id="booking-transformation" aria-labelledby="booking-shift-title">
+      <div class="booking-shift-head">
+        <div>
+          <p class="booking-shift-eyebrow">BOOKING EXPERIENCE · BEFORE / TARGET CONCEPT</p>
+          <h3 id="booking-shift-title">From form navigation to a guided conversation.</h3>
+          <p>The supplied Click &amp; Book guide documents a structured journey through route details, cargo, routing, special-cargo requirements, parties, payment and final review. An AI assistant can make the entry point simpler while coordinating the same checks behind the scenes.</p>
+        </div>
+        <aside class="booking-shift-callout">
+          <small>THE DESIGN GOAL</small>
+          <b>Less navigation. Same control.</b>
+          <span>Let customers describe the outcome; keep eligibility, pricing, permissions and final booking state with trusted enterprise services.</span>
+        </aside>
+      </div>
+      <figure class="booking-shift-figure">
+        <img src="assets/booking-before-after.svg" alt="Illustrative comparison of the documented multi-section Click and Book process with a proposed AI-assisted conversation that gathers missing details, coordinates trusted checks, and presents a booking summary for confirmation." loading="lazy" decoding="async">
+        <figcaption>Baseline: the supplied “How to Request Booking (Click &amp; Book)” guide. The AI-assisted side is a conceptual target for this portfolio, not a screenshot of a deployed AI agent or a live booking integration.</figcaption>
+      </figure>
+      <div class="booking-shift-points">
+        <article><small>BEFORE</small><b>Navigate structured sections</b><p>Enter route and cargo details, compare routings, provide special-cargo / party / payment information, then review and submit.</p></article>
+        <article><small>WITH AI ASSISTANCE</small><b>Describe the outcome</b><p>The assistant gathers missing information, calls approved tools, explains eligible options and prepares a summary for the user.</p></article>
+        <article><small>UNCHANGED</small><b>Keep business rules in control</b><p>Authoritative services still validate availability, cargo constraints and commercial terms; consequential actions require explicit confirmation.</p></article>
+      </div>
+    </section>
 
     <div class="product-kpi-row reveal" id="productKpiRow">
       <button type="button" class="active" data-product-cap="quote"><small>01 · QUOTE</small><b>Instant commercial option</b><span>route + capacity + governed price</span></button>
