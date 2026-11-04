@@ -48,9 +48,9 @@ body{background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
 <div class="metrics"><div class="metric"><b>12</b><span>COUNTRIES IN SCOPE</span><em>CV CONTEXT</em></div><div class="metric"><b>08</b><span>BUSINESS UNITS</span><em>CV CONTEXT</em></div><div class="metric"><b>€2.3M</b><span>ANNUAL VALUE IDENTIFIED</span><em>CV CONTEXT</em></div><div class="metric"><b id="mAgents">07</b><span>SPECIALIST AGENTS</span></div><div class="metric"><b id="mRun">IDLE</b><span>WORKFLOW STATUS</span></div></div>
 <section id="mission"><div class="section-title"><h2>01 / Executive mission control</h2><p>SELECT A MANDATE · WATCH AGENTS COLLABORATE · INSPECT THE DECISION TRAIL</p></div>
 <div class="main-grid"><div>
-<div class="panel"><div class="panel-head"><span>GEOGRAPHIC CONTEXT / ILLUSTRATIVE CORRIDORS</span><span>ILLUSTRATIVE ROUTE OVERLAY</span></div>
+<div class="panel"><div class="panel-head"><span>GLOBAL NETWORK / INDIA & INTERNATIONAL CORRIDORS</span><span>ILLUSTRATIVE ROUTE OVERLAY</span></div>
 <div class="maparea"><div class="map-tag" style="z-index:600">REAL-WORLD BASEMAP · SYNTHETIC OVERLAYS</div>
-<div id="realMap" role="img" aria-label="Interactive OpenStreetMap world map with illustrative logistics corridors"></div><div class="map-label">Illustrative strategic corridors · not live vessel positions or operational routing</div></div></div>
+<div id="realMap" role="img" aria-label="Interactive OpenStreetMap world map with illustrative logistics corridors"></div><div class="map-label">India gateways and global corridors · illustrative only, not live vessel routing</div></div></div>
 <div class="panel network" style="margin-top:10px"><div class="panel-head"><span>MULTI-AGENT STRATEGY NETWORK</span><span id="networkState">ALL AGENTS STANDBY</span></div><div class="agent-flow">
 <div class="agent" data-agent="orchestrator"><span class="num">AGENT 00</span><span class="state">IDLE</span><b>Strategy orchestrator</b><small>Frames mandate and delegates analysis</small><i class="pulse"></i></div>
 <div class="agent" data-agent="market"><span class="num">AGENT 01</span><span class="state">IDLE</span><b>Market intelligence</b><small>Competitors, regions and trade signals</small><i class="pulse"></i></div>
@@ -129,10 +129,13 @@ function initRealMap(){
   {name:'Singapore',coords:[1.3521,103.8198],type:'Illustrative logistics hub'},
   {name:'Shanghai',coords:[31.2304,121.4737],type:'Illustrative logistics hub'},
   {name:'Colombo',coords:[6.9271,79.8612],type:'Illustrative logistics hub'},
+  {name:'Nhava Sheva (Mumbai)',coords:[18.9498,72.9500],type:'Illustrative Indian port gateway'},
+  {name:'Mundra, India',coords:[22.8394,69.7219],type:'Illustrative Indian port gateway'},
+  {name:'Chennai, India',coords:[13.0827,80.2707],type:'Illustrative Indian port gateway'},
   {name:'New York',coords:[40.7128,-74.006],type:'Illustrative regional point'}
  ];
- const byName={}; places.forEach(p=>{byName[p.name]=p.coords;L.circleMarker(p.coords,{radius:6,color:'#fff',weight:2,fillColor:'#1a73e8',fillOpacity:1}).addTo(map).bindPopup('<b>'+p.name+'</b><br>'+p.type+'<br><small>Not a live operational location feed</small>');});
- const arcs=[['Marseille','Singapore'],['Marseille','Shanghai'],['Rotterdam','New York'],['Singapore','Colombo'],['Rotterdam','Shanghai']];
+ const byName={}; places.forEach(p=>{byName[p.name]=p.coords;L.circleMarker(p.coords,{radius:6,color:'#fff',weight:2,fillColor:p.name.includes('India')||p.name.includes('Mumbai')?'#188038':'#1a73e8',fillOpacity:1}).addTo(map).bindPopup('<b>'+p.name+'</b><br>'+p.type+'<br><small>Not a live operational location feed</small>');});
+ const arcs=[['Marseille','Singapore'],['Marseille','Shanghai'],['Rotterdam','New York'],['Singapore','Colombo'],['Rotterdam','Shanghai'],['Nhava Sheva (Mumbai)','Singapore'],['Mundra, India','Marseille'],['Chennai, India','Colombo'],['Nhava Sheva (Mumbai)','Colombo']];
  window.agenticRouteLayers=arcs.map(a=>L.polyline([byName[a[0]],byName[a[1]]],{color:'#78a9f5',weight:2,opacity:.65,dashArray:'7 8'}).addTo(map).bindPopup(a[0]+' ↔ '+a[1]+'<br><small>Illustrative corridor only</small>'));
  window.agenticWorldMap=map;
  setTimeout(()=>map.invalidateSize(),150);
