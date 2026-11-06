@@ -1,0 +1,4 @@
+change_id,supplier_id,change_date,callback_verified,dual_approved
+CHG-001,SUP-004,2026-03-10,false,false
+CHG-002,SUP-001,2026-03-01,true,true
+CHG-003,SUP-003,2026-03-04,true,false
