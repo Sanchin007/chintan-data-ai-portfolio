@@ -6,6 +6,7 @@ This is executable reference logic, not connected to an enterprise data platform
 from __future__ import annotations
 import json
 import statistics
+import hashlib
 from datetime import date, datetime
 from collections import defaultdict
 
@@ -55,20 +56,31 @@ def invoice_candidates(rows=AP):
                             "payment_loss_proven":False})
     return out
 
-def procurement_clusters(rows=POS, threshold=50000):
+def procurement_clusters(rows=POS, threshold=50000, window_days=7):
     groups=defaultdict(list)
-    for row in rows: groups[(row["supplier"],row["requester"])].append(row)
+    for row in rows:
+        groups[(row["supplier"],row["requester"])].append((date.fromisoformat(row["day"]),row))
     out=[]
+    seen=set()
     for key,items in groups.items():
-        total=sum(x["amount"] for x in items)
-        if len(items)>1 and total>threshold:
-            out.append({"supplier":key[0],"po_ids":[x["id"] for x in items],
-                        "aggregate_amount":total,"threshold":threshold,
-                        "status":"review_business_purpose_and_policy"})
+        items.sort(key=lambda x:x[0])
+        for start,(start_day,_) in enumerate(items):
+            cluster=[row for day,row in items[start:] if 0 <= (day-start_day).days <= window_days]
+            if len(cluster)<2 or not all(row["amount"]<threshold for row in cluster):
+                continue
+            ids=tuple(sorted(row["id"] for row in cluster))
+            if ids in seen:
+                continue
+            seen.add(ids)
+            total=sum(row["amount"] for row in cluster)
+            if total>threshold:
+                out.append({"supplier":key[0],"requester":key[1],"po_ids":list(ids),
+                            "window_days":window_days,"aggregate_amount":total,
+                            "threshold":threshold,"status":"review_business_purpose_and_policy"})
     return out
 
 def supplier_change_risk(rows=SUPPLIER_CHANGES):
-    return [{"supplier":r["supplier"],"signal":r["hours_before_payment"]<=72 and
+    return [{"supplier":r["supplier"],"signal":0<=r["hours_before_payment"]<=72 and
              r["amount"]>=50000 and (not r["callback"] or not r["dual_approval"]),
              "fraud_conclusion":None} for r in rows]
 
@@ -114,9 +126,10 @@ def data_quality_gate(rows=QUALITY_ROWS):
     return {"status":"BLOCK" if issues else "PASS","issues":issues}
 
 def continuous_audit_cycle():
-    events=[("AP_DUPLICATE","AP-301","HIGH"),("SUPPLIER_CHANGE","SUP-81","HIGH"),
-            ("PO_THRESHOLD","PO-4101","MEDIUM"),("LANE_MARGIN","ASIA-MED","MEDIUM")]
-    return [{"alert_key":"|".join(x),"control_id":x[0],"source_id":x[1],
+    events=[("AP_DUPLICATE","AP-301","HIGH","RUN-001"),("SUPPLIER_CHANGE","SUP-81","HIGH","RUN-001"),
+            ("PO_THRESHOLD","PO-4101","MEDIUM","RUN-001"),("LANE_MARGIN","ASIA-MED","MEDIUM","RUN-001")]
+    return [{"alert_key":hashlib.sha256("|".join(x[:2]).encode("utf-8")).hexdigest(),
+             "control_id":x[0],"source_id":x[1],"run_id":x[3],
              "severity":x[2],"status":"OPEN"} for x in events]
 
 def main():
