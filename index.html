@@ -417,14 +417,14 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
 
         <div class="journey-project-strip">
           <article class="journey-project-card">
-            <small>REAL DEPLOYED PROJECT · CMA CGM</small>
-            <h3>AI-assisted shipping servicing & transaction orchestration</h3>
-            <p>I worked on the functional and technical path from ambiguous shipping requests to production execution: requirements, edge cases, high-level design, API contracts, Gemini/tool boundaries, failure behaviour, validation and delivery support.</p>
+            <small>RELATED ENTERPRISE DELIVERY CONTEXT · CMA CGM</small>
+            <h3>Shipping operations and application delivery experience</h3>
+            <p>My enterprise experience included translating operational needs into requirements, coordinating technical delivery, defining validation paths and supporting releases. The interactive shipping-assistant experience shown here is a separate portfolio solution-design demonstration, not a deployed CMA CGM assistant.</p>
           </article>
           <article class="journey-rule-card">
             <small>ARCHITECTURE RULE</small>
             <b>Gemini can interpret, rank and explain. Trusted services must verify facts and execute transactions.</b>
-            <p>The animation uses representative synthetic transaction data and a non-confidential logical architecture. The delivery pattern, controls and responsibilities reflect the deployed project.</p>
+            <p>The animation uses representative synthetic transaction data and a non-confidential logical architecture. It illustrates solution-design principles and does not represent a live connection or claim that this specific assistant workflow was deployed.</p>
           </article>
         </div>
 
@@ -1039,7 +1039,7 @@ a{color:inherit}.shell{width:min(1240px,calc(100% - 48px));margin:auto}.scroll-p
       <div><p class="eyebrow">EXPERIENCE</p><h2>Digital project management across enterprise applications, data platforms and transformation.</h2></div>
     </div>
     <div class="timeline">
-      <article class="timeline-item reveal"><div class="time">JUN 2023 — JUN 2026</div><div class="role"><small>GOOGLE · CLIENT: CMA CGM · MARSEILLE / DUBLIN</small><h3>Digital Project Manager</h3></div><div class="desc"><p>Acted as the main functional and technical contact across CMA CGM’s business application portfolio. Translated user needs into functional specifications and compliance test plans, coordinated development and UAT, managed incidents and patches, maintained project documentation, and supported releases and executive reporting across 8 business units and 12 countries.</p></div></article>
+      <article class="timeline-item reveal"><div class="time">JUN 2023 — SEP 2026</div><div class="role"><small>GOOGLE · CLIENT: CMA CGM · MARSEILLE / DUBLIN</small><h3>Digital Project Manager</h3></div><div class="desc"><p>Acted as the main functional and technical contact across CMA CGM’s business application portfolio. Translated user needs into functional specifications and compliance test plans, coordinated development and UAT, managed incidents and patches, maintained project documentation, and supported releases and executive reporting across 8 business units and 12 countries.</p></div></article>
       <article class="timeline-item reveal"><div class="time">MAY 2019 — OCT 2022</div><div class="role"><small>VOLVO GROUP TRUCKS TECHNOLOGY · BENGALURU</small><h3>IT Project Manager & Machine Learning Engineer</h3></div><div class="desc"><p>Built shared platform components and reusable pipeline frameworks on Azure Databricks, developing modular Python libraries, transformation utilities and monitoring tooling. Worked across supply-chain and procurement workstreams that contributed to a 15% reduction in excess-stock costs.</p></div></article>
       <article class="timeline-item reveal"><div class="time">JAN 2018 — JUN 2018</div><div class="role"><small>MICROSOFT · HYDERABAD</small><h3>Machine Learning Engineer Intern</h3></div><div class="desc"><p>Built and tested classification models on Azure AI services, applied data-quality controls and communicated results to non-technical stakeholders.</p></div></article>
     </div>
@@ -1134,7 +1134,51 @@ window.PROJECTS = (() => {
   artifacts:["Requirements notes","Functional specifications","Compliance test plans","UAT test cases","Defect / incident register","Risk and action trackers","Release plan","Progress reports","User guides","Deployment communication"]
  }),
  make({
-  id:"cma-strategic-value",order:2,provenance:"DELIVERED EXPERIENCE · GOOGLE / CMA CGM",company:"Google · Client: CMA CGM · Group-level transformation context",category:"cma",categories:["strategy","transformation"],
+  id:"cma-procurement-ai-agent",order:2,provenance:"DELIVERED EXPERIENCE · GOOGLE CLOUD / CMA CGM",company:"Google Cloud · Client: CMA CGM · Enterprise procurement",category:"cma",categories:["ai","delivery","solution","procurement","compliance"],featured:true,
+  kicker:"PROCUREMENT AI & COMPLIANCE",title:"CMA CGM — Procurement Intelligence & Compliance Agent",
+  subtitle:"Procurement lifecycle support · supplier and document intelligence · sourcing analysis · export-compliance issue detection · human verification",
+  metric:"HUMAN",metricLabel:"guided decisions and specialist verification",scale:"Implemented during the Google Cloud engagement · June 2023 – September 2026",
+  roleSummary:"Contributed to the delivery of an implemented AI-enabled procurement workflow within the Google Cloud engagement at CMA CGM. The solution supported multiple procurement activities, surfaced potential issues and routed exceptions to the appropriate human specialists. The operating model retained human guidance and verification for consequential decisions.",
+  impact:"Connected procurement analysis with document and supplier information, workflow routing and compliance exception handling. The agent could flag potential export-compliance and trade-law issues and send them, with supporting context, to a compliance specialist for verification. It supported decisions; it did not replace procurement or compliance authority.",
+  evidenceNote:"Non-confidential case-study summary of an implemented project. The architecture and process map are reconstructed for portfolio communication; they describe the confirmed operating pattern, not a claim that every depicted component or named cloud service is the original production implementation. Internal systems, endpoints, rule configurations and confidential records are intentionally omitted.",
+  tags:["Procurement AI","Agentic Workflows","Document Intelligence","Export Compliance","Human-in-the-Loop","Google Cloud"],
+  cardFlow:["Intake","Analyse","Flag","Verify","Approve"],
+  problem:"Procurement spans supplier information, documents, sourcing decisions, purchasing workflows, invoices and commercial analysis. Manual review across these activities can create fragmented context and make it harder to surface exceptions early. Export compliance adds a further control requirement: potential trade-law issues must be identified and escalated without allowing an AI system to make the final legal determination.",
+  before:["Procurement information and supporting documents arrive in different formats and at different points in the lifecycle.","Supplier, sourcing, purchasing, invoice and spend questions require context to be assembled before a decision can be made.","Potential export-compliance or trade-law concerns need to reach the right specialist with enough evidence to review.","The organisation must retain accountable human judgement for approvals and consequential decisions."],
+  after:["An AI-enabled workflow helps interpret procurement requests and organise relevant supplier, document and transaction context.","Procurement analysis supports supplier onboarding and evaluation, sourcing and quotation comparison, requisition and purchase-order preparation, invoice checks and spend visibility.","Potential compliance issues are flagged with supporting context and routed to a compliance specialist.","Procurement and compliance specialists verify exceptions and retain authority over approval and next steps."],
+  beforeArchitecture:["Fragmented requests and documents","Manual context gathering","Separate procurement checks","Late exception escalation"],
+  afterArchitecture:["Procurement inputs and records","Document and data understanding","AI-assisted procurement analysis","Export-compliance issue flags","Specialist verification","Controlled workflow and audit trail"],
+  architectureChange:["Bring relevant procurement requests, supplier information and supporting documents into a structured workflow.","Use AI to extract, classify and organise information for procurement activities rather than treating generated text as authoritative source data.","Apply compliance screening to identify potential export-control and trade-law concerns, preserving the reason and supporting evidence for each flag.","Route flagged cases to a compliance specialist; the agent does not issue legal clearance or make the final compliance determination.","Keep approvals and consequential procurement decisions with authorised people and preserve the review outcome."],
+  contribution:["Contributed to the implementation and delivery of the Procurement AI Agent within the Google Cloud / CMA CGM engagement.","Worked across the business and technical context needed to represent procurement activities and exception paths in the solution.","Supported a human-guided operating model in which potential export-compliance and trade-law issues were flagged and escalated to compliance specialists for verification.","Kept the distinction clear between AI-generated analysis, specialist verification and authorised business approval."],
+  runtime:[
+    ["Intake","Procurement request and evidence","Capture the request and assemble the relevant supplier, sourcing, purchasing, invoice or spend context. The workflow can handle structured records and supporting documents."],
+    ["Understand","Extract and validate information","Interpret the request, extract relevant fields from documents and organise supplier or transaction information. Validation checks identify missing, inconsistent or incomplete data."],
+    ["Analyse","Procurement workflow support","Support supplier onboarding and evaluation, sourcing and quotation comparison, requisition and purchase-order preparation, invoice checks and spend analysis. Outputs are recommendations or prepared workflow information, not autonomous approvals."],
+    ["Screen","Export compliance and trade law","Assess available information against the applicable export-compliance and trade-law control framework to identify potential concerns, missing evidence or inconsistencies."],
+    ["Flag","Create an evidence-backed exception","Record the potential issue, the information that triggered it and the supporting source context. Route the case to the appropriate compliance specialist instead of silently proceeding."],
+    ["Verify","Human specialist review","A compliance specialist reviews the flagged issue and its evidence, verifies the concern and determines the appropriate next step. Procurement users also retain their own approval responsibilities."],
+    ["Approve","Controlled workflow and audit","Only the authorised human decision moves the case forward. The workflow retains the review outcome and relevant decision context for traceability and follow-up."]
+  ],
+  architecture:[
+    ["INPUTS","Procurement information","Requests, supplier records, quotations, purchasing information, invoices and supporting documents."],
+    ["UNDERSTANDING","Document and data processing","Extract and structure relevant information, retain source context and validate completeness and consistency."],
+    ["AI WORKFLOW","Procurement agent and orchestration","Interpret requests and coordinate the relevant supplier, sourcing, purchasing, invoice and spend-analysis capabilities."],
+    ["COMPLIANCE","Trade-law issue screening","Identify potential export-compliance concerns, missing information and inconsistencies; create an evidence-backed flag."],
+    ["HUMAN CONTROL","Specialist verification","Route flagged cases to a compliance specialist. Human reviewers verify evidence and retain decision authority."],
+    ["OUTCOME","Approved workflow and audit","Continue only through authorised business controls; retain review outcomes, decisions and traceability."]
+  ],
+  controls:["Source context retained","Document and field validation","Potential-issue flagging","Evidence-backed escalation","Compliance specialist verification","Human approval for consequential decisions","No autonomous legal clearance","Decision traceability and audit"],
+  toolGroups:[
+    ["AI and orchestration",["Procurement AI agent","Intent interpretation","Workflow routing","Structured outputs"]],
+    ["Information processing",["Supplier and procurement records","Document extraction","Field validation","Evidence context"]],
+    ["Compliance controls",["Export-compliance issue screening","Trade-law framework checks","Exception classification","Specialist escalation"]],
+    ["Human governance",["Compliance specialist review","Procurement approval","Decision traceability","Audit record"]]
+  ],
+  artifacts:["Procurement lifecycle process map","Supplier and document information flow","Sourcing / quotation comparison workflow","Requisition and purchase-order support flow","Invoice-checking and spend-analysis flow","Export-compliance exception path","Human verification and approval controls","Non-confidential architecture and decision-flow view"],
+  decisions:["Use AI to organise information and surface potential issues, not to replace authoritative records or specialist judgement.","Preserve source context so reviewers can inspect why a potential issue was flagged.","Escalate export-compliance and trade-law concerns to a compliance specialist for verification.","Keep approval authority with authorised procurement and compliance stakeholders.","Avoid naming internal systems, integrations or cloud services that are not disclosed in this public case study."]
+ }),
+ make({
+  id:"cma-strategic-value",order:3,provenance:"DELIVERED EXPERIENCE · GOOGLE / CMA CGM",company:"Google · Client: CMA CGM · Group-level transformation context",category:"cma",categories:["strategy","transformation"],
   kicker:"STRATEGIC TRANSFORMATION & VALUE",title:"CMA CGM — Business Transformation & Value Tracking",
   subtitle:"Executive reporting · business case development · cross-functional coordination · efficiency opportunities · programme governance",
   metric:"€2.3M",metricLabel:"validated annual efficiency savings (CV)",scale:"Group programme context · 8 business units · 12 countries",
@@ -1147,7 +1191,7 @@ window.PROJECTS = (() => {
   contribution:["Supported portfolio and programme reporting using actual and forecast data.","Prepared executive-ready progress updates for the Finance Director and Executive Committee.","Coordinated stakeholder communication across business, IT and technical teams.","Maintained action tracking and supported roadmap alignment across concurrent workstreams."]
  }),
  make({
-  id:"volvo-data-platform",order:3,provenance:"DELIVERED EXPERIENCE · VOLVO GROUP",company:"Volvo Group Trucks Technology · Bengaluru",category:"volvo",categories:["data","engineering"],
+  id:"volvo-data-platform",order:4,provenance:"DELIVERED EXPERIENCE · VOLVO GROUP",company:"Volvo Group Trucks Technology · Bengaluru",category:"volvo",categories:["data","engineering"],
   kicker:"DATA ENGINEERING & PLATFORM",title:"Volvo — Shared Data Engineering & Pipeline Frameworks",
   subtitle:"Azure Databricks · Python · PySpark · reusable pipeline components · supply chain and procurement analytics",
   metric:"500M+",metricLabel:"rows processed per month (CV)",scale:"Shared platform components · teams in Bengaluru and Gothenburg",
@@ -1160,7 +1204,7 @@ window.PROJECTS = (() => {
   contribution:["Developed modular Python libraries and reusable transformation utilities.","Worked with teams in Bengaluru and Gothenburg on shared data engineering practices.","Supported monitoring and data quality across supply-chain and procurement workflows.","Connected platform reliability with the needs of downstream analytics and ML teams."]
  }),
  make({
-  id:"volvo-inventory",order:4,provenance:"DELIVERED EXPERIENCE · VOLVO GROUP",company:"Volvo Group Trucks Technology · Supply chain and procurement",category:"volvo",categories:["analytics","ml"],
+  id:"volvo-inventory",order:5,provenance:"DELIVERED EXPERIENCE · VOLVO GROUP",company:"Volvo Group Trucks Technology · Supply chain and procurement",category:"volvo",categories:["analytics","ml"],
   kicker:"SUPPLY CHAIN ANALYTICS",title:"Volvo — Inventory & Excess-Stock Reduction",
   subtitle:"Operational data analysis · forecasting context · procurement and inventory planning · business performance",
   metric:"15%",metricLabel:"reduction in excess-stock costs contributed to (CV)",scale:"Supply chain and procurement workstreams · cross-site collaboration",
@@ -1173,7 +1217,7 @@ window.PROJECTS = (() => {
   contribution:["Analysed supply-chain and procurement data to identify cost and efficiency opportunities.","Worked with cross-functional teams to translate analytical findings into planning improvements.","Supported the broader workstream associated with a 15% reduction in excess-stock costs."]
  }),
  make({
-  id:"microsoft-ml",order:5,provenance:"INTERNSHIP · MICROSOFT",company:"Microsoft · Hyderabad, India",category:"ml",categories:["engineering"],
+  id:"microsoft-ml",order:6,provenance:"INTERNSHIP · MICROSOFT",company:"Microsoft · Hyderabad, India",category:"ml",categories:["engineering"],
   kicker:"MACHINE LEARNING FOUNDATIONS",title:"Microsoft — Azure Classification Models",
   subtitle:"Machine learning · classification · Azure AI services · data quality · model validation",
   metric:"2018",metricLabel:"machine learning engineering internship",scale:"Hyderabad · Jan 2018 – Jun 2018",
@@ -1186,7 +1230,7 @@ window.PROJECTS = (() => {
   contribution:["Built and tested classification models using Azure AI services.","Applied data-quality checks to model inputs.","Communicated model results and limitations to non-technical stakeholders."]
  }),
  make({
-  id:"craveflow",order:6,provenance:"INDEPENDENT PROJECT · PERSONAL BUILD",company:"Independent product build · GitHub",category:"independent",categories:["ai","product"],
+  id:"craveflow",order:7,provenance:"INDEPENDENT PROJECT · PERSONAL BUILD",company:"Independent product build · GitHub",category:"independent",categories:["ai","product"],
   kicker:"AI PRODUCT ENGINEERING",title:"CraveFlow — AI Food Discovery & Ordering",
   subtitle:"AI-assisted discovery · conversational UX · restaurant and menu matching · product prototyping",
   metric:"2.0",metricLabel:"independent product iteration",scale:"Personal project · end-to-end product design and implementation",
@@ -1199,7 +1243,7 @@ window.PROJECTS = (() => {
   contribution:["Defined the product direction and end-to-end user experience.","Built the frontend experience and iterated on the opening flow and assistant interface.","Identified relevance failures in menu search and specified exact-item matching behaviour.","Separated recommendations and simulated checkout states from real order execution."]
  }),
  make({
-  id:"agentic-ai-lab",order:7,provenance:"INDEPENDENT CASE STUDY · SIMULATION",company:"Personal portfolio · Google Cloud-inspired architecture patterns",category:"independent",categories:["ai","architecture"],
+  id:"agentic-ai-lab",order:8,provenance:"INDEPENDENT CASE STUDY · SIMULATION",company:"Personal portfolio · Google Cloud-inspired architecture patterns",category:"independent",categories:["ai","architecture"],
   kicker:"AGENTIC AI & ENTERPRISE WORKFLOWS",title:"Agentic AI Lab — Strategic Intelligence Simulation",
   subtitle:"Coordinator and specialist agents · task decomposition · evidence checks · human approval · executive synthesis",
   metric:"07",metricLabel:"specialist agent roles in the interactive simulation",scale:"Synthetic CMA CGM-inspired business scenario · no live company systems",
