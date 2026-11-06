@@ -1,0 +1,5 @@
+lane,revenue,cost,discount_pct,approved_discount_pct,volume
+North Europe,820000,706000,18,12,440
+West Med,610000,488000,9,10,390
+Asia Hub,940000,902000,21,15,510
+Atlantic,520000,416000,11,11,280
