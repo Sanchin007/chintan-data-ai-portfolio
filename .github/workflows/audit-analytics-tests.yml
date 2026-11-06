@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - "agentic-ai-lab/analytics/**"
+      - "agentic-ai-lab/worker/src/**"
+      - "agentic-ai-lab/index.html"
       - ".github/workflows/audit-analytics-tests.yml"
   pull_request:
     paths:
@@ -15,6 +17,22 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check Worker JavaScript syntax
+        run: node --check agentic-ai-lab/worker/src/index.js
+      - name: Check portfolio page JavaScript syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          page = Path("agentic-ai-lab/index.html").read_text()
+          start = page.rfind("<script>") + len("<script>")
+          end = page.rfind("</script>")
+          Path("/tmp/audit-page.js").write_text(page[start:end])
+          PY
+          node --check /tmp/audit-page.js
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -23,3 +41,5 @@ jobs:
         run: python -m pip install -r agentic-ai-lab/analytics/python/requirements.txt
       - name: Run analytics unit tests
         run: python -m unittest discover -s agentic-ai-lab/analytics/python -p "test_*.py" -v
+      - name: Run analytics against synthetic sample data
+        run: python agentic-ai-lab/analytics/python/audit_analytics.py --data-dir agentic-ai-lab/analytics/python/sample_data
