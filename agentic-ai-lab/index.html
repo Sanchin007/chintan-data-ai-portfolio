@@ -307,7 +307,7 @@ function renderLiveResults(items,answer,mission){
  lastReport=lines.join("\n");$("reportText").textContent=lastReport;$("emptyReport").classList.add("hidden");$("reportResults").classList.add("visible");
  $("assistantAnswer").textContent=answer||"Review the tool trace and returned observations.";
 }
-async function updateStageStates(trace,mission,status){
+function updateStageStates(trace,mission,status){
  const names={
  0:{label:"Mission Orchestrator",match:()=>true,done:"MISSION ROUTED"},
  1:{label:"Data Intelligence",match:t=>t.some(x=>["profile_demo_dataset","run_data_quality_assessment"].includes(x.tool)),done:"DATA CHECKED"},
@@ -330,7 +330,7 @@ async function updateStageStates(trace,mission,status){
  });
  $("agentProgress").textContent=completed+" / 8 WORKFLOW ROLES OBSERVED · "+trace.length+" TOOL EVENTS";
 }
-function callLiveAgent(mission,appendChat){
+async function callLiveAgent(mission,appendChat){
  if(!workerBase&&!(await connectWorker()))return;
  lastLiveMission=mission;$("runBtn").disabled=true;$("runBtn").textContent="GEMINI INVESTIGATING…";$("assistantSendBtn").disabled=true;setStatus("RUNNING · GEMINI SELECTING AUDIT TOOLS","running");$("traceStatus").textContent="RUNNING";
  $("liveTrace").innerHTML='<div class="empty-state"><strong>Investigation in progress</strong><p>Gemini is interpreting the objective and selecting deterministic tools.</p></div>';
