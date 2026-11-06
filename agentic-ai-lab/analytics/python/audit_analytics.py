@@ -77,7 +77,12 @@ def procurement_threshold_candidates(pos: pd.DataFrame, approval_threshold: floa
                 "aggregate_amount":total,"illustrative_threshold":float(approval_threshold),
                 "window_days":int(window_days),"review_required":True,
                 "caveat":"Shared attributes do not prove one underlying purchase need."})
-    return output
+    # Remove nested rolling windows so one PO cluster is not reported multiple times.
+    candidate_sets = [set(item["po_ids"]) for item in output]
+    return [
+        item for i, item in enumerate(output)
+        if not any(candidate_sets[i] < other for j, other in enumerate(candidate_sets) if i != j)
+    ]
 
 
 def supplier_change_to_payment_candidates(changes: pd.DataFrame, payments: pd.DataFrame,
