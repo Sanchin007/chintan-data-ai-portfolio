@@ -48,7 +48,7 @@ WITH policy AS (
          ) AS window_orders
   FROM eligible
 ), candidates AS (
-  SELECT DISTINCT r.supplier_id, r.requester_id, r.cost_centre,
+  SELECT r.po_id AS window_end_po_id, r.supplier_id, r.requester_id, r.cost_centre,
          DATE(r.order_date) AS window_end, r.window_orders,
          (SELECT COUNT(*) FROM UNNEST(r.window_orders)) AS po_count,
          (SELECT SUM(w.po_amount) FROM UNNEST(r.window_orders) w) AS aggregate_amount
@@ -63,7 +63,7 @@ WITH policy AS (
       WHERE o.po_amount >= p.approval_limit
     )
 )
-SELECT supplier_id, requester_id, cost_centre, window_end, po_count, aggregate_amount,
+SELECT window_end_po_id, supplier_id, requester_id, cost_centre, window_end, po_count, aggregate_amount,
        ARRAY(SELECT o.po_id FROM UNNEST(window_orders) o ORDER BY o.order_date, o.po_id) AS po_ids,
        approval_limit, SAFE_DIVIDE(aggregate_amount, approval_limit) AS threshold_multiple
 FROM matched;
