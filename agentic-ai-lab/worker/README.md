@@ -32,7 +32,7 @@ It does not perform live classification, sanctions / restricted-party screening,
 - Gemini API key is read only from the Worker secret.
 - Approved portfolio origin is enforced for browser requests.
 - Request body limit: 24,000 characters.
-- Maximum five tool-calling rounds and twenty tool calls per request.
+- Maximum four tool-calling rounds and twenty tool calls per request. The live endpoint requires a Cloudflare Rate Limiting binding (8 requests per IP per 60 seconds). Provision the binding in the target Cloudflare account before deployment; live execution fails closed if it is absent.
 - Function names and argument schemas are allow-listed; no arbitrary code execution or unrestricted SQL.
 - Tools are deterministic and read-only. No enterprise connectors, payment actions, approvals or write-back exist.
 - Synthetic records only; no CMA CGM, Dassault, Airbus or other enterprise data.
