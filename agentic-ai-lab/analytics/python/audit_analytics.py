@@ -167,7 +167,8 @@ def run_all(folder: Path) -> dict[str, Any]:
             "procurement_threshold_candidates":procurement_threshold_candidates(pos,25000,7),
             "supplier_change_to_payment_candidates":supplier_change_to_payment_candidates(changes,payments,80000,30),
             "pricing_variance_candidates":pricing_variance_candidates(pricing,5),
-            "fleet_utilisation_candidates":fleet_utilisation_candidates(fleet,10),\n            "fleet_utilisation_statistical_screen":robust_mad_outliers(fleet["utilisation_pct"],min_sample_size=8)},
+            "fleet_utilisation_candidates":fleet_utilisation_candidates(fleet,10),
+            "fleet_utilisation_statistical_screen":robust_mad_outliers(fleet["utilisation_pct"],min_sample_size=8)},
         "decision_boundary":"Indicators only. Validate source records and control criteria; no fraud, loss, legal or compliance conclusion."}
 
 
