@@ -34,20 +34,39 @@ WITH policy AS (
   SELECT * FROM `demo.approval_policy`
   WHERE effective_from <= CURRENT_DATE()
     AND (effective_to IS NULL OR effective_to >= CURRENT_DATE())
-), grouped AS (
-  SELECT supplier_id, requester_id, cost_centre,
-         DATE_TRUNC(order_date, DAY) AS order_day,
-         COUNT(*) AS po_count, SUM(po_amount) AS aggregate_amount,
-         STRING_AGG(po_id, ', ' ORDER BY po_id) AS po_ids
+), eligible AS (
+  SELECT po_id, supplier_id, requester_id, cost_centre, order_date,
+         po_amount, approval_status
   FROM `demo.purchase_orders`
-  WHERE order_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
-  GROUP BY supplier_id, requester_id, cost_centre, order_day
+  WHERE DATE(order_date) >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
+), rolling_windows AS (
+  SELECT *,
+         ARRAY_AGG(STRUCT(po_id, order_date, po_amount, approval_status)) OVER (
+           PARTITION BY supplier_id, requester_id, cost_centre
+           ORDER BY UNIX_DATE(DATE(order_date))
+           RANGE BETWEEN 7 PRECEDING AND CURRENT ROW
+         ) AS window_orders
+  FROM eligible
+), candidates AS (
+  SELECT DISTINCT r.supplier_id, r.requester_id, r.cost_centre,
+         DATE(r.order_date) AS window_end, r.window_orders,
+         (SELECT COUNT(*) FROM UNNEST(r.window_orders)) AS po_count,
+         (SELECT SUM(w.po_amount) FROM UNNEST(r.window_orders) w) AS aggregate_amount
+  FROM rolling_windows r
+  WHERE (SELECT COUNT(*) FROM UNNEST(r.window_orders)) > 1
+), matched AS (
+  SELECT c.*, p.approval_limit
+  FROM candidates c JOIN policy p USING (cost_centre)
+  WHERE c.aggregate_amount > p.approval_limit
+    AND NOT EXISTS (
+      SELECT 1 FROM UNNEST(c.window_orders) o
+      WHERE o.po_amount >= p.approval_limit
+    )
 )
-SELECT g.*, p.approval_limit,
-       SAFE_DIVIDE(g.aggregate_amount, p.approval_limit) AS threshold_multiple
-FROM grouped g
-JOIN policy p USING (cost_centre)
-WHERE g.po_count > 1 AND g.aggregate_amount > p.approval_limit;
+SELECT supplier_id, requester_id, cost_centre, window_end, po_count, aggregate_amount,
+       ARRAY(SELECT o.po_id FROM UNNEST(window_orders) o ORDER BY o.order_date, o.po_id) AS po_ids,
+       approval_limit, SAFE_DIVIDE(aggregate_amount, approval_limit) AS threshold_multiple
+FROM matched;
 
 -- 03. Supplier bank changes followed by high-value payments.
 WITH changes AS (
@@ -120,7 +139,7 @@ FROM calls;
 WITH checks AS (
   SELECT record_id,
          supplier_id IS NULL OR TRIM(supplier_id) = '' AS missing_supplier,
-         currency NOT IN ('EUR','USD','GBP','INR','SGD') AS invalid_currency,
+         currency IS NULL OR currency NOT IN ('EUR','USD','GBP','INR','SGD') AS invalid_currency,
          invoice_amount IS NULL OR invoice_amount < 0 AS invalid_amount
   FROM `demo.ap_invoices`
 ), duplicates AS (
@@ -135,9 +154,10 @@ FROM checks c
 LEFT JOIN duplicates d USING (record_id);
 
 -- 08. Continuous audit: deterministic alert identity prevents duplicate cases.
--- Run identity and watermark are supplied by the orchestrator, not generated here.
+-- Stable across reruns: run_id remains metadata, not part of the deduplication key.
+-- Add a versioned business-event key if one source record can create multiple distinct exceptions.
 SELECT
-  TO_HEX(SHA256(CONCAT(control_id, '|', source_record_id, '|', run_id))) AS alert_idempotency_key,
+  TO_HEX(SHA256(CONCAT(control_id, '|', source_record_id))) AS alert_idempotency_key,
   control_id, source_record_id, run_id, severity, evidence_reference,
   CURRENT_TIMESTAMP() AS detected_at,
   'OPEN' AS case_status
