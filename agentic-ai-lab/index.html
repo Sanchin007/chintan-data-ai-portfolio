@@ -122,6 +122,12 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
 @media(max-width:1000px){.sim-kpis,.value-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.governance-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.sim-grid{grid-template-columns:1fr}.delivery-strip{grid-template-columns:1fr}.sim-feed{max-height:150px}.panel{padding:20px}}@media(max-width:520px){.sim-kpis,.value-grid,.governance-grid{grid-template-columns:1fr 1fr}.sim-kpi{padding:12px}.sim-kpi strong{font-size:23px}.sim-banner{font-size:7px}.sim-banner time{width:100%;margin-left:18px}.value-card{padding:12px}.value-card strong{font-size:26px}.governance-foot{display:block}.governance-foot b{display:block;margin-bottom:4px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
 .lifecycle-wrap{margin:14px 0;padding:14px;border:1px solid #dfe7f2;border-radius:12px;background:linear-gradient(135deg,#f8fbff,#fff)}.lifecycle-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:10px}.lifecycle-grid>div{position:relative;min-height:84px;padding:10px;border:1px solid #e2e9f2;border-radius:9px;background:#fff}.lifecycle-grid b{display:block;margin-bottom:6px;color:#1769d2;font:8px "Roboto Mono",monospace}.lifecycle-grid strong{display:block;color:#2c3c53;font-size:9px}.lifecycle-grid small{display:block;margin-top:4px;color:#7b8798;font-size:8px;line-height:1.45}.lifecycle-loop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:9px;padding:9px 10px;border-radius:8px;background:#eaf2ff}.lifecycle-loop span{color:#1769d2;font:7px "Roboto Mono",monospace;letter-spacing:.08em}.lifecycle-loop b{color:#365578;font-size:9px}@media(max-width:760px){.lifecycle-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:420px){.lifecycle-grid{grid-template-columns:1fr}}
+
+.composer-submit-row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:14px 0 4px;padding:12px 13px;border:1px solid #d9e5f5;border-radius:12px;background:linear-gradient(105deg,#f7faff,#eef5ff)}
+.composer-submit-copy{min-width:0}.composer-submit-copy strong{display:block;color:#263b58;font-size:11px}.composer-submit-copy span{display:block;margin-top:4px;color:#718096;font-size:9px;line-height:1.5}
+.composer-search-btn{flex:0 0 auto;min-height:40px;padding:0 18px!important;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:9px!important;font-size:11px!important;font-weight:600;box-shadow:0 3px 10px #1769e02b}
+.composer-search-btn span{font-size:18px;line-height:1}
+@media(max-width:540px){.composer-submit-row{align-items:stretch;flex-direction:column}.composer-search-btn{width:100%}}
 </style>
 </head>
 <body>
@@ -148,6 +154,7 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
 <button class="prompt-chip" data-prompt="Triage missing export documentation: classification rationale, authorisation evidence, end-user and party-screening records; route gaps to a trade-compliance specialist">↗ &nbsp; Export documentation</button>
 <button class="prompt-chip" data-prompt="Run a complete cross-functional audit across finance, pricing, fleet and export compliance">＋ &nbsp; Full audit</button>
 </div>
+<div class="composer-submit-row"><div class="composer-submit-copy"><strong>Ready to investigate?</strong><span>Search the selected synthetic dataset and run its configured audit checks.</span></div><button type="button" class="primary composer-search-btn" id="askRunBtn"><span aria-hidden="true">⌕</span> Search &amp; analyse</button></div>
 <div class="intent-preview" id="intentPreview"></div>
 </div>
 <div class="mission-picker">
@@ -499,6 +506,8 @@ function startSyntheticTelemetry(){
 }
 
 resetWorkspace();setExecutionMode("presentation");
+document.getElementById("askRunBtn")?.addEventListener("click",()=>document.getElementById("runBtn")?.click());
+
 startSyntheticTelemetry();
 </script>
 </body></html>
