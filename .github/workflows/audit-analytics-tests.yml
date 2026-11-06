@@ -28,9 +28,10 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           page = Path("agentic-ai-lab/index.html").read_text()
-          start = page.rfind("<script>") + len("<script>")
+          start = page.rfind("<script>")
           end = page.rfind("</script>")
-          Path("/tmp/audit-page.js").write_text(page[start:end])
+          script = page[start + len("<script>"):end] if start >= 0 and end > start else ""
+          Path("/tmp/audit-page.js").write_text(script)
           PY
           node --check /tmp/audit-page.js
       - name: Set up Python
