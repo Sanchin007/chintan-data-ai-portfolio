@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f7f8fa">
 <title>AI Audit Intelligence | Independent Solution Design</title>
-<meta name="description" content="Interactive browser-based audit intelligence demonstration using synthetic global shipping and logistics data.">
+<meta name="description" content="Independent AI audit intelligence case study grounded in Google Cloud delivery at CMA CGM, spanning maritime logistics, CMA CGM AIR CARGO and industrial virtual-twin context. Synthetic demonstration only.">
 <style>
 
 :root{color-scheme:dark;--bg:#071426;--panel:#0d1e33;--panel2:#10243d;--line:#203752;--ink:#eaf2fb;--muted:#91a5bb;--blue:#68a9ff;--cyan:#5dd6d0;--green:#5bd39a;--amber:#ffc56b;--red:#ff7d83;--shadow:0 18px 55px #0005}
@@ -62,6 +62,36 @@ th{background:#f4f7fb;color:#677486}td{color:#3f4d5f}th,td{border-bottom-color:#
 
 .live-connect{margin-top:17px;padding:13px;border:1px solid #dfe4ea;border-radius:12px;background:#fff}.live-connect>label{display:block;font:600 9px 'IBM Plex Mono',monospace;letter-spacing:.13em;color:#677486;margin-bottom:7px}.connect-row{display:flex;gap:8px}.connect-row input{min-width:0;flex:1;border:1px solid #dfe4ea;border-radius:9px;padding:10px 11px;color:#1b2636;font:11px Inter,Arial}.connect-row button{white-space:nowrap;font-size:10px;padding:9px 12px}.connect-hint{font-size:10px;color:#788493;line-height:1.5;margin-top:5px}.trace-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}.trace-list{display:grid;gap:8px}.trace-event{border:1px solid #dfe4ea;border-radius:11px;padding:11px 12px;background:#fbfcfe}.trace-event-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.trace-event b{font:700 11px 'IBM Plex Mono',monospace;color:#1457b8}.trace-event small{display:block;color:#677486;font-size:10px;line-height:1.55;margin-top:5px;overflow-wrap:anywhere}.trace-event summary{cursor:pointer;color:#536174;font-size:10px;margin-top:7px}.trace-event pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4f8;padding:9px;border-radius:7px;color:#3f4d5f;font-size:9px;max-height:220px;overflow:auto}.assistant-box{border:1px solid #dfe4ea;border-radius:12px;padding:14px;background:#fff}.assistant-answer{min-height:115px;max-height:320px;overflow:auto;white-space:pre-wrap;color:#3f4d5f;font-size:11px;line-height:1.75}.assistant-compose{display:grid;gap:8px;margin-top:12px}.assistant-compose textarea{width:100%;min-height:65px;resize:vertical;border:1px solid #dfe4ea;border-radius:9px;padding:10px;font:11px Inter,Arial;color:#1b2636}.assistant-compose button{justify-self:start;font-size:10px;padding:9px 13px}.trace-status-ok{color:#188038}.trace-status-error{color:#b3261e}
 @media(max-width:760px){.trace-layout{grid-template-columns:1fr}.connect-row{flex-wrap:wrap}.connect-row input{flex-basis:100%}}
+
+/* Industry context, before/after process map and proposed architecture */
+.context-section{padding:8px 0 34px}
+.context-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.context-card,.process-card,.arch-node{background:#fff;border:1px solid #dfe4ea;border-radius:13px;padding:16px}
+.context-card small,.process-card small,.arch-node small{display:block;font:600 9px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#4285f4;margin-bottom:8px}
+.context-card h3,.process-card h3,.arch-node h3{font:700 14px Manrope;color:#0a1220;margin:0 0 7px}
+.context-card p,.process-card p,.arch-node p{font-size:11px;line-height:1.65;color:#677486;margin:0}
+.context-note{padding:13px 15px;border-left:3px solid #4285f4;background:#f1f6ff;border-radius:0 10px 10px 0;color:#536174;font-size:11px;line-height:1.7}
+.process-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:17px}
+.process-column{border:1px solid #dfe4ea;border-radius:14px;padding:16px;background:#fff}
+.process-column h3{font:700 14px Manrope;color:#0a1220;margin:0 0 5px}
+.process-column>p{font-size:10px;color:#677486;line-height:1.6;margin:0 0 12px}
+.process-flow{display:grid;gap:8px}
+.process-card{padding:11px 13px;position:relative}
+.process-card:not(:last-child):after{content:'↓';display:block;color:#4285f4;font-size:14px;text-align:center;position:absolute;bottom:-17px;left:50%;z-index:1}
+.process-card small{font-size:8px;margin-bottom:4px}
+.process-card h3{font-size:11px;margin-bottom:3px}
+.process-card p{font-size:10px}
+.process-column.future{border-color:#b8d4fb;background:#f8fbff}
+.architecture{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:18px;align-items:stretch}
+.arch-node{padding:14px 11px;text-align:center;position:relative}
+.arch-node:not(:last-child):after{content:'→';position:absolute;right:-12px;top:42%;font-size:17px;color:#4285f4;z-index:2}
+.arch-node small{font-size:8px}
+.arch-node h3{font-size:11px}
+.arch-node p{font-size:9px}
+.arch-node.core{border-color:#a8c7fa;background:#f1f6ff}
+.arch-node.governance{border-color:#b7dfc2;background:#f4fbf6}
+@media(max-width:900px){.context-grid{grid-template-columns:1fr 1fr}.architecture{grid-template-columns:1fr 1fr}.arch-node:not(:last-child):after{display:none}}
+@media(max-width:560px){.context-grid,.process-columns,.architecture{grid-template-columns:1fr}.context-section{padding-bottom:25px}}
 </style>
 </head>
 <body>
@@ -70,9 +100,62 @@ th{background:#f4f7fb;color:#677486}td{color:#3f4d5f}th,td{border-bottom-color:#
 
 <section class="hero"><div><div class="eyebrow">AI · DATA · DIGITAL TRANSFORMATION · CORPORATE AUDIT</div><h1>From audit questions<br>to <span>evidence-led decisions.</span></h1><p>An independent solution-design case study exploring how specialist audit workflows could coordinate financial, operational and export-compliance checks while keeping regulatory interpretation, evidence validation and consequential decisions under human control.</p></div><aside class="hero-note"><strong>INDEPENDENT SOLUTION DESIGN CASE STUDY</strong>Illustrative enterprise audit workflow using synthetic records and a non-confidential architecture view. It is not connected to Airbus or any live enterprise system.</aside></section>
 <section class="case-intro"><div class="case-kicker">INDEPENDENT SOLUTION DESIGN · ENTERPRISE AUDIT</div><h2>One audit question. Governed specialist checks.</h2><p>Describe the risk or business outcome. The proposed workflow interprets the request, selects relevant audit workstreams, checks synthetic evidence and prepares findings for an accountable human reviewer. The Gemini-powered audit orchestrator runs here when you launch a mission.</p><div class="journey"><div class="journey-step"><b>01 · UNDERSTAND</b><strong>Audit intent</strong><span>Capture objective, entity, period and constraints</span></div><div class="journey-step"><b>02 · QUALIFY</b><strong>Scope & policy</strong><span>Identify relevant controls and jurisdiction</span></div><div class="journey-step"><b>03 · INVESTIGATE</b><strong>Specialist checks</strong><span>Review finance, operations and trade evidence</span></div><div class="journey-step"><b>04 · CHALLENGE</b><strong>Evidence quality</strong><span>Trace records, gaps and assumptions</span></div><div class="journey-step"><b>05 · VALIDATE</b><strong>Human review</strong><span>Escalate legal and control interpretations</span></div><div class="journey-step"><b>06 · REPORT</b><strong>Audit working paper</strong><span>Summarise findings, references and next steps</span></div></div></section>
+
+<section class="context-section" id="industry-context">
+  <div class="case-kicker">INDUSTRY CONTEXT · GOOGLE CLOUD · MARITIME & AIR LOGISTICS</div>
+  <h2 style="font:800 clamp(28px,3.2vw,42px)/1.08 Manrope;color:#0a1220;letter-spacing:-.04em;margin:10px 0">Connecting digital engineering with global supply chains.</h2>
+  <p style="max-width:880px;color:#677486;font-size:13px;line-height:1.8">Professional context: Google Cloud project delivery within the CMA CGM environment, with the wider industrial ecosystem including Dassault Systèmes virtual-twin capabilities. The operating landscape spans maritime shipping, logistics and CMA CGM AIR CARGO. This case study uses that cross-modal context to explore how evidence, operational data and control activities could be coordinated through governed AI workflows.</p>
+  <div class="context-grid">
+    <article class="context-card"><small>GOOGLE · YOUR EMPLOYER</small><h3>Cloud delivery & transformation</h3><p>Google Cloud consulting and project delivery in the CMA CGM environment, including data, reporting, integration and cross-functional transformation initiatives.</p></article>
+    <article class="context-card"><small>CMA CGM · CLIENT ENVIRONMENT</small><h3>Maritime, logistics & air cargo</h3><p>Global shipping and supply-chain operations, with CMA CGM AIR CARGO representing the air-freight dimension alongside maritime transport and logistics.</p></article>
+    <article class="context-card"><small>DASSAULT SYSTÈMES · DIGITAL ENGINEERING</small><h3>Virtual-twin ecosystem</h3><p>Digital engineering, 3D modelling and simulation capabilities form part of the wider industrial context described for this case study.</p></article>
+  </div>
+  <div class="context-note"><strong>Scope and attribution:</strong> This page describes the professional context you provided; it does not claim that you personally implemented Dassault Systèmes software, that every virtual-twin capability was used across CMA CGM AIR CARGO, or that the AI audit prototype is deployed by Google, CMA CGM or Dassault Systèmes. The workflow below is an independent proposal, not a reconstruction of confidential internal procedures.</div>
+  <div style="margin-top:30px">
+    <div class="case-kicker">PROCESS MAP · AS-IS CONCEPT VS PROPOSED TO-BE</div>
+    <h2 style="font:800 clamp(25px,3vw,36px)/1.08 Manrope;color:#0a1220;letter-spacing:-.04em;margin:9px 0">From fragmented coordination to evidence-led orchestration.</h2>
+    <p style="max-width:850px;color:#677486;font-size:12px;line-height:1.7">A representative enterprise process model across engineering context, maritime and air-freight operations. The baseline is illustrative and should not be read as a verified map of a specific CMA CGM or Dassault Systèmes internal procedure.</p>
+    <div class="process-columns">
+      <div class="process-column">
+        <h3>Before · Traditional coordination</h3>
+        <p>Typical fragmented workflow to be assessed and validated with process owners.</p>
+        <div class="process-flow">
+          <article class="process-card"><small>01 · SOURCE</small><h3>Separate operational inputs</h3><p>Engineering or virtual-twin outputs, maritime movements, air-cargo records, finance and supplier data remain in their respective systems.</p></article>
+          <article class="process-card"><small>02 · CONSOLIDATE</small><h3>Manual data collection</h3><p>Teams extract spreadsheets, reports and status updates across functions and transport modes.</p></article>
+          <article class="process-card"><small>03 · RECONCILE</small><h3>Human-led comparison</h3><p>Analysts compare milestones, costs, operational records and supporting evidence using separate checks.</p></article>
+          <article class="process-card"><small>04 · ESCALATE</small><h3>Email and meeting follow-up</h3><p>Exceptions, missing documents and ownership questions are routed between teams for clarification.</p></article>
+          <article class="process-card"><small>05 · REPORT</small><h3>Manual evidence pack</h3><p>Findings and decision material are assembled for management or audit review.</p></article>
+        </div>
+      </div>
+      <div class="process-column future">
+        <h3>After · Proposed AI-assisted workflow</h3>
+        <p>Target-state design demonstrated with synthetic data and bounded tools.</p>
+        <div class="process-flow">
+          <article class="process-card"><small>01 · UNDERSTAND</small><h3>Natural-language mission intake</h3><p>Capture the business question, scope, entities, period, transport mode and review constraints.</p></article>
+          <article class="process-card"><small>02 · ORCHESTRATE</small><h3>Gemini selects specialist checks</h3><p>Route the request to allow-listed finance, pricing, procurement, supplier and fleet tools.</p></article>
+          <article class="process-card"><small>03 · VALIDATE</small><h3>Deterministic evidence checks</h3><p>Reconcile synthetic records, calculate variances and identify missing or inconsistent evidence.</p></article>
+          <article class="process-card"><small>04 · CHALLENGE</small><h3>Trace findings and limitations</h3><p>Expose source references, assumptions, alternative explanations and evidence gaps.</p></article>
+          <article class="process-card"><small>05 · APPROVE</small><h3>Human-reviewed workpaper</h3><p>Prepare a draft report for accountable reviewers; no autonomous operational or compliance decisions.</p></article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:30px">
+    <div class="case-kicker">REFERENCE ARCHITECTURE · PROPOSED TARGET STATE</div>
+    <h2 style="font:800 clamp(25px,3vw,36px)/1.08 Manrope;color:#0a1220;letter-spacing:-.04em;margin:9px 0">A governed intelligence layer across the value chain.</h2>
+    <div class="architecture">
+      <article class="arch-node"><small>01 · DATA SOURCES</small><h3>Enterprise & operations</h3><p>Virtual-twin context · maritime logistics · CMA CGM AIR CARGO · finance · pricing · procurement</p></article>
+      <article class="arch-node"><small>02 · DATA FOUNDATION</small><h3>Integration & analytics</h3><p>Cloud data pipelines · data quality · common identifiers · curated evidence views</p></article>
+      <article class="arch-node core"><small>03 · INTELLIGENCE</small><h3>Gemini orchestrator</h3><p>Natural-language intent · bounded tool selection · specialist workflow coordination</p></article>
+      <article class="arch-node"><small>04 · CONTROL TOOLS</small><h3>Deterministic checks</h3><p>Reconciliation · thresholds · variance analysis · evidence challenge · workpaper draft</p></article>
+      <article class="arch-node governance"><small>05 · GOVERNANCE</small><h3>Human accountability</h3><p>Evidence trace · access controls · review gates · approval · audit log</p></article>
+    </div>
+    <p class="notice">Implementation boundary: the live portfolio demo currently sends synthetic records to one Gemini orchestrator, which calls deterministic allow-listed JavaScript tools through a Cloudflare Worker. The wider enterprise data architecture shown here is a proposed design; it is not an existing Google, CMA CGM or Dassault Systèmes integration. No production systems, virtual-twin platform or CMA CGM AIR CARGO data are connected.</p>
+  </div>
+</section>
 <section class="stats"><div class="stat"><b>24</b><span>Synthetic records</span></div><div class="stat"><b>08</b><span>Specialist roles</span></div><div class="stat"><b>06</b><span>Seeded exceptions</span></div><div class="stat"><b>05</b><span>Audit workstreams</span></div></section>
 <div class="layout">
-<aside class="sidebar"><div class="side-label">WORKSPACE</div><button class="nav active" data-target="overview"><span>⌂</span>Command centre</button><button class="nav" data-target="regulatory"><span>§</span>Export compliance</button><button class="nav" data-target="workforce"><span>◎</span>Specialist roles</button><button class="nav" data-target="findings"><span>▤</span>Findings & evidence</button><button class="nav" data-target="report"><span>▧</span>Executive report</button></aside>
+<aside class="sidebar"><div class="side-label">WORKSPACE</div><button class="nav" data-target="industry-context"><span>◇</span>Industry & process map</button><button class="nav active" data-target="overview"><span>⌂</span>Command centre</button><button class="nav" data-target="regulatory"><span>§</span>Export compliance</button><button class="nav" data-target="workforce"><span>◎</span>Specialist roles</button><button class="nav" data-target="findings"><span>▤</span>Findings & evidence</button><button class="nav" data-target="report"><span>▧</span>Executive report</button></aside>
 <div class="content">
 <section class="panel" id="overview"><div class="panel-head"><div><div class="micro">01 / Mission control</div><h2>Launch an audit mission</h2><p>Choose a scope, review the mission brief and launch the connected Gemini audit orchestrator.</p></div><span class="pill">HUMAN INITIATED</span></div>
 <div class="workspace-grid"><div class="mission-box"><div class="nlp-wrap"><div class="nlp-title"><span class="spark">✦</span> ASK THE AUDIT ASSISTANT</div><textarea class="nlp-input" id="userQuestion" placeholder="Describe what you want to investigate… e.g. Find possible duplicate supplier invoices and quantify the exposure."></textarea><div class="nlp-hint">Use everyday language. Gemini interprets the objective and selects from allow-listed, deterministic audit tools.</div><div class="prompt-chips"><button class="prompt-chip" data-prompt="Find possible duplicate supplier invoices and payment risks">Duplicate invoices</button><button class="prompt-chip" data-prompt="Find shipping lanes with pricing deviations and margin leakage">Pricing deviations</button><button class="prompt-chip" data-prompt="Identify vessels operating below 70 percent capacity">Low vessel utilisation</button><button class="prompt-chip" data-prompt="Run a complete cross-functional audit across finance, pricing, fleet and export compliance">Full audit</button><button class="prompt-chip" data-prompt="Review export-control classification, licence evidence, end-user and destination risks">Export compliance</button></div><div class="intent-preview" id="intentPreview"></div></div><label for="mission">OR SELECT AUDIT MISSION</label><select id="mission"><option value="finance">Finance controls audit</option><option value="pricing">Pricing leakage review</option><option value="fleet">Fleet utilisation review</option><option value="export">Export control & trade compliance · reference only</option><option value="cross">Cross-functional audit</option></select><p class="mission-desc" id="missionDesc">Identify potential duplicate invoices, approval anomalies and payment-control exposure in the synthetic accounts-payable dataset.</p><div class="actions"><button class="primary" id="runBtn">▶ &nbsp; Run audit mission</button><button class="secondary" id="resetBtn">Reset workspace</button></div><div class="live-connect"><label for="workerEndpoint">WORKER API ENDPOINT</label><div class="connect-row"><input id="workerEndpoint" type="url" value="https://airbus-ai-audit-agent.chintanchangole.workers.dev" aria-label="Worker API endpoint"><button class="secondary" id="connectWorkerBtn" type="button">Test connection</button></div><div class="statusline"><span class="status-dot" id="statusDot"></span><span id="statusText">NOT CONNECTED</span></div><div class="connect-hint" id="connectionHint">Connect the Cloudflare Worker to enable Gemini orchestration on this page. The API key stays server-side.</div></div></div><div class="scope"><div class="micro">MISSION PARAMETERS</div><div class="scope-row"><span>Data environment</span><strong>Synthetic dataset</strong></div><div class="scope-row"><span>Execution</span><strong id="executionMode">Gemini + deterministic tools</strong></div><div class="scope-row"><span>External services</span><strong id="externalMode">Cloudflare Worker · Gemini API</strong></div><div class="scope-row"><span>Decision authority</span><strong>Human reviewer</strong></div><div class="scope-row"><span>Output</span><strong>Findings + evidence + report</strong></div></div></div></section>
