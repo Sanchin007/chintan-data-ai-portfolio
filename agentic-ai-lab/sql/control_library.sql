@@ -36,12 +36,12 @@ WITH policy AS (
     AND (effective_to IS NULL OR effective_to >= CURRENT_DATE())
 ), eligible AS (
   SELECT po_id, supplier_id, requester_id, cost_centre, order_date,
-         po_amount, approval_status
+         po_amount
   FROM `demo.purchase_orders`
   WHERE DATE(order_date) >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
 ), rolling_windows AS (
   SELECT *,
-         ARRAY_AGG(STRUCT(po_id, order_date, po_amount, approval_status)) OVER (
+         ARRAY_AGG(STRUCT(po_id, order_date, po_amount)) OVER (
            PARTITION BY supplier_id, requester_id, cost_centre
            ORDER BY UNIX_DATE(DATE(order_date))
            RANGE BETWEEN 7 PRECEDING AND CURRENT ROW
