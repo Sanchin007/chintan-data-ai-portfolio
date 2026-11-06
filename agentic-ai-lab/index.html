@@ -359,6 +359,7 @@ function runPresentationMission(resolved){
  $("runTelemetry").innerHTML="<strong>LOCAL RUN COMPLETE</strong><span>0 model calls</span><span>"+elapsed+" ms execution</span><span>"+trace.length+" deterministic trace events</span><span>No network request</span>";
  $("traceStatus").textContent=trace.length+" LOCAL EVENTS";$("executionMode").textContent="Local deterministic presentation";$("externalMode").textContent="None · browser only";
  setStatus("COMPLETE · LOCAL PRESENTATION · HUMAN REVIEW REQUIRED","done");$("connectionHint").textContent="Presentation mode ran entirely in this browser. Gemini and Cloudflare were not called.";
+ $("findings").scrollIntoView({behavior:"smooth",block:"start"});
 }
 async function callLiveAgent(mission,appendChat){
  if(!workerBase&&!(await connectWorker()))return;
