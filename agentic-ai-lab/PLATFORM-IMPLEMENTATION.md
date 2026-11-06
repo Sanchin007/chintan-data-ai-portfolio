@@ -131,19 +131,28 @@ Open Findings =
 CALCULATE(
     DISTINCTCOUNT(FactFinding[finding_id]),
     FactFinding[is_current] = TRUE(),
-    FactFinding[review_status] <> "CLOSED"
+    FactFinding[review_status] <> "CLOSED",
+    FactFinding[review_status] <> "REJECTED"
 )
 
 Overdue Findings =
 CALCULATE(
     [Open Findings],
-    FILTER(FactFinding, FactFinding[due_at] < NOW())
+    FILTER(
+        FactFinding,
+        FactFinding[due_at] < NOW()
+            && FactFinding[review_status] <> "CLOSED"
+            && FactFinding[review_status] <> "REJECTED"
+    )
 )
 
 Evidence Coverage =
 DIVIDE(
     CALCULATE(
         DISTINCTCOUNT(FactFinding[finding_id]),
+        FactFinding[is_current] = TRUE(),
+        FactFinding[review_status] <> "CLOSED",
+        FactFinding[review_status] <> "REJECTED",
         FactFinding[evidence_status] = "LINKED"
     ),
     [Open Findings]
