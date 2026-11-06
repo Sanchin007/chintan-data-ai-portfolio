@@ -31,6 +31,17 @@ class AnalyticsTests(unittest.TestCase):
         df=pd.DataFrame([{"lane":"L1","revenue":1000,"cost":800,"discount_pct":18,"approved_discount_pct":12,"volume":10}])
         self.assertEqual(pricing_variance_candidates(df,5)[0]["margin_pct"],20.0)
 
+    def test_robust_statistics_refuse_small_cohorts(self):
+        from audit_analytics import robust_mad_outliers
+        result=robust_mad_outliers(pd.Series([60,61,59,62]),min_sample_size=8)
+        self.assertEqual(result["status"],"INSUFFICIENT_SAMPLE")
+
+    def test_robust_mad_flags_extreme_value_with_sufficient_sample(self):
+        from audit_analytics import robust_mad_outliers
+        result=robust_mad_outliers(pd.Series([50,51,49,52,48,50,51,95]),min_sample_size=8)
+        self.assertEqual(result["status"],"REVIEW")
+        self.assertTrue(result["outlier_positions"])
+
     def test_fleet_gap(self):
         df=pd.DataFrame([{"asset_id":"A1","cohort":"C1","utilisation_pct":60,"benchmark_pct":75,"cost_per_unit":120}])
         self.assertEqual(fleet_utilisation_candidates(df,10)[0]["benchmark_gap_pct"],15.0)
