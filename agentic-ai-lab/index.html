@@ -239,9 +239,11 @@ const roleNames=["Chief Operations Orchestrator","Data Intelligence Agent","Fina
 let lastReport="",lastFindings=[],busy=false;
 function setStatus(label,state){$("statusText").textContent=label;$("statusDot").className="status-dot "+(state||"");}
 function resetWorkspace(){
- busy=false;lastReport="";lastFindings=[];$("runBtn").disabled=false;$("runBtn").textContent="▶  Run audit mission";setStatus("READY · NO MISSION RUN","");
+ busy=false;lastReport="";lastFindings=[];lastLiveFindings=[];reviewDecisions=[];$("runBtn").disabled=false;$("runBtn").textContent="▶  Run audit mission";setStatus("READY · NO MISSION RUN","");
  document.querySelectorAll(".agent").forEach(a=>{a.className="agent";a.querySelector(".agent-state").textContent="STANDBY"});
- $("agentProgress").textContent="0 / 8 COMPLETE";$("emptyFindings").classList.remove("hidden");$("findingsResults").classList.remove("visible");$("emptyReport").classList.remove("hidden");$("reportResults").classList.remove("visible");$("findingCount").textContent="NOT RUN";
+ $("agentProgress").textContent="0 / 8 WORKFLOW STAGES TOUCHED";$("emptyFindings").classList.remove("hidden");$("findingsResults").classList.remove("visible");$("emptyReport").classList.remove("hidden");$("reportResults").classList.remove("visible");
+ if($("reviewQueue"))$("reviewQueue").innerHTML='<div class="empty-state"><strong>No review items yet</strong><p>Run the agent to create findings for domain-specialist review.</p></div>';
+ $("findingCount").textContent="NOT RUN";
 }
 function showResults(scope,findings,resolved){
  const totalExposure=findings.reduce((s,f)=>s+(f.amount||0),0);
@@ -262,7 +264,7 @@ function detectIntent(q){
  if(/invoice|payment|payable|supplier|duplicate|purchase order|\bap\b|finance|fraud|overpay/.test(s))hits.push("finance");
  if(/price|pricing|rate|margin|revenue|discount|leakage|contract/.test(s))hits.push("pricing");
  if(/fleet|vessel|ship|capacity|utili[sz]ation|voyage|route|load factor/.test(s))hits.push("fleet");
- if(/export control|dual.use|sanction|restricted party|trade compliance|export licence|export license|end.user|customs|itar|ear99|controlled item/.test(s))hits.push("export");
+ if(/export control|export documentation|export compliance|dual.use|sanction|restricted party|party.screening|trade compliance|export licence|export license|end.user|customs|itar|ear99|controlled item/.test(s))hits.push("export");
  if(/all|complete|cross.functional|enterprise|entire|everything|group.wide/.test(s))return "cross";
  if(hits.length>1)return "cross";
  return hits[0]||null;
@@ -277,7 +279,7 @@ function resolveMission(){
  $("intentPreview").classList.add("visible");
  return {scope,question:q,label};
 }
-let workerBase="",lastLiveMission="",lastLiveFindings=[];
+let workerBase="",lastLiveMission="",lastLiveFindings=[],reviewDecisions=[];
 function safeText(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function workerUrl(){return $("workerEndpoint").value.trim().replace(/\\/$/,"");}
 async function connectWorker(){
@@ -291,20 +293,42 @@ function renderLiveTrace(trace){
  const events=trace||[];$("traceStatus").textContent=events.length+" TOOL EVENT"+(events.length===1?"":"S");
  $("liveTrace").innerHTML=events.length?events.map((t,i)=>'<article class="trace-event"><div class="trace-event-head"><b>'+safeText(t.tool)+'</b><span class="tag '+(t.status==="failed"?"high":"medium")+'">'+safeText((t.status||"completed").toUpperCase())+'</span></div><small>Event '+(i+1)+' · '+safeText(t.durationMs??"—")+' ms</small><details><summary>Inspect arguments & deterministic output</summary><pre>'+safeText(JSON.stringify({arguments:t.arguments,result:t.result,error:t.error},null,2))+'</pre></details></article>').join(""):'<div class="empty-state"><strong>No tool events returned</strong><p>Gemini may have answered without invoking an audit tool. Review the model response before treating this as an investigation.</p></div>';
 }
-function renderLiveResults(items,answer,mission){
- lastLiveFindings=items||[];lastFindings=lastLiveFindings;
+function renderLiveResults(items,answer,mission,trace){
+ lastLiveFindings=items||[];lastFindings=lastLiveFindings;reviewDecisions=lastLiveFindings.map(()=>"pending");
  const count=lastLiveFindings.length,high=lastLiveFindings.filter(f=>(f.severity||"").toLowerCase()==="high").length;
  const exposure=lastLiveFindings.reduce((sum,f)=>sum+Number(f.amount||f.aggregateAmount||0),0);
+ const workpaperCreated=(trace||[]).some(t=>t.tool==="draft_workpaper"&&t.status==="completed");
  $("resultKpis").innerHTML='<div class="kpi"><b>'+count+'</b><span>Exceptions flagged</span></div><div class="kpi"><b>'+high+'</b><span>High priority</span></div><div class="kpi"><b>'+(exposure?money(exposure):"—")+'</b><span>Indicative amount in EUR</span></div>';
- $("findingCards").innerHTML=count?lastLiveFindings.map((f,i)=>{const refs=f.evidenceIds||f.records||[];const desc=Object.entries(f).filter(([k,v])=>!["id","severity","classification","evidenceIds","records","paymentEvidence"].includes(k)&&typeof v!=="object").map(([k,v])=>k.replace(/([A-Z])/g," $1")+": "+v).slice(0,7).join(" · ");return '<article class="finding"><div class="finding-head"><h3>'+String(i+1).padStart(2,"0")+' · '+safeText(f.classification||f.id||"Audit observation")+'</h3><span class="tag '+safeText((f.severity||"medium").toLowerCase())+'">'+safeText((f.severity||"medium").toUpperCase())+' PRIORITY</span></div><p>'+safeText(desc||"Deterministic audit tool returned an observation.")+'</p><small>FINDING · '+safeText(f.id||"N/A")+' · EVIDENCE · '+safeText(refs.join(" / ")||"No evidence IDs supplied")+'</small><p><strong>Human validation:</strong> verify source documents, control criteria and business context before concluding.</p></article>';}).join(""):'<div class="empty-state"><strong>No exceptions returned by the selected tests</strong><p>This does not establish that the underlying process is free of risk.</p></div>';
+ $("findingCards").innerHTML=count?lastLiveFindings.map((f,i)=>{const refs=f.evidenceIds||f.records||[];const details=Object.entries(f).filter(([k,v])=>!["id","severity","classification","evidenceIds","records","paymentEvidence","flags","reviewOwner","decision"].includes(k)&&typeof v!=="object").map(([k,v])=>k.replace(/([A-Z])/g," $1")+": "+v).slice(0,7).join(" · ");const desc=[...(Array.isArray(f.flags)?f.flags:[]),details].filter(Boolean).join(" · ");return '<article class="finding"><div class="finding-head"><h3>'+String(i+1).padStart(2,"0")+' · '+safeText(f.classification||f.id||"Audit observation")+'</h3><span class="tag '+safeText((f.severity||"medium").toLowerCase())+'">'+safeText((f.severity||"medium").toUpperCase())+' PRIORITY</span></div><p>'+safeText(desc||"Deterministic audit tool returned an observation.")+'</p><small>FINDING · '+safeText(f.id||"N/A")+' · EVIDENCE · '+safeText(refs.join(" / ")||"No evidence IDs supplied")+'</small><p><strong>Review owner:</strong> '+safeText(f.reviewOwner||reviewOwnerForFinding(f))+'</p><p><strong>Human validation:</strong> verify source documents, control criteria and business context before concluding.</p></article>';}).join(""):'<div class="empty-state"><strong>No exceptions returned by the selected tests</strong><p>This does not establish that the underlying process is free of risk.</p></div>';
  const evidence=[];lastLiveFindings.forEach(f=>(f.evidenceIds||f.records||[]).forEach(ref=>evidence.push({ref,title:f.classification||f.id,obs:(f.severity||"review")+" · "+(f.id||"candidate")})));
  $("evidenceRows").innerHTML=evidence.map(e=>'<tr><td>'+safeText(e.ref)+'</td><td>'+safeText(e.title)+'</td><td>'+safeText(e.obs)+'</td><td><span class="tag">REVIEW REQUIRED</span></td></tr>').join("");
  $("emptyFindings").classList.add("hidden");$("findingsResults").classList.add("visible");$("findingCount").textContent=count+" OBSERVATION(S)";
- const lines=["INDEPENDENT AUDIT INTELLIGENCE — DRAFT WORKING PAPER","Mission: "+mission,"Generated: "+new Date().toLocaleString(),"Execution: Gemini orchestration + deterministic allow-listed tools","Environment: Synthetic demonstration dataset","","MODEL ANALYSIS",answer||"No narrative returned.","","OBSERVATIONS"];
- lastLiveFindings.forEach((f,i)=>lines.push((i+1)+". "+(f.classification||f.id)+" ["+(f.severity||"review")+"]","Finding ID: "+(f.id||"N/A"),"Evidence references: "+(f.evidenceIds||f.records||[]).join(", "),""));
+ const lines=["AI AUDIT INTELLIGENCE — REVIEW SUMMARY","Mission: "+mission,"Generated: "+new Date().toLocaleString(),"Execution: Gemini orchestration + deterministic allow-listed tools","Environment: Synthetic demonstration dataset","Working paper status: "+(workpaperCreated?"Draft created by the draft_workpaper tool; pending human review":"Not generated by the draft_workpaper tool"),"","MODEL ANALYSIS",answer||"No narrative returned.","","OBSERVATIONS"];
+ lastLiveFindings.forEach((f,i)=>lines.push((i+1)+". "+(f.classification||f.id)+" ["+(f.severity||"review")+"]","Finding ID: "+(f.id||"N/A"),"Evidence references: "+(f.evidenceIds||f.records||[]).join(", "),"Flags: "+(f.flags||[]).join("; "),"Review owner: "+(f.reviewOwner||reviewOwnerForFinding(f)),""));
  lines.push("LIMITATIONS","Synthetic data only. An exception is an audit lead, not proof of fraud, loss, misconduct or control failure. Validate source evidence and business context. Human approval is mandatory.");
  lastReport=lines.join("\n");$("reportText").textContent=lastReport;$("emptyReport").classList.add("hidden");$("reportResults").classList.add("visible");
  $("assistantAnswer").textContent=answer||"Review the tool trace and returned observations.";
+ renderReviewQueue();syncReviewDecisionsToReport();
+}
+function reviewOwnerForFinding(f){const key=((f.id||"")+" "+(f.classification||"")).toLowerCase();if(key.includes("exp")||key.includes("export"))return "Trade compliance specialist";if(key.includes("price"))return "Commercial controls reviewer";if(key.includes("fleet"))return "Operations reviewer";if(key.includes("proc")||key.includes("supplier"))return "Procurement controls reviewer";return "Finance controls reviewer";}
+function renderReviewQueue(){
+ const root=$("reviewQueue");if(!root)return;
+ if(!lastLiveFindings.length){root.innerHTML='<div class="empty-state"><strong>No review items yet</strong><p>Run the agent to create findings for domain-specialist review.</p></div>';return;}
+ root.innerHTML='<div class="review-queue-list">'+lastLiveFindings.map((f,i)=>{const state=reviewDecisions[i]||"pending";const label=state==="verified"?"Human reviewer marked verified":state==="requested"?"Additional evidence requested":state==="escalated"?"Escalated to specialist":"Awaiting human review";return '<article class="review-item"><div><h4>'+safeText(f.id||"Finding "+(i+1))+' · '+safeText(f.classification||"Audit observation")+'</h4><p>Priority: '+safeText((f.severity||"review").toUpperCase())+' · Evidence: '+safeText((f.evidenceIds||f.records||[]).join(", ")||"Not supplied")+'</p><p class="review-owner">ASSIGNED REVIEW LANE · '+safeText(f.reviewOwner||reviewOwnerForFinding(f))+'</p><span class="review-state '+(state==="verified"?"verified":state==="requested"?"requested":state==="escalated"?"escalated":"")+'">'+label.toUpperCase()+'</span></div><div class="review-actions"><button type="button" data-review-action="verified" data-finding-index="'+i+'">Mark verified</button><button type="button" data-review-action="requested" data-finding-index="'+i+'">Request evidence</button><button type="button" data-review-action="escalated" data-finding-index="'+i+'">Escalate</button></div></article>';}).join("")+'</div>';
+}
+function syncReviewDecisionsToReport(){
+ if(!lastReport)return;
+ const base=lastReport.split("\n\nHUMAN REVIEW STATUS")[0];
+ const rows=lastLiveFindings.map((f,i)=>((f.id||"Finding "+(i+1))+": "+({pending:"Pending human review",verified:"Human reviewer marked verified",requested:"Additional evidence requested",escalated:"Escalated to specialist"}[reviewDecisions[i]||"pending"])));
+ lastReport=base+"\n\nHUMAN REVIEW STATUS\n"+(rows.length?rows.join("\n"):"No findings to review.")+"\nReview decisions are local to this browser session only.";
+ $("reportText").textContent=lastReport;
+}
+function updateWorkflowRoles(trace){
+ const completed=(trace||[]).filter(t=>t.status==="completed"),has=n=>completed.some(t=>t.tool===n);
+ const touched=[true,has("profile_demo_dataset")||has("run_data_quality_assessment")||has("run_control_coverage_assessment"),has("run_invoice_duplicate_test")||has("run_procurement_threshold_test")||has("run_supplier_change_test"),has("run_pricing_variance_test"),has("run_fleet_utilisation_test"),has("run_export_documentation_triage")||completed.some(t=>t.tool==="run_control_coverage_assessment"&&t.arguments?.scope==="trade"),has("challenge_evidence"),has("draft_workpaper")];
+ const labels=["MODEL ORCHESTRATED","TOOLS CALLED","TOOLS CALLED","TOOLS CALLED","TOOLS CALLED","SPECIALIST FLAGS","CHALLENGE RUN","DRAFT CREATED"];
+ document.querySelectorAll(".agent").forEach((card,i)=>{const state=card.querySelector(".agent-state");if(touched[i]){card.className="agent done";state.textContent=labels[i];}else{card.className="agent not-run";state.textContent="NOT IN SCOPE / NOT RUN";}});
+ $("agentProgress").textContent=touched.filter(Boolean).length+" / 8 WORKFLOW STAGES TOUCHED";
 }
 async function callLiveAgent(mission,appendChat){
  if(!workerBase&&!(await connectWorker()))return;
@@ -313,8 +337,7 @@ async function callLiveAgent(mission,appendChat){
  try{
   const response=await fetch(workerBase+"/api/agent",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({mission})});
   const result=await response.json();if(!response.ok)throw new Error(result.detail||result.error||"HTTP "+response.status);
-  renderLiveTrace(result.trace||[]);renderLiveResults(result.findings||[],result.answer||"",mission);
-  $("agentProgress").textContent="8 / 8 WORKFLOW STAGES";document.querySelectorAll(".agent").forEach(a=>{a.classList.remove("working");a.classList.add("done");a.querySelector(".agent-state").textContent="TRACE RECEIVED";});
+  renderLiveTrace(result.trace||[]);renderLiveResults(result.findings||[],result.answer||"",mission,result.trace||[]);updateWorkflowRoles(result.trace||[]);
   setStatus("COMPLETE · HUMAN REVIEW REQUIRED","done");$("executionMode").textContent="Gemini + deterministic tools";$("externalMode").textContent="Cloudflare Worker + Gemini";
   $("connectionHint").textContent="Live investigation succeeded · "+result.model+" · "+(result.trace||[]).length+" tool events · "+result.durationMs+" ms.";
   $("findings").scrollIntoView({behavior:"smooth",block:"start"});
@@ -326,7 +349,7 @@ function resetAgentCards(){document.querySelectorAll(".agent").forEach(a=>{a.cla
 $("userQuestion").addEventListener("input",()=>{const q=$("userQuestion").value.trim();if(!q){$("intentPreview").classList.remove("visible");return;}const intent=detectIntent(q);$("intentPreview").textContent=intent?"Detected audit scope: "+({finance:"Finance controls",pricing:"Pricing leakage",fleet:"Fleet utilisation",export:"Export control & trade compliance",cross:"Cross-functional"}[intent]):"No clear audit scope detected. Choose a mission below or try one of the suggested prompts.";$("intentPreview").classList.add("visible");});
 document.querySelectorAll("[data-prompt]").forEach(b=>b.addEventListener("click",()=>{$("userQuestion").value=b.dataset.prompt;$("userQuestion").dispatchEvent(new Event("input"));}));
 $("mission").addEventListener("change",()=>{$("missionDesc").textContent=missionInfo[$("mission").value];resetWorkspace();});
-$("runBtn").addEventListener("click",runMission);$("resetBtn").addEventListener("click",()=>{resetWorkspace();$("liveTrace").innerHTML="<div class=\"empty-state\"><strong>No live tool events yet</strong><p>Run an audit mission to inspect the execution sequence.</p></div>";$("traceStatus").textContent="AWAITING RUN";$("assistantAnswer").textContent="Gemini analysis will appear here.";lastLiveFindings=[];});$("connectWorkerBtn").addEventListener("click",connectWorker);$("assistantSendBtn").addEventListener("click",()=>{const q=$("assistantQuestion").value.trim();if(!q)return;const mission=(lastLiveMission?"Previous audit mission: "+lastLiveMission+"\nCurrent findings: "+JSON.stringify(lastLiveFindings)+"\n":"")+"Follow-up request: "+q;$("assistantQuestion").value="";callLiveAgent(mission,true);});document.querySelectorAll("[data-live-prompt]").forEach(b=>b.addEventListener("click",()=>{$("assistantQuestion").value=b.dataset.livePrompt;}));
+$("runBtn").addEventListener("click",runMission);$("resetBtn").addEventListener("click",()=>{resetWorkspace();$("liveTrace").innerHTML="<div class=\"empty-state\"><strong>No live tool events yet</strong><p>Run an audit mission to inspect the execution sequence.</p></div>";$("traceStatus").textContent="AWAITING RUN";$("assistantAnswer").textContent="Gemini analysis will appear here.";lastLiveFindings=[];});$("reviewQueue").addEventListener("click",e=>{const b=e.target.closest("[data-review-action]");if(!b)return;const i=Number(b.dataset.findingIndex);if(!Number.isInteger(i)||!lastLiveFindings[i])return;reviewDecisions[i]=b.dataset.reviewAction;renderReviewQueue();syncReviewDecisionsToReport();});$("connectWorkerBtn").addEventListener("click",connectWorker);$("assistantSendBtn").addEventListener("click",()=>{const q=$("assistantQuestion").value.trim();if(!q)return;const mission=(lastLiveMission?"Previous audit mission: "+lastLiveMission+"\nCurrent findings: "+JSON.stringify(lastLiveFindings)+"\n":"")+"Follow-up request: "+q;$("assistantQuestion").value="";callLiveAgent(mission,true);});document.querySelectorAll("[data-live-prompt]").forEach(b=>b.addEventListener("click",()=>{$("assistantQuestion").value=b.dataset.livePrompt;}));
 $("copyBtn").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(lastReport);toast("Report copied to clipboard.");}catch(e){toast("Clipboard access unavailable. Use Export working paper.");}});
 $("exportBtn").addEventListener("click",()=>{const blob=new Blob([lastReport],{type:"text/plain;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="oiocean-audit-working-paper.txt";a.click();URL.revokeObjectURL(url);toast("Working paper export prepared.");});
 document.querySelectorAll(".nav").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));b.classList.add("active");$(b.dataset.target).scrollIntoView({behavior:"smooth",block:"start"});}));
