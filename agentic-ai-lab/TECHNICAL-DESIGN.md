@@ -27,7 +27,7 @@ Interactive portfolio demonstrator for evidence-led audit and control workflows.
 - Gemini API key stored as a Cloudflare Worker secret.
 - Approved GitHub Pages origin enforced for browser requests.
 - Request body capped at 24,000 characters.
-- Maximum five tool-calling rounds and twenty tool calls per request.
+- Maximum four tool-calling rounds and twenty tool calls per request. The live endpoint requires a Cloudflare Rate Limiting binding configured for 8 requests per IP per 60 seconds; requests fail closed if the binding is absent.
 - Eleven named, schema-bounded functions; no arbitrary code execution or unrestricted SQL.
 - Tool functions are deterministic and read-only.
 - Tool outputs and user-supplied content are treated as untrusted data.
