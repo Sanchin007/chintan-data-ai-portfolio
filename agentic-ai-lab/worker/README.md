@@ -1,30 +1,40 @@
-# Independent Audit Intelligence API
+# AI Audit Intelligence Worker
 
-Separate Cloudflare Worker for the portfolio's live-model audit assistant. It is isolated from the NexTrip worker.
+Cloudflare Worker API for the portfolio's live Gemini-orchestrated audit assistant. It is isolated from the NexTrip worker.
 
-## What is live
-- Gemini Interactions API with Gemini 3.8 Flash performs natural-language orchestration and selects allow-listed tools.
-- The Worker executes deterministic, read-only tests against seeded synthetic datasets.
-- Tool names, arguments, results, timings and limitations are returned as an execution trace.
-- The model is instructed to challenge evidence and distinguish indicators from proven control failures.
-- No enterprise connectors, payment actions or write-back operations exist.
+## Live runtime
+
+- Gemini Interactions API using Gemini 3.8 Flash interprets audit objectives and selects allow-listed functions.
+- Eleven bounded functions cover dataset profiling, data quality, control coverage, invoice duplicate candidates, procurement threshold clustering, supplier change-to-payment checks, pricing variance, fleet utilisation, export-documentation completeness triage, evidence challenge and draft working papers.
+- Deterministic JavaScript functions run against seeded synthetic datasets.
+- Tool names, arguments, outputs, status and duration are returned in the execution trace.
+- Material findings are challenged for alternative explanations and missing corroboration.
+- Draft workpapers require completed evidence-challenge events and remain pending human review.
+- The named specialist roles are workflow responsibilities coordinated by one model, not separate autonomous LLMs.
+
+## Export compliance boundary
+
+The export tool flags missing or unverified documentation fields in synthetic shipment records: classification rationale, authorisation or no-authorisation evidence, end-user / end-use information, and party-screening evidence. It routes flags to a trade-compliance specialist lane in the demo UI.
+
+It does not perform live classification, sanctions / restricted-party screening, legal licence determination or shipment clearance. A missing document is an evidence gap, not proof of a breach. Human specialist verification is mandatory.
 
 ## Deploy
-1. Install Wrangler with npm install -g wrangler.
-2. From this directory run wrangler login.
-3. Set the secret with wrangler secret put GEMINI_API_KEY. Paste the key into the terminal prompt, never into GitHub or the browser.
-4. Deploy with wrangler deploy.
-5. Verify the /health endpoint on your workers.dev URL.
-6. Configure that Worker base URL in the live dashboard.
 
-## API
-POST /api/agent with JSON body: {"mission":"Review invoice duplicates and determine which candidates have payment evidence."}
-GET /health
+1. Install Wrangler: `npm install -g wrangler`.
+2. From this directory run `wrangler login`.
+3. Set the secret with `wrangler secret put GEMINI_API_KEY`. Paste the key into the terminal prompt, never into GitHub or browser code.
+4. Deploy with `wrangler deploy`.
+5. Verify the `/health` endpoint on the configured workers.dev URL.
+6. The portfolio page calls `POST /api/agent` with a JSON body such as `{"mission":"Review invoice duplicates and determine which candidates have payment evidence."}`.
 
-## Security and limitations
-- Synthetic demo data only; no CMA CGM, Dassault, Airbus or other enterprise data.
+## Runtime limits and security
+
 - Gemini API key is read only from the Worker secret.
-- Request body is size-limited; tool execution is allow-listed and bounded to five rounds.
-- Tool functions are deterministic and have no external write capability.
-- This is a portfolio prototype, not a production audit platform. Production use requires authentication, rate limiting, persistent audit logs, tenant isolation, privacy and retention controls, governed data access, security testing and formal validation of control criteria.
+- Approved portfolio origin is enforced for browser requests.
+- Request body limit: 24,000 characters.
+- Maximum five tool-calling rounds and twenty tool calls per request.
+- Function names and argument schemas are allow-listed; no arbitrary code execution or unrestricted SQL.
+- Tools are deterministic and read-only. No enterprise connectors, payment actions, approvals or write-back exist.
+- Synthetic records only; no CMA CGM, Dassault, Airbus or other enterprise data.
+- The Worker origin check is not user authentication. Production use requires authentication, rate limiting, tenant isolation, privacy and retention controls, persistent audit logs, governed data access, security testing and formal validation of control criteria.
 - Do not submit confidential or personal data. Review provider-side retention and account terms before use.
