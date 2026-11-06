@@ -340,8 +340,8 @@ async function callLiveAgent(mission,appendChat){
   const result=await response.json();if(!response.ok)throw new Error(result.detail||result.error||"HTTP "+response.status);
   renderLiveTrace(result.trace||[]);renderLiveResults(result.findings||[],result.answer||"",mission,result.trace||[]);
   updateStageStates(result.trace||[],mission,result.status);
-  setStatus("COMPLETE · HUMAN REVIEW REQUIRED","done");$("executionMode").textContent="Gemini + deterministic tools";$("externalMode").textContent="Cloudflare Worker + Gemini";
-  $("connectionHint").textContent="Live investigation succeeded · "+result.model+" · "+(result.trace||[]).length+" tool events · "+result.durationMs+" ms.";
+  setStatus(result.status==="tool_limit_reached"?"PARTIAL · TOOL LIMIT REACHED":(result.trace&&result.trace.length?"COMPLETE · HUMAN REVIEW REQUIRED":"ANSWER ONLY · NO TOOL EVENTS"),result.status==="tool_limit_reached"?"error":(result.trace&&result.trace.length?"done":""));$("executionMode").textContent="Gemini + deterministic tools";$("externalMode").textContent="Cloudflare Worker + Gemini";
+  $("connectionHint").textContent=(result.status==="tool_limit_reached"?"Investigation stopped at the configured tool limit · ":"Live response received · ")+result.model+" · "+(result.trace||[]).length+" tool events · "+result.durationMs+" ms.";
   $("findings").scrollIntoView({behavior:"smooth",block:"start"});
  }catch(e){setStatus("AGENT ERROR · "+e.message,"error");$("traceStatus").textContent="ERROR";$("assistantAnswer").textContent="The live investigation failed: "+e.message;$("liveTrace").innerHTML='<div class="empty-state"><strong>Agent execution failed</strong><p>'+safeText(e.message)+'</p><p>Health connectivity does not guarantee Gemini API authentication or model execution.</p></div>';}
  finally{$("runBtn").disabled=false;$("runBtn").textContent="↻  Run audit mission";$("assistantSendBtn").disabled=false;}
