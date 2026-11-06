@@ -68,6 +68,35 @@ SELECT asset_id,cohort_id,period_id,utilisation_pct,benchmark_pct,
 FROM fleet_asset_period
 WHERE benchmark_pct-utilisation_pct>=:minimum_gap_pct;
 
+
+-- 6) Robust fleet outlier screen using cohort median and MAD.
+-- Parameters: :minimum_cohort_size, :modified_z_threshold
+-- Small cohorts are deliberately excluded; the four-row portfolio sample is insufficient.
+WITH cohort_median AS (
+    SELECT cohort_id, COUNT(*) AS cohort_n,
+           percentile_cont(0.5) WITHIN GROUP (ORDER BY utilisation_pct) AS median_utilisation
+    FROM fleet_asset_period
+    GROUP BY cohort_id
+),
+cohort_mad AS (
+    SELECT f.cohort_id,
+           percentile_cont(0.5) WITHIN GROUP (
+               ORDER BY ABS(f.utilisation_pct - m.median_utilisation)
+           ) AS mad
+    FROM fleet_asset_period f
+    JOIN cohort_median m ON m.cohort_id=f.cohort_id
+    GROUP BY f.cohort_id
+)
+SELECT f.asset_id,f.cohort_id,f.period_id,f.utilisation_pct,
+       m.cohort_n,m.median_utilisation,d.mad,
+       0.6745*(f.utilisation_pct-m.median_utilisation)/NULLIF(d.mad,0) AS modified_z_score
+FROM fleet_asset_period f
+JOIN cohort_median m ON m.cohort_id=f.cohort_id
+JOIN cohort_mad d ON d.cohort_id=f.cohort_id
+WHERE m.cohort_n>=:minimum_cohort_size
+  AND d.mad>0
+  AND ABS(0.6745*(f.utilisation_pct-m.median_utilisation)/d.mad)>=:modified_z_threshold;
+
 -- Enterprise deployment gates: effective-dated control criteria, approved thresholds,
 -- data contracts, freshness SLAs, lineage, reconciliations, row-level security,
 -- query cost limits, currency/time-zone normalisation and immutable execution logs.
