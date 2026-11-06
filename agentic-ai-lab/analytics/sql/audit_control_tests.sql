@@ -24,7 +24,7 @@ FROM normalized a JOIN normalized b
 SELECT p1.supplier_id,p1.requester_id,p1.cost_centre,p1.project_code,
        ARRAY_AGG(DISTINCT p2.po_id ORDER BY p2.po_id) AS candidate_po_ids,
        COUNT(DISTINCT p2.po_id) AS order_count,
-       SUM(DISTINCT p2.amount) AS aggregate_amount_eur
+       SUM(p2.amount) AS aggregate_amount_eur
 FROM purchase_order p1 JOIN purchase_order p2
  ON p2.supplier_id=p1.supplier_id AND p2.requester_id=p1.requester_id
  AND p2.cost_centre=p1.cost_centre AND p2.project_code=p1.project_code
@@ -32,7 +32,7 @@ FROM purchase_order p1 JOIN purchase_order p2
  AND p2.created_at<p1.created_at+(:window_days*INTERVAL '1 day')
 WHERE p1.amount<:approval_threshold_eur AND p2.amount<:approval_threshold_eur
 GROUP BY p1.supplier_id,p1.requester_id,p1.cost_centre,p1.project_code,p1.po_id,p1.created_at
-HAVING COUNT(DISTINCT p2.po_id)>1 AND SUM(DISTINCT p2.amount)>=:approval_threshold_eur;
+HAVING COUNT(DISTINCT p2.po_id)>1 AND SUM(p2.amount)>=:approval_threshold_eur;
 
 -- 3. Supplier change followed by high-value payment.
 -- Parameters: :lookback_days, :high_value_threshold_eur
