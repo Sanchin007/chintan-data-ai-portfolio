@@ -1,0 +1,5 @@
+asset_id,cohort,utilisation_pct,benchmark_pct,cost_per_unit
+Vessel A,Feeder 1,61,78,148
+Vessel B,Feeder 1,76,78,119
+Vessel C,Feeder 2,52,75,177
+Vessel D,Feeder 2,73,75,126
