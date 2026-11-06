@@ -281,7 +281,7 @@ function resolveMission(){
 }
 let workerBase="",lastLiveMission="",lastLiveFindings=[],reviewDecisions=[];
 function safeText(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function workerUrl(){return $("workerEndpoint").value.trim().replace(/\\/$/,"");}
+function workerUrl(){return $("workerEndpoint").value.trim().replace(/\/$/,"");}
 async function connectWorker(){
  const base=workerUrl();if(!base){setStatus("NOT CONNECTED · ENTER WORKER URL","error");$("connectionHint").textContent="Enter the Cloudflare Worker base URL.";return false;}
  $("connectWorkerBtn").disabled=true;$("connectWorkerBtn").textContent="Testing…";
