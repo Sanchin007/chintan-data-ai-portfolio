@@ -175,6 +175,31 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
 @media(max-width:780px){.notify-layout{grid-template-columns:1fr}.notify-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.notify-form-grid{grid-template-columns:1fr}.notify-row{grid-template-columns:7px minmax(0,1fr)}.notify-row .notify-state{grid-column:2;justify-self:start}}
 
+
+/* Enterprise audit operating model */
+.enterprise-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0}
+.enterprise-card{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff;min-width:0}
+.enterprise-card .micro{margin-bottom:7px}.enterprise-card h3{margin:0 0 6px;font-size:11px}.enterprise-card p{margin:0;color:var(--muted);font-size:9px;line-height:1.65}
+.enterprise-card ul{margin:7px 0 0;padding-left:16px;color:#526176;font-size:8px;line-height:1.8}
+.enterprise-card.featured{border-color:#c9dcf8;background:#f7faff}
+.operating-loop{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin:12px 0}
+.operating-step{position:relative;min-height:88px;padding:10px;border:1px solid #dce5f1;border-radius:9px;background:#f8fafd}
+.operating-step b{display:block;margin-bottom:6px;color:var(--blue);font:8px "Roboto Mono",monospace}
+.operating-step strong{display:block;font-size:9px}.operating-step small{display:block;margin-top:5px;color:var(--muted);font-size:8px;line-height:1.5}
+.platform-table{width:100%;min-width:680px;border-collapse:collapse;font-size:8px}.platform-table th,.platform-table td{padding:9px;border-bottom:1px solid #e8eaed;text-align:left;vertical-align:top}.platform-table th{background:#f8fafd;color:var(--muted);font:7px "Roboto Mono",monospace}.platform-table td:first-child{color:#174ea6;font-weight:600}
+.status-chip{display:inline-flex;padding:3px 6px;border:1px solid #d2e3fc;border-radius:5px;background:#f1f6ff;color:#174ea6;font:7px "Roboto Mono",monospace}
+.status-chip.design{border-color:#ead7b3;background:#fff9ec;color:#8a5a13}
+.artifact-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.artifact-links a{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--blue);font-size:9px;text-decoration:none}
+.artifact-links a:hover{border-color:#a8c7fa;background:#f8fbff}
+.measure-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:10px}
+.measure-card{padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.measure-card b{display:block;color:#174ea6;font-size:9px}.measure-card small{display:block;margin-top:4px;color:var(--muted);font-size:8px;line-height:1.5}
+.governance-gates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:10px 0}
+.governance-gates>div{padding:10px;border:1px solid var(--line);border-radius:8px;background:#fafbfd}
+.governance-gates b{display:block;color:var(--blue);font:8px "Roboto Mono",monospace}.governance-gates strong{display:block;margin-top:5px;font-size:9px}.governance-gates small{display:block;margin-top:4px;color:var(--muted);font-size:8px;line-height:1.5}
+@media(max-width:900px){.enterprise-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.operating-loop{grid-template-columns:repeat(3,minmax(0,1fr))}.measure-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.governance-gates{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.enterprise-grid{grid-template-columns:1fr}.operating-loop{grid-template-columns:repeat(2,minmax(0,1fr))}.measure-grid,.governance-gates{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -201,7 +226,7 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
 <div class="story-boundary"><strong>How to read this case study:</strong> the CMA CGM sections describe the user's engagement and operating workflow. The interactive agent, architecture diagram and simulated data below are a separate portfolio demonstration of related principles; they are not connected to CMA CGM systems.</div>
 </section>
 <div class="layout">
-<aside class="sidebar"><div class="side-label">SYSTEM EXPLORER</div><button class="nav active" data-target="architecture"><span>⌘</span>Architecture</button><button class="nav" data-target="telemetry"><span>◉</span>Live data</button><button class="nav" data-target="value"><span>↗</span>Value & delivery</button><button class="nav" data-target="process"><span>↔</span>Before / after</button><button class="nav" data-target="decision-map"><span>◇</span>Decision mapping</button><button class="nav" data-target="overview"><span>⌂</span>Run the agent</button><button class="nav" data-target="tool-catalogue"><span>⚙</span>Tool catalogue</button><button class="nav" data-target="workforce"><span>◎</span>Workflow roles</button><button class="nav" data-target="execution"><span>⌁</span>Live execution trace</button><button class="nav" data-target="regulatory"><span>§</span>Export frameworks</button><button class="nav" data-target="findings"><span>▤</span>Findings & review</button><button class="nav" data-target="report"><span>▧</span>Working paper</button></aside>
+<aside class="sidebar"><div class="side-label">SYSTEM EXPLORER</div><button class="nav active" data-target="architecture"><span>⌘</span>Architecture</button><button class="nav" data-target="telemetry"><span>◉</span>Live data</button><button class="nav" data-target="value"><span>↗</span>Value & delivery</button><button class="nav" data-target="process"><span>↔</span>Before / after</button><button class="nav" data-target="enterprise-operating-model"><span>◈</span>Enterprise operating model</button><button class="nav" data-target="decision-map"><span>◇</span>Decision mapping</button><button class="nav" data-target="overview"><span>⌂</span>Run the agent</button><button class="nav" data-target="tool-catalogue"><span>⚙</span>Tool catalogue</button><button class="nav" data-target="workforce"><span>◎</span>Workflow roles</button><button class="nav" data-target="execution"><span>⌁</span>Live execution trace</button><button class="nav" data-target="regulatory"><span>§</span>Export frameworks</button><button class="nav" data-target="findings"><span>▤</span>Findings & review</button><button class="nav" data-target="report"><span>▧</span>Working paper</button></aside>
 <div class="content">
 <section class="panel" id="architecture"><div class="panel-head"><div><div class="micro">01 / PORTFOLIO WORKSPACE ARCHITECTURE</div><h2>How the interactive workspace is structured</h2><p>This diagram describes the portfolio demonstration only: the browser interface, optional Cloudflare Worker and Gemini orchestration, deterministic tools, and synthetic records. It is not a diagram of CMA CGM’s production architecture.</p></div><span class="pill">INTERACTIVE WALKTHROUGH</span></div>
 <div class="architecture-flow">
@@ -241,7 +266,72 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
 <div class="sim-banner"><span class="sim-pulse"></span><strong>LIVE SIMULATION</strong><span>Generated records · illustrative volumes · no enterprise connection</span><time id="simClock">--:--:--</time></div>
 <div class="sim-kpis"><article class="sim-kpi"><span>SCENARIO RECORD UNIVERSE</span><strong id="simRecords">1,284,620</strong><small>synthetic rows indexed</small></article><article class="sim-kpi"><span>DETECTED SIGNALS</span><strong id="simSignals">8,412</strong><small>illustrative scenario events</small></article><article class="sim-kpi"><span>EVIDENCE COMPLETENESS</span><strong id="simCoverage">96.4%</strong><small>simulated coverage indicator</small></article><article class="sim-kpi"><span>HUMAN REVIEW QUEUE</span><strong id="simQueue">27</strong><small>illustrative open review items</small></article></div>
 <div class="sim-grid"><div class="sim-chart-card"><div class="sim-card-head"><div><b>Signal activity</b><small>SIMULATED EVENTS · LAST 30 INTERVALS</small></div><span class="sim-live-tag">● STREAMING</span></div><div class="sim-bars" id="simBars" aria-label="Animated synthetic signal activity chart"></div><div class="sim-chart-foot"><span>LOW ACTIVITY</span><span>RECENT INTERVALS →</span><span>HIGH ACTIVITY</span></div></div><div class="sim-feed-card"><div class="sim-card-head"><div><b>Incoming signal feed</b><small>GENERATED SYNTHETIC EVENTS</small></div><span id="simFeedCount">0 EVENTS</span></div><div class="sim-feed" id="simFeed" aria-live="off"><div class="sim-feed-row"><span class="sim-feed-dot"></span><div><b>SIM-AP-20481 · Duplicate invoice candidate</b><small>Finance controls · synthetic supplier record · queued for review</small></div><time>NOW</time></div></div></div></div>
-<div class="sim-footnote">Simulation integrity: this animated monitor is independent of the audit mission runner. It does not scan 1.28M real records, call Gemini, execute audit tools or create persistent review items. Run a mission below to inspect actual local deterministic checks or optionally connect Live Gemini.</div></section><section class="panel" id="overview"><div class="panel-head"><div><div class="micro">01 / Mission control</div><h2>Launch an audit mission</h2><p>Explore the interactive workflow: describe an objective, select a scope and inspect how checks, evidence and review steps are presented.</p></div><span class="pill">HUMAN INITIATED</span></div>
+<div class="sim-footnote">Simulation integrity: this animated monitor is independent of the audit mission runner. It does not scan 1.28M real records, call Gemini, execute audit tools or create persistent review items. Run a mission below to inspect actual local deterministic checks or optionally connect Live Gemini.</div></section><section class="panel" id="enterprise-operating-model">
+<div class="panel-head"><div><div class="micro">ENTERPRISE OPERATING MODEL · IMPLEMENTATION BLUEPRINT</div><h2>Continuous audit, governed analytics and platform delivery</h2><p>A complete target-state design for recurring controls, traceable data products, Foundry-style operational workflows, Power BI reporting, specialist governance and measurable value. The implementation artefacts are provided alongside this workspace; platform-specific connections remain subject to the target organisation's environment and approvals.</p></div><span class="pill">END-TO-END DESIGN</span></div>
+<div class="enterprise-grid">
+<article class="enterprise-card featured"><div class="micro">01 / CONTINUOUS AUDITING</div><h3>From one-off checks to a managed control cycle</h3><p>Risk-based schedules and event triggers feed repeatable, versioned control runs. Stable finding keys prevent duplicate cases across reruns; ageing, ownership, evidence requests, escalation and retesting create a complete lifecycle.</p><ul><li>Daily / weekly / period-close control packs</li><li>Source watermark and data-quality gates</li><li>Exception deduplication and SLA ageing</li><li>Human disposition, remediation and retest</li></ul></article>
+<article class="enterprise-card"><div class="micro">02 / DATA FOUNDATION</div><h3>Canonical audit data model</h3><p>Separate control, source, run, finding, evidence, review, remediation and benefits entities. Preserve source lineage, control version, calculation, snapshot and append-only reviewer events.</p><ul><li>BigQuery Standard SQL reference DDL</li><li>Star-schema facts and dimensions</li><li>Stable idempotency and current-state views</li><li>Coverage, freshness and ageing measures</li></ul></article>
+<article class="enterprise-card"><div class="micro">03 / GOVERNED ANALYTICS</div><h3>Decision-ready data products</h3><p>Curated control-run and finding facts power executive assurance, domain analytics, review queues and benefits reporting. Measures are explicitly defined and tied to a source and time period.</p><ul><li>Control execution and population coverage</li><li>Open, overdue and escalated findings</li><li>Evidence completeness and review cycle time</li><li>Recurrence and remediation effectiveness</li></ul></article>
+</div>
+<div class="micro">RECURRING CONTROL EXECUTION · TARGET OPERATING SEQUENCE</div>
+<div class="operating-loop">
+<div class="operating-step"><b>01 · TRIGGER</b><strong>Schedule / event</strong><small>Approved cadence, source event or period close</small></div>
+<div class="operating-step"><b>02 · VALIDATE</b><strong>Snapshot & quality</strong><small>Watermark, schema, freshness and reconciliation</small></div>
+<div class="operating-step"><b>03 · EXECUTE</b><strong>Versioned controls</strong><small>Deterministic SQL / Python tests and parameters</small></div>
+<div class="operating-step"><b>04 · NORMALISE</b><strong>Findings & evidence</strong><small>Stable keys, references, calculations and caveats</small></div>
+<div class="operating-step"><b>05 · RESOLVE</b><strong>Route & review</strong><small>Owner, SLA, evidence request and specialist escalation</small></div>
+<div class="operating-step"><b>06 · LEARN</b><strong>Retest & measure</strong><small>Remediation, recurrence and verified benefits</small></div>
+</div>
+<div class="control-note"><strong>Operational boundary:</strong> the new Python reference engine executes a repeatable cycle, upserts findings by stable business-event identity, calculates elapsed-hour SLA escalation and exposes a caller contract. It is not a background scheduler or persistent case platform. The existing notification centre remains a browser simulation; production scheduling, identity, durable storage and message delivery require approved platform services.</div>
+<div class="actions" style="margin:12px 0"><button class="primary" id="runContinuousCycleBtn" type="button">↻ Run cross-domain control cycle</button><span class="notice" style="margin:0;align-self:center">Runs the selected local or optional Gemini mission across all supported domains; it does not start a recurring background job.</span></div>
+<div class="panel-head" style="margin-top:18px"><div><div class="micro">PLATFORM MAPPING</div><h2 style="font-size:14px">Palantir Foundry and Power BI delivery design</h2><p>Concrete object, pipeline, action and semantic-model mappings—not a claim of deployed platform integrations.</p></div><span class="status-chip design">REFERENCE IMPLEMENTATION</span></div>
+<div class="table-wrap"><table class="platform-table"><thead><tr><th>Capability</th><th>Foundry-oriented implementation</th><th>Power BI implementation</th><th>Evidence in this repository</th></tr></thead><tbody>
+<tr><td>Governed data ingestion</td><td>Source connectors → immutable snapshots → schema and quality gates</td><td>Curated warehouse views with refresh watermark and stale-source indicator</td><td><span class="status-chip">SQL data model</span></td></tr>
+<tr><td>Data transformations</td><td>Versioned pipelines / transforms for canonical facts and control outputs</td><td>Star schema with role-playing dates and one-to-many dimensions</td><td><span class="status-chip">DDL + KPI views</span></td></tr>
+<tr><td>Ontology / semantic layer</td><td>Control, ControlRun, Finding, EvidenceItem, Owner, ReviewEvent, RemediationAction</td><td>FactControlRun, FactFinding, FactReviewEvent, FactRemediation + dimensions</td><td><span class="status-chip">Entity contract</span></td></tr>
+<tr><td>Operational workflow</td><td>Actions: assign, request evidence, escalate, disposition, remediate, retest</td><td>Drill-through queue, ageing, ownership, SLA and domain dashboards</td><td><span class="status-chip">Workflow blueprint</span></td></tr>
+<tr><td>Security & governance</td><td>Least-privilege service identities, object permissions, lineage, audit logs</td><td>RLS by authorised business unit / assignment; governed refresh and export</td><td><span class="status-chip">Control design</span></td></tr>
+<tr><td>Executive assurance</td><td>Operational app for evidence-led review and accountable action</td><td>Coverage, execution reliability, material exceptions, remediation and benefits</td><td><span class="status-chip">DAX measures</span></td></tr>
+</tbody></table></div>
+<div class="measure-grid">
+<div class="measure-card"><b>Execution reliability</b><small>Successful control runs ÷ all scheduled control runs</small></div>
+<div class="measure-card"><b>Population coverage</b><small>Eligible records tested ÷ eligible records in source snapshot</small></div>
+<div class="measure-card"><b>Evidence coverage</b><small>Findings with linked evidence ÷ open findings</small></div>
+<div class="measure-card"><b>Resolution performance</b><small>Median / P90 time to triage, resolve and retest</small></div>
+</div>
+<div class="panel-head" style="margin-top:18px"><div><div class="micro">CONTROL LIFECYCLE</div><h2 style="font-size:14px">Governance from intake through retirement</h2><p>Every stage has a named accountable role, required evidence and an approval gate.</p></div></div>
+<div class="governance-gates">
+<div><b>01 · INTAKE</b><strong>Risk & value case</strong><small>Objective, materiality, process owner and measurable outcome</small></div>
+<div><b>02 · DATA APPROVAL</b><strong>Privacy & access</strong><small>Purpose, classification, lawful basis, minimisation and retention</small></div>
+<div><b>03 · CONTROL DESIGN</b><strong>Policy & version</strong><small>Approved rule, threshold, effective date and exclusions</small></div>
+<div><b>04 · VALIDATION</b><strong>Independent testing</strong><small>Reconciliation, edge cases, false positives and challenge</small></div>
+<div><b>05 · RELEASE</b><strong>Change approval</strong><small>Code review, segregation, rollback and runbook</small></div>
+<div><b>06 · OPERATE</b><strong>Monitor & respond</strong><small>Freshness, drift, latency, cost, incidents and access review</small></div>
+<div><b>07 · CHANGE</b><strong>Revalidate</strong><small>Impact assessment, model / prompt / rule versioning</small></div>
+<div><b>08 · RETIRE</b><strong>Archive & delete</strong><small>Retention schedule, user notice and evidence preservation</small></div>
+</div>
+<div class="panel-head" style="margin-top:18px"><div><div class="micro">EXPORT CONTROL & TRADE LAW</div><h2 style="font-size:14px">Evidence triage with a specialist decision gate</h2><p>The agent identifies missing documentation and prepares review questions. An authorised specialist owns classification, sanctions, licensing and shipment decisions.</p></div><span class="status-chip">HUMAN DECISION REQUIRED</span></div>
+<div class="enterprise-grid">
+<article class="enterprise-card"><h3>Evidence collection</h3><p>Product description and technical specification, origin, destination, exporter, consignee, end-user, end-use, classification rationale, screening evidence and authorisation or no-authorisation rationale.</p></article>
+<article class="enterprise-card"><h3>Specialist verification</h3><p>Confirm jurisdictional nexus, current control-list version, classification, official-party-screening result, licence conditions, diversion risk and transaction facts.</p></article>
+<article class="enterprise-card"><h3>Controlled disposition</h3><p>Record evidence, reviewer identity, legal basis, timestamp, decision conditions and escalation. No AI-generated shipment clearance or legal conclusion.</p></article>
+</div>
+<div class="panel-head" style="margin-top:18px"><div><div class="micro">BUSINESS CASE & BENEFITS REALISATION</div><h2 style="font-size:14px">Measure operational value, not just model activity</h2><p>Use an agreed baseline, comparable periods, attribution and Finance / Audit sign-off before calling a benefit realised.</p></div></div>
+<div class="measure-grid">
+<div class="measure-card"><b>Review effort</b><small>Baseline analyst hours less observed hours, adjusted for case complexity</small></div>
+<div class="measure-card"><b>Detection lead time</b><small>First detectable event to alert timestamp</small></div>
+<div class="measure-card"><b>False-positive rate</b><small>Rejected / non-actionable findings among completed dispositions</small></div>
+<div class="measure-card"><b>Cost per review</b><small>Platform + compute + human review cost divided by reviewed findings</small></div>
+</div>
+<div class="control-note"><strong>Value formula:</strong> Net benefit = verified hours saved × loaded hourly cost + verified avoided loss − platform and operating cost. ROI = net benefit ÷ platform and operating cost. The engagement metrics shown elsewhere on this page remain attributed to the wider CMA CGM programme; they are not claimed as benefits generated by this demonstrator.</div>
+<div class="artifact-links">
+<a href="https://github.com/Sanchin007/chintan-data-ai-portfolio/blob/main/agentic-ai-lab/PLATFORM-IMPLEMENTATION.md" target="_blank" rel="noopener">↗ Full platform implementation blueprint</a>
+<a href="https://github.com/Sanchin007/chintan-data-ai-portfolio/blob/main/agentic-ai-lab/sql/audit_analytics_model.sql" target="_blank" rel="noopener">↗ Canonical audit data model · SQL</a>
+<a href="https://github.com/Sanchin007/chintan-data-ai-portfolio/blob/main/agentic-ai-lab/python/continuous_monitor.py" target="_blank" rel="noopener">↗ Continuous audit engine · Python</a>
+<a href="https://github.com/Sanchin007/chintan-data-ai-portfolio/blob/main/agentic-ai-lab/python/test_continuous_monitor.py" target="_blank" rel="noopener">↗ Engine test suite</a>
+</div>
+<div class="notice">Platform transparency: Foundry and Power BI mappings are implementation-ready design artefacts, not deployed connectors or certified platform experience. The SQL is a BigQuery reference model and has not been executed against an enterprise schema. The Python engine is a local reference implementation without durable storage, scheduler or enterprise identity integration.</div>
+</section><section class="panel" id="overview"><div class="panel-head"><div><div class="micro">01 / Mission control</div><h2>Launch an audit mission</h2><p>Explore the interactive workflow: describe an objective, select a scope and inspect how checks, evidence and review steps are presented.</p></div><span class="pill">HUMAN INITIATED</span></div>
 <div class="workspace-grid"><div class="mission-box mission-composer">
 <div class="nlp-wrap">
 <div class="composer-top"><div><div class="nlp-title"><span class="spark">✦</span> ASK THE AUDIT ASSISTANT</div><p class="composer-subtitle">What would you like to investigate?</p></div><span class="input-mode-tag">NATURAL LANGUAGE</span></div>
@@ -674,6 +764,7 @@ function startSyntheticTelemetry(){
 }
 
 resetWorkspace();setExecutionMode("presentation");notifyInit();
+document.getElementById("runContinuousCycleBtn")?.addEventListener("click",()=>{syncMissionSelection("cross");runMission("scope");});
 document.getElementById("askRunBtn")?.addEventListener("click",()=>runMission("assistant"));
 document.getElementById("dockLaunchBtn")?.addEventListener("click",()=>{document.getElementById("overview")?.scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>document.getElementById("userQuestion")?.focus({preventScroll:true}),450);});
 document.getElementById("dockTopBtn")?.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
