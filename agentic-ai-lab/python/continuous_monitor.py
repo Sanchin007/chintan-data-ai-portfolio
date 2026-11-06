@@ -84,7 +84,7 @@ def run_cycle(
         if not policy:
             rejected.append({"event": event, "reason": "NO_APPROVED_CONTROL_POLICY"})
             continue
-        if policy.sla_hours <= 0:
+        if policy.sla_hours <= 0 or policy.severity.upper() not in {"LOW", "MEDIUM", "HIGH", "CRITICAL"}:
             rejected.append({"event": event, "reason": "INVALID_SLA_POLICY"})
             continue
         detected = _utc(event["detected_at"])
@@ -124,7 +124,7 @@ def run_cycle(
         age_hours = (clock - _utc(current.detected_at)).total_seconds() / 3600
         overdue_hours = (clock - _utc(current.due_at)).total_seconds() / 3600
         target_level = 2 if overdue_hours >= 24 else 1 if overdue_hours >= 0 else 0
-        if current.status not in {"CLOSED", "REJECTED"} and target_level > current.escalation_level:
+        if current.status not in {"CLOSED", "REJECTED", "VERIFIED"} and target_level > current.escalation_level:
             current.escalation_level = target_level
             current.status = "ESCALATED" if target_level else current.status
             escalated.append({
