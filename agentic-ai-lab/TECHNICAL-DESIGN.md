@@ -9,8 +9,8 @@ Interactive portfolio demonstrator for evidence-led audit and control workflows.
 | `index.html` | Interactive command centre with live Gemini orchestration, architecture view, before/after process map, decision map, tool catalogue, execution trace, findings and local review queue | Browser UI; review actions are session-local |
 | `worker/src/index.js` | Deployed Worker implementation using Gemini Interactions API and allow-listed deterministic tools | Synthetic data only; no external write actions |
 | `use-cases.html` | Eight separate deterministic use-case simulations with case-specific records, decision rules, traces and recommendations | Separate from the live Worker |
-| `python/analytics.py` | Executable Python reference analytics using the standard library and embedded synthetic records | Not called by the hosted agent |
-| `sql/control_library.sql` | BigQuery Standard SQL reference queries for eight controls | Templates only; not connected to a warehouse |
+| `python/analytics.py` | Executable Python reference analytics using the standard library and embedded synthetic records | Not called by the hosted agent |\n| `python/continuous_monitor.py` | Repeatable control-cycle reference engine with stable finding identity, rerun upsert, elapsed-hour SLA ageing and escalation | In-memory only; caller-triggered; no scheduler or persistent case store |\n| `python/test_continuous_monitor.py` | Unit tests for idempotency, rerun behaviour, SLA escalation and missing policy handling | Run locally with `python -m unittest discover -s agentic-ai-lab/python -p 'test_*.py'` |
+| `sql/control_library.sql` | BigQuery Standard SQL reference queries for eight controls | Templates only; not connected to a warehouse |\n| `sql/audit_analytics_model.sql` | Canonical control, source, run, finding, evidence, review, remediation and value-measure schema plus curated KPI views | Reference DDL; not executed against an enterprise schema |\n| `PLATFORM-IMPLEMENTATION.md` | Foundry Ontology / pipeline / action mapping, Power BI star schema and DAX, continuous audit lifecycle, governance gates, trade-compliance workflow and benefits framework | Platform implementation blueprint; no Foundry tenant or Power BI report is connected |
 
 ## Runtime architecture — live path
 
@@ -78,6 +78,22 @@ A finding should carry its record references, test parameters, rule result, limi
 ## Before / after process design
 
 The page compares a generic fragmented manual audit sequence with the agent-assisted sequence: natural-language intake, data readiness checks, model-selected tests, deterministic execution, evidence challenge, specialist review and draft reporting. This is a process-design comparison, not a claim of measured time savings or a statement about a specific employer's historical operating procedure.
+
+## Continuous audit reference engine
+
+`python/continuous_monitor.py` provides a deterministic caller-invoked control-cycle function. It normalises incoming signals against approved control policies, creates a stable SHA-256 finding key from control + source record + business-event identity, refreshes existing findings across reruns, tracks occurrence count and evidence references, and calculates elapsed-hour SLA escalation. Unknown controls and invalid policies are rejected. Reviewer disposition requires an actor and rationale.
+
+This is an executable reference engine, not a hosted service. It is in-memory, has no scheduler, no business-calendar SLA, no persistent event store, no identity provider and no notification transport. A production caller would persist append-only events and finding state, apply an approved business calendar, and invoke the cycle through a governed scheduler or event platform.
+
+## Analytics model and platform mapping
+
+`sql/audit_analytics_model.sql` defines a canonical BigQuery reference model for control policies, sources, control runs, findings, evidence links, review events, remediation and value measures. Curated views expose run reliability and finding ageing. The schema is not deployed or executed against a live warehouse.
+
+`PLATFORM-IMPLEMENTATION.md` specifies a Foundry-oriented Ontology and operational workflow mapping, a Power BI star schema with example DAX measures and report pages, governance stage gates, export-control specialist workflow, and a benefits-realisation framework. These are concrete implementation designs, not evidence of a Foundry tenant integration or a published Power BI report. No Foundry SDK, Power BI semantic model, PBIX or platform credentials are present in this repository.
+
+## Continuous monitoring and notification boundary
+
+The hosted page can execute a cross-domain mission on user request. The notification centre can record simulated browser events and manually simulate a configured digest. The Python reference engine can be invoked repeatedly by an external caller. None of these creates a background schedule in the hosted portfolio. Production monitoring requires a scheduler / event source, persistent state, service identity, approved outbound notification provider, operational alerting and run ownership.
 
 ## Production extensions — not implemented here
 
