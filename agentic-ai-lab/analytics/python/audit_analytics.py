@@ -119,6 +119,30 @@ def pricing_variance_candidates(pricing: pd.DataFrame, material_discount_gap_pct
         "caveat":"Contract version, volume mix and approval context are not inferred."} for r in selected.itertuples(index=False)]
 
 
+def robust_mad_outliers(values: pd.Series, min_sample_size: int = 8,
+                         modified_z_threshold: float = 3.5) -> dict[str, Any]:
+    """Robust univariate outlier screen with a minimum-sample-size gate."""
+    series = pd.to_numeric(values, errors="coerce").dropna().astype(float)
+    if len(series) < min_sample_size:
+        return {"status": "INSUFFICIENT_SAMPLE", "sample_size": int(len(series)),
+                "minimum_sample_size": int(min_sample_size), "outlier_positions": [],
+                "interpretation": "Do not infer statistical outliers from an undersized cohort."}
+    median = float(series.median())
+    mad = float((series - median).abs().median())
+    if mad == 0:
+        return {"status": "ZERO_MAD", "sample_size": int(len(series)),
+                "median": median, "outlier_positions": [],
+                "interpretation": "Median absolute deviation is zero; use a separately validated method."}
+    scores = 0.6745 * (series - median) / mad
+    positions = [int(i) for i, score in enumerate(scores.tolist())
+                 if abs(float(score)) >= modified_z_threshold]
+    return {"status": "REVIEW" if positions else "NO_OUTLIER_FLAG",
+            "sample_size": int(len(series)), "median": median, "mad": mad,
+            "modified_z_threshold": float(modified_z_threshold),
+            "outlier_positions": positions,
+            "interpretation": "Statistical screening indicator only; investigate cohort comparability and source quality."}
+
+
 def fleet_utilisation_candidates(fleet: pd.DataFrame, minimum_gap_pct: float = 10.0) -> list[dict[str, Any]]:
     required={"asset_id","cohort","utilisation_pct","benchmark_pct","cost_per_unit"}
     if missing:=required.difference(fleet.columns): raise ValueError(f"Fleet dataset missing columns: {sorted(missing)}")
@@ -143,7 +167,7 @@ def run_all(folder: Path) -> dict[str, Any]:
             "procurement_threshold_candidates":procurement_threshold_candidates(pos,25000,7),
             "supplier_change_to_payment_candidates":supplier_change_to_payment_candidates(changes,payments,80000,30),
             "pricing_variance_candidates":pricing_variance_candidates(pricing,5),
-            "fleet_utilisation_candidates":fleet_utilisation_candidates(fleet,10)},
+            "fleet_utilisation_candidates":fleet_utilisation_candidates(fleet,10),\n            "fleet_utilisation_statistical_screen":robust_mad_outliers(fleet["utilisation_pct"],min_sample_size=8)},
         "decision_boundary":"Indicators only. Validate source records and control criteria; no fraud, loss, legal or compliance conclusion."}
 
 
