@@ -31,6 +31,15 @@ FROM purchase_order p1 JOIN purchase_order p2
  AND p2.created_at>=p1.created_at
  AND p2.created_at<p1.created_at+(:window_days*INTERVAL '1 day')
 WHERE p1.amount<:approval_threshold_eur AND p2.amount<:approval_threshold_eur
+  AND NOT EXISTS (
+      SELECT 1 FROM purchase_order prior
+      WHERE prior.supplier_id=p1.supplier_id
+        AND prior.requester_id=p1.requester_id
+        AND prior.cost_centre=p1.cost_centre
+        AND prior.project_code=p1.project_code
+        AND prior.created_at<p1.created_at
+        AND prior.created_at>=p1.created_at-(:window_days*INTERVAL '1 day')
+  )
 GROUP BY p1.supplier_id,p1.requester_id,p1.cost_centre,p1.project_code,p1.po_id,p1.created_at
 HAVING COUNT(DISTINCT p2.po_id)>1 AND SUM(p2.amount)>=:approval_threshold_eur;
 
