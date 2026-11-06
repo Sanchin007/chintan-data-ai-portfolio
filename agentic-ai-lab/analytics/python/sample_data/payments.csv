@@ -1,0 +1,4 @@
+payment_id,supplier_id,payment_date,amount
+PAY-8001,SUP-004,2026-03-12,184000
+PAY-8002,SUP-001,2026-03-21,42000
+PAY-8003,SUP-003,2026-03-06,96000
