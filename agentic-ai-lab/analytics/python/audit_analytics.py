@@ -8,6 +8,14 @@ from typing import Any
 import pandas as pd
 
 
+def _as_bool(value: Any) -> bool:
+    return False if pd.isna(value) else bool(value)
+
+
+def _clean(value: Any) -> Any:
+    return None if pd.isna(value) else value
+
+
 def profile_dataset(name: str, frame: pd.DataFrame) -> dict[str, Any]:
     blank = frame.isna().sum().sum() + frame.astype("string").eq("").sum().sum()
     return {"dataset": name, "row_count": int(len(frame)),
@@ -33,13 +41,13 @@ def duplicate_invoice_candidates(invoices: pd.DataFrame, window_days: int = 90) 
             for right in rows[i+1:]:
                 gap = abs((right["invoice_date"]-left["invoice_date"]).days)
                 if gap > window_days: continue
-                both_paid = bool(left["paid"]) and bool(right["paid"])
-                both_refs = bool(left["payment_reference"]) and bool(right["payment_reference"])
+                both_paid = _as_bool(left["paid"]) and _as_bool(right["paid"])
+                both_refs = bool(_clean(left["payment_reference"])) and bool(_clean(right["payment_reference"]))
                 output.append({"finding_type":"duplicate_invoice_candidate",
                     "invoice_ids":[left["invoice_id"],right["invoice_id"]],
                     "supplier_id":left["supplier_id"],"invoice_number_normalized":left["invoice_norm"],
                     "amount":float(left["amount"]),"currency":left["currency"],"date_gap_days":int(gap),
-                    "payment_references":[left["payment_reference"],right["payment_reference"]],
+                    "payment_references":[_clean(left["payment_reference"]),_clean(right["payment_reference"])],
                     "candidate_type":"possible_duplicate_payment" if both_paid and both_refs else "duplicate_invoice_candidate_payment_not_confirmed",
                     "review_required":True})
     return output
@@ -88,15 +96,15 @@ def supplier_change_to_payment_candidates(changes: pd.DataFrame, payments: pd.Da
         (~joined["callback_verified"].fillna(False).astype(bool)|~joined["dual_approved"].fillna(False).astype(bool))]
     return [{"finding_type":"supplier_change_to_payment_control_candidate","change_id":r.change_id,
         "payment_id":r.payment_id,"supplier_id":r.supplier_id,"days_to_payment":int(r.days_to_payment),
-        "amount":float(r.amount),"callback_verified":bool(r.callback_verified),
-        "dual_approved":bool(r.dual_approved),"review_required":True} for r in selected.itertuples(index=False)]
+        "amount":float(r.amount),"callback_verified":_as_bool(r.callback_verified),
+        "dual_approved":_as_bool(r.dual_approved),"review_required":True} for r in selected.itertuples(index=False)]
 
 
 def pricing_variance_candidates(pricing: pd.DataFrame, material_discount_gap_pct: float = 5.0) -> list[dict[str, Any]]:
     required={"lane","revenue","cost","discount_pct","approved_discount_pct","volume"}
     if missing:=required.difference(pricing.columns): raise ValueError(f"Pricing dataset missing columns: {sorted(missing)}")
     df=pricing.copy()
-    df["margin_pct"]=(df["revenue"]-df["cost"])/df["revenue"].replace(0,pd.NA)*100
+    df["margin_pct"]=(df["revenue"]-df["cost"])/df["revenue"].where(df["revenue"]!=0)*100
     df["discount_gap_pct"]=df["discount_pct"]-df["approved_discount_pct"]
     selected=df[df["discount_gap_pct"]>=material_discount_gap_pct]
     return [{"finding_type":"discount_authority_variance","lane":r.lane,
