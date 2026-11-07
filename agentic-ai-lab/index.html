@@ -200,6 +200,71 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
 .governance-gates b{display:block;color:var(--blue);font:8px "Roboto Mono",monospace}.governance-gates strong{display:block;margin-top:5px;font-size:9px}.governance-gates small{display:block;margin-top:4px;color:var(--muted);font-size:8px;line-height:1.5}
 @media(max-width:900px){.enterprise-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.operating-loop{grid-template-columns:repeat(3,minmax(0,1fr))}.measure-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.governance-gates{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.enterprise-grid{grid-template-columns:1fr}.operating-loop{grid-template-columns:repeat(2,minmax(0,1fr))}.measure-grid,.governance-gates{grid-template-columns:1fr}}
+/* Main-portfolio-inspired typography and interactive enterprise workflow */
+.google-projects-panel .panel-head h2{font-size:clamp(25px,2.5vw,34px);line-height:1.16}
+.google-projects-panel .panel-head p{font-size:14px;line-height:1.75;max-width:900px}
+.google-projects-panel .micro,.google-projects-panel .pill,.google-projects-panel .project-kicker{font-size:10px}
+.google-project-intro{padding:24px;gap:24px;border-radius:18px}
+.google-project-intro h3{font-size:clamp(22px,2.1vw,30px);line-height:1.18}
+.google-project-intro p{font-size:14px;line-height:1.75}
+.project-counts>div{padding:14px 12px}
+.project-counts b{font-size:32px}
+.project-counts span{font-size:11px;line-height:1.45}
+.google-architecture{padding:20px;border-radius:18px}
+.google-arch-grid article{padding:15px}
+.google-arch-grid article small{font-size:9px}
+.google-arch-grid article b{font-size:14px;line-height:1.35}
+.google-arch-grid article p{font-size:12px;line-height:1.6}
+.google-arch-arrow{font-size:22px}
+.google-arch-note{font-size:11px;line-height:1.65}
+.google-project-grid{gap:13px}
+.google-project-card{padding:20px;border-radius:16px}
+.google-project-card>span{font-size:9px}
+.google-project-card h3{font-size:19px;line-height:1.25}
+.google-project-card p,.google-project-card li{font-size:13px;line-height:1.7}
+.google-project-card ul{padding-left:19px}
+.google-project-footer{padding:15px;font-size:11px;line-height:1.6}
+.enterprise-agent-journey{margin:22px 0;padding:26px;border:1px solid #243b56;border-radius:22px;background:linear-gradient(180deg,#071321,#0b1b2e 75%,#0a1727);color:#fff;overflow:hidden;position:relative}
+.enterprise-agent-journey:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,#000,transparent 88%);pointer-events:none}
+.enterprise-journey-head,.enterprise-journey-toolbar,.enterprise-flow-wrap,.enterprise-journey-detail,.enterprise-journey-progress,.enterprise-journey-footnote{position:relative}
+.enterprise-journey-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.journey-kicker,.enterprise-journey-caption,.enterprise-detail-index span,.enterprise-detail-side small{font:700 10px "Roboto Mono",monospace;letter-spacing:.1em;color:#80d8ff}
+.enterprise-journey-head h3{max-width:850px;margin:10px 0;color:#fff;font-size:clamp(26px,3vw,39px);line-height:1.12;letter-spacing:-.035em}
+.enterprise-journey-head p{max-width:850px;margin:0;color:#b2c2d4;font-size:14px;line-height:1.75}
+.journey-playback-status{display:flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid #2d4c6d;border-radius:999px;background:#0e2034;color:#b5c9dc;font:700 9px "Roboto Mono",monospace;white-space:nowrap}
+.journey-playback-status i{width:8px;height:8px;border-radius:50%;background:#53d6a1;box-shadow:0 0 14px #53d6a1}
+.enterprise-journey-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:24px 0 13px}
+.enterprise-journey-controls{display:flex;gap:8px;flex-wrap:wrap}
+.enterprise-journey-controls button{border:1px solid #34516f;background:#10243a;color:#c9d8e8;border-radius:999px;padding:10px 14px;font-size:12px;font-weight:700;transition:.2s}
+.enterprise-journey-controls button:hover{border-color:#7bdcff;color:#fff}
+.enterprise-journey-controls button.primary{background:linear-gradient(135deg,#1a73e8,#1765c1);border-color:#559cff;color:#fff}
+.enterprise-flow-wrap{overflow-x:auto;padding:16px 2px 24px}
+.enterprise-flow-track{position:relative;display:grid;grid-template-columns:repeat(8,minmax(145px,1fr));gap:10px;min-width:1200px;align-items:stretch}
+.enterprise-flow-track>i{display:none}
+.enterprise-flow-node{position:relative;z-index:2;min-height:124px;text-align:left;padding:16px 13px;border:1px solid #2c4561;border-radius:15px;background:#0d2035;color:#fff;cursor:pointer;transition:transform .25s,border-color .25s,background .25s,box-shadow .25s}
+.enterprise-flow-node small{display:block;color:#76d4ff;font:700 9px "Roboto Mono",monospace;letter-spacing:.06em}
+.enterprise-flow-node b{display:block;margin:12px 0 7px;font-size:15px;line-height:1.25}
+.enterprise-flow-node span{display:block;color:#a7b9cd;font-size:11px;line-height:1.5}
+.enterprise-flow-node:hover,.enterprise-flow-node.active{transform:translateY(-5px);border-color:#70d8ff;background:#123354;box-shadow:0 0 0 1px #70d8ff35,0 12px 28px #0004}
+.enterprise-flow-node.done{border-color:#35745f;background:#102d2b}
+.enterprise-flow-packet{position:absolute;z-index:3;top:-5px;left:0;width:13px;height:13px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px #72d7ff22,0 0 22px #72d7ff;transform:translateX(12px);transition:left .55s cubic-bezier(.2,.75,.2,1);pointer-events:none}
+.enterprise-flow-packet:after{content:"";position:absolute;inset:4px;border-radius:50%;background:#62d6ff}
+.enterprise-journey-detail{display:grid;grid-template-columns:.65fr 1.45fr .9fr;gap:20px;padding:21px;border:1px solid #2b4663;border-radius:17px;background:linear-gradient(120deg,#0d2035,#10243a)}
+.enterprise-detail-index{display:flex;flex-direction:column;gap:10px}
+.enterprise-detail-index b{color:#fff;font-size:13px;line-height:1.4}
+.enterprise-detail-copy h4{margin:0 0 8px;color:#fff;font-size:21px;line-height:1.25}
+.enterprise-detail-copy p{margin:0;color:#b6c6d8;font-size:13px;line-height:1.75}
+.enterprise-detail-side{display:grid;align-content:start;gap:7px;padding-left:17px;border-left:1px solid #2b4663}
+.enterprise-detail-side b{font-size:13px;line-height:1.5;color:#fff}
+.enterprise-detail-side span{font-size:12px;line-height:1.6;color:#a9bdd2}
+.enterprise-detail-side small:not(:first-child){margin-top:7px}
+.enterprise-journey-progress{height:3px;margin-top:17px;border-radius:9px;background:#20374f;overflow:hidden}
+.enterprise-journey-progress span{display:block;width:12.5%;height:100%;background:linear-gradient(90deg,#4285f4,#64d9ff);transition:width .4s}
+.enterprise-journey-footnote{margin:13px 0 0;color:#8197ae;font-size:10px;line-height:1.65}
+@media(max-width:900px){.enterprise-journey-head{display:block}.journey-playback-status{display:inline-flex;margin-top:15px}.enterprise-journey-detail{grid-template-columns:1fr 2fr}.enterprise-detail-side{grid-column:1/-1;padding:14px 0 0;border-left:0;border-top:1px solid #2b4663}}
+@media(max-width:650px){.google-project-intro{padding:17px}.project-counts{grid-template-columns:repeat(3,minmax(0,1fr))}.google-architecture{padding:15px}.google-project-card{padding:16px}.enterprise-agent-journey{padding:18px;border-radius:16px}.enterprise-journey-head h3{font-size:27px}.enterprise-journey-head p{font-size:13px}.enterprise-journey-controls button{font-size:11px;padding:9px 11px}.enterprise-journey-detail{grid-template-columns:1fr;padding:16px}.enterprise-detail-side{grid-column:auto}.enterprise-detail-copy h4{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.enterprise-flow-node,.enterprise-flow-packet,.enterprise-journey-progress span{transition:none!important}.enterprise-flow-node:hover,.enterprise-flow-node.active{transform:none}}
+
 </style>
 <style>
 .hero{grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);padding:clamp(26px,4vw,54px);background:radial-gradient(circle at 82% 12%,#e6f0ff 0,transparent 34%),linear-gradient(125deg,#fff 0%,#f8fbff 58%,#edf4ff 100%);border-color:#d8e5f7}
@@ -255,7 +320,7 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
 <div class="layout">
 <aside class="sidebar"><div class="side-label">CASE STUDY NAVIGATION</div><button class="nav active" data-target="professional-experience"><span>01</span>Experience</button><button class="nav" data-target="google-projects"><span>02</span>Google projects</button><button class="nav" data-target="architecture"><span>03</span>Demo architecture</button><button class="nav" data-target="value"><span>03</span>Delivery & outcomes</button><button class="nav" data-target="process"><span>04</span>Operating model</button><button class="nav" data-target="overview"><span>05</span>Interactive audit demo</button><button class="nav" data-target="findings"><span>06</span>Evidence & review</button><button class="nav" data-target="enterprise-operating-model"><span>+</span>Technical deep dive</button></aside>
 <div class="content">
-<section class="panel" id="google-projects">
+<section class="panel google-projects-panel" id="google-projects">
  <div class="panel-head"><div><div class="micro">FLAGSHIP PROFESSIONAL CASE STUDY · GOOGLE CLOUD / CMA CGM</div><h2>Enterprise AI and data solutions in production</h2><p>A portfolio view of selected work from the Google Cloud strategic engagement at CMA CGM. These are professional projects and delivery areas, separate from the independent synthetic audit demonstrator below.</p></div><span class="pill">PROFESSIONAL EXPERIENCE</span></div>
  <div class="google-project-intro"><div><span class="project-kicker">MY ROLE IN DELIVERY</span><h3>Designed with architects. Coded hands-on. Supported in production.</h3><p>I personally developed code and built AI agents and workflows, collaborated with solution architects on technical design, and stayed involved through releases and post-deployment operations. Google's wider engineering team handled other parts of the shared platform and infrastructure environment.</p></div><div class="project-counts"><div><b>6+</b><span>AI agents built / contributed to</span></div><div><b>18+</b><span>Workflows built</span></div><div><b>20+</b><span>KPI dashboards</span></div></div></div>
  <div class="google-architecture"><div class="project-kicker">HIGH-LEVEL HYBRID TECHNOLOGY LANDSCAPE</div><div class="google-arch-grid">
@@ -265,7 +330,25 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
  <article><small>CLOUD & ENGINEERING</small><b>Google Cloud infrastructure</b><p>Cloud services, data processing, APIs, backend components and AI/ML integration across the hybrid environment.</p></article><div class="google-arch-arrow">↕</div>
  <article><small>PRODUCTION LIFECYCLE</small><b>Enterprise workflows and operations</b><p>Release, monitoring, troubleshooting, integration support and continuous improvement with the wider engineering team.</p></article></div>
  <p class="google-arch-note">Simplified capability map, not a deployment diagram: individual projects used different combinations of platforms and services. It does not disclose confidential system topology or imply that every component was connected in every use case.</p></div>
- <div class="google-project-grid">
+ <section class="enterprise-agent-journey" id="enterprise-agent-journey" aria-labelledby="enterprise-journey-title">
+ <div class="enterprise-journey-head"><div><span class="journey-kicker">INTERACTIVE ENGINEERING WALKTHROUGH</span><h3 id="enterprise-journey-title">Watch an enterprise agent workflow move from intent to production.</h3><p>A representative sequence illustrating the agent capabilities you described: planning, tool use, multi-agent coordination, validation, controlled execution and operational monitoring.</p></div><div class="journey-playback-status"><i></i><span id="enterpriseJourneyStatus">READY · GUIDED PLAYBACK</span></div></div>
+ <div class="enterprise-journey-toolbar"><div class="enterprise-journey-caption">SELECT A STAGE OR PLAY THE FULL SEQUENCE</div><div class="enterprise-journey-controls"><button type="button" data-enterprise-control="play" class="primary">▶ Play workflow</button><button type="button" data-enterprise-control="step">Step forward →</button><button type="button" data-enterprise-control="pause">Ⅱ Pause</button><button type="button" data-enterprise-control="reset">↺ Replay</button></div></div>
+ <div class="enterprise-flow-wrap"><div class="enterprise-flow-track" id="enterpriseFlowTrack">
+  <button type="button" class="enterprise-flow-node active" data-enterprise-step="0"><small>01 · REQUEST</small><b>Business intent</b><span>Goal, constraints and context</span></button><i>→</i>
+  <button type="button" class="enterprise-flow-node" data-enterprise-step="1"><small>02 · PLAN</small><b>Agent planning</b><span>Break down the task</span></button><i>→</i>
+  <button type="button" class="enterprise-flow-node" data-enterprise-step="2"><small>03 · CONTEXT</small><b>Enterprise data</b><span>Retrieve trusted context</span></button><i>→</i>
+  <button type="button" class="enterprise-flow-node" data-enterprise-step="3"><small>04 · ORCHESTRATE</small><b>Agent collaboration</b><span>Delegate specialised tasks</span></button><i>→</i>
+  <button type="button" class="enterprise-flow-node" data-enterprise-step="4"><small>05 · EXECUTE</small><b>Tool & workflow calls</b><span>APIs, code and services</span></button><i>→</i>
+  <button type="button" class="enterprise-flow-node" data-enterprise-step="5"><small>06 · VALIDATE</small><b>Check the result</b><span>Verify, retry or escalate</span></button><i>→</i>
+  <button type="button" class="enterprise-flow-node" data-enterprise-step="6"><small>07 · CONTROL</small><b>Human oversight</b><span>Approval where required</span></button><i>→</i>
+  <button type="button" class="enterprise-flow-node" data-enterprise-step="7"><small>08 · OPERATE</small><b>Production lifecycle</b><span>Monitor and improve</span></button>
+  <div class="enterprise-flow-packet" id="enterpriseFlowPacket" aria-hidden="true"></div>
+ </div></div>
+ <div class="enterprise-journey-detail" aria-live="polite"><div class="enterprise-detail-index"><span id="enterpriseDetailNumber">01 / 08</span><b id="enterpriseDetailTag">REQUEST UNDERSTANDING</b></div><div class="enterprise-detail-copy"><h4 id="enterpriseDetailTitle">Translate a business request into a structured objective.</h4><p id="enterpriseDetailBody">The workflow begins with the requested business outcome, constraints, relevant context and any conditions that must be preserved throughout execution.</p></div><div class="enterprise-detail-side"><small>ENGINEERING FOCUS</small><b id="enterpriseDetailFocus">Intent structuring · context preservation</b><small>PLATFORM CAPABILITIES</small><span id="enterpriseDetailTools">Palantir AIP · Gemini · enterprise interfaces</span></div></div>
+ <div class="enterprise-journey-progress"><span id="enterpriseJourneyProgress"></span></div>
+ <p class="enterprise-journey-footnote">This is an explanatory animation of the capabilities and lifecycle you described, not a live connection, exact production topology or replay of a confidential customer workflow. Individual projects used different platform combinations.</p>
+</section>
+<div class="google-project-grid">
  <article class="google-project-card"><span>01 · ENTERPRISE AI</span><h3>Agentic solutions & workflow automation</h3><p>Built or contributed to 6+ agents and developed 18+ workflows using Palantir AIP and Google Gemini, including single-agent and multi-agent patterns connected to enterprise systems.</p><ul><li>Dynamic tool selection and multi-step execution</li><li>Task planning, delegation and agent coordination</li><li>Result validation, exception handling and controlled actions</li><li>Production releases, debugging, monitoring and support</li></ul></article>
  <article class="google-project-card"><span>02 · LINES & PRICING</span><h3>Pricing transformation & operational monitoring</h3><p>Worked across pricing and commercial transformation initiatives, including SpotOn / LMT Line Monitoring Tool and dynamic-pricing / ML-related use cases.</p><ul><li>Business-to-technical requirement translation</li><li>Data and ML solution delivery collaboration</li><li>Operational monitoring and production follow-through</li></ul></article>
  <article class="google-project-card"><span>03 · FINANCE TRANSFORMATION</span><h3>Enterprise finance data & process integration</h3><p>Contributed to finance transformation and SAP S/4HANA integration work, connecting business requirements with data, cloud and operational delivery.</p><ul><li>Cross-functional design and integration work</li><li>Technical implementation and issue resolution</li><li>Hypercare and post-deployment support</li></ul></article>
@@ -803,5 +886,47 @@ document.getElementById("dockTopBtn")?.addEventListener("click",()=>window.scrol
 startSyntheticTelemetry();
 
 renderAnalytics([],[],"");
+
+// ===== Enterprise AI workflow guided animation (illustrative, not connected) =====
+(()=>{
+ const root=document.getElementById("enterprise-agent-journey");if(!root)return;
+ const steps=[
+  {tag:"REQUEST UNDERSTANDING",title:"Translate a business request into a structured objective.",body:"The workflow begins with the requested business outcome, constraints, relevant context and conditions that must be preserved throughout execution.",focus:"Intent structuring · context preservation",tools:"Palantir AIP · Gemini · enterprise interfaces"},
+  {tag:"DYNAMIC PLANNING",title:"Break the objective into an executable plan.",body:"The agent determines the sequence of tasks, identifies required capabilities, checks dependencies and chooses the next action based on the current task state.",focus:"Task planning · dynamic tool selection",tools:"AIP orchestration · Gemini · workflow logic"},
+  {tag:"ENTERPRISE CONTEXT",title:"Retrieve the information needed to act responsibly.",body:"Relevant enterprise data and system responses provide the context for reasoning. The model should use retrieved information rather than invent operational facts.",focus:"Data access · grounding · context assembly",tools:"Foundry · governed data services · APIs"},
+  {tag:"MULTI-AGENT COORDINATION",title:"Delegate specialist tasks and combine their results.",body:"Where a task benefits from multiple agents, work can be split across specialised roles. Their outputs are brought together and checked against the original objective.",focus:"Agent delegation · coordination · state",tools:"Palantir AIP · Gemini · agent workflows"},
+  {tag:"TOOL & WORKFLOW EXECUTION",title:"Execute the required steps through connected tools.",body:"Agents can call permitted tools, APIs, code and enterprise workflows. Access rights and business rules remain enforced by the connected systems.",focus:"Tool calling · API integration · execution",tools:"Python · SQL · APIs · Google Cloud · enterprise systems"},
+  {tag:"RESULT VALIDATION",title:"Validate outcomes, recover from failures and escalate exceptions.",body:"The workflow checks returned results, handles errors, retries appropriate operations and escalates unresolved exceptions instead of silently treating them as successful.",focus:"Validation · exception handling · recovery",tools:"Workflow controls · logs · service responses"},
+  {tag:"HUMAN CONTROL",title:"Keep consequential decisions within the right approval boundary.",body:"Where business policy requires it, a person reviews the proposed action or result before execution or closure. The approval boundary is explicit and traceable.",focus:"Human approval · permissions · accountability",tools:"Enterprise access controls · approval workflows"},
+  {tag:"PRODUCTION OPERATIONS",title:"Operate, observe and continuously improve the solution.",body:"After release, engineering and operations teams monitor execution, investigate issues, maintain integrations and improve reliability and performance over time.",focus:"Release · monitoring · support · optimisation",tools:"Google Cloud operations · observability · engineering support"}
+ ];
+ const nodes=[...root.querySelectorAll("[data-enterprise-step]")],packet=root.querySelector("#enterpriseFlowPacket");
+ const $=id=>root.querySelector("#"+id);
+ let current=0,timer=null;
+ const reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ function render(i){
+  current=Math.max(0,Math.min(steps.length-1,i));const d=steps[current];
+  nodes.forEach((n,j)=>{n.classList.toggle("active",j===current);n.classList.toggle("done",j<current);n.setAttribute("aria-current",j===current?"step":"false");});
+  $("enterpriseDetailNumber").textContent=String(current+1).padStart(2,"0")+" / 08";
+  $("enterpriseDetailTag").textContent=d.tag;$("enterpriseDetailTitle").textContent=d.title;
+  $("enterpriseDetailBody").textContent=d.body;$("enterpriseDetailFocus").textContent=d.focus;$("enterpriseDetailTools").textContent=d.tools;
+  $("enterpriseJourneyProgress").style.width=((current+1)/steps.length*100)+"%";
+  const node=nodes[current];if(packet&&node){const track=root.querySelector("#enterpriseFlowTrack");const x=node.offsetLeft+node.offsetWidth/2-packet.offsetWidth/2;packet.style.left=x+"px";}
+  $("enterpriseJourneyStatus").textContent=timer?"PLAYING · STAGE "+(current+1)+" OF 8":(current===steps.length-1?"COMPLETE · GUIDED WALKTHROUGH":"READY · STAGE "+(current+1)+" OF 8");
+ }
+ function stop(){if(timer){clearInterval(timer);timer=null;}$("enterpriseJourneyStatus").textContent="PAUSED · STAGE "+(current+1)+" OF 8";}
+ function play(){if(timer)return;if(current===steps.length-1)render(0);if(reduced){render(current+1);return;}$("enterpriseJourneyStatus").textContent="PLAYING · STAGE "+(current+1)+" OF 8";timer=setInterval(()=>{if(current>=steps.length-1){clearInterval(timer);timer=null;render(current);$("enterpriseJourneyStatus").textContent="COMPLETE · GUIDED WALKTHROUGH";return;}render(current+1);},1900);}
+ nodes.forEach((n,i)=>n.addEventListener("click",()=>{stop();render(i);}));
+ root.querySelectorAll("[data-enterprise-control]").forEach(b=>b.addEventListener("click",()=>{
+  const action=b.dataset.enterpriseControl;
+  if(action==="play")play();
+  if(action==="pause")stop();
+  if(action==="step"){stop();render(current>=steps.length-1?0:current+1);}
+  if(action==="reset"){stop();render(0);$("enterpriseJourneyStatus").textContent="READY · GUIDED PLAYBACK";}
+ }));
+ window.addEventListener("resize",()=>render(current),{passive:true});
+ render(0);
+})();
+
 </script>
 </body></html>
