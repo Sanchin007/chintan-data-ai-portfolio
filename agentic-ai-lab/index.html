@@ -301,22 +301,20 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
 <header class="topbar shell"><div class="brand"><div class="mark">✳</div><div>CHINTAN CHANGOLE<small>ENTERPRISE AI · DATA · DIGITAL TRANSFORMATION</small></div></div><div class="topright"><span class="pill"><i class="dot"></i>PRODUCTION ENGINEERING EXPERIENCE</span><span>GOOGLE CLOUD ENGAGEMENT · 2023—2026</span></div></header>
 <nav class="audit-experience-nav" aria-label="Audit solution experience">
   <div class="audit-experience-nav-inner">
-    <div class="audit-nav-context"><span class="audit-nav-mark">✳</span><span><b>AUDIT SOLUTION EXPERIENCE</b><small>EXPLORE THE SYSTEM · 8 VIEWS</small></span></div>
+    <div class="audit-nav-context"><span class="audit-nav-mark">✳</span><span><b>ENTERPRISE AI · CASE STUDY</b><small>EXPERIENCE · ENGINEERING · DEMO</small></span></div>
     <div class="audit-nav-links">
-      <a href="#enterprise-agent-journey" data-audit-nav="journey">01&nbsp; End-to-end journey</a>
-      <a href="#overview" data-audit-nav="demo">02&nbsp; Live demo</a>
-      <a href="#architecture" data-audit-nav="architecture">03&nbsp; Architecture</a>
-      <a href="#enterprise-operating-model" data-audit-nav="control">04&nbsp; Control plane</a>
-      <a href="#telemetry" data-audit-nav="reliability">05&nbsp; Reliability lab</a>
-      <a href="#process" data-audit-nav="requirements">06&nbsp; Requirements</a>
-      <a href="#google-projects" data-audit-nav="cloud">07&nbsp; Google Cloud</a>
-      <a href="#value" data-audit-nav="delivery">08&nbsp; Delivery</a>
+      <a href="#professional-experience" data-audit-nav="experience">01&nbsp; Experience</a>
+      <a href="#google-projects" data-audit-nav="projects">02&nbsp; Projects</a>
+      <a href="#enterprise-agent-journey" data-audit-nav="workflow">03&nbsp; Workflow</a>
+      <a href="#architecture" data-audit-nav="architecture">04&nbsp; Architecture</a>
+      <a href="#overview" data-audit-nav="demo">05&nbsp; Try the demo</a>
+      <a href="#findings" data-audit-nav="evidence">06&nbsp; Evidence & results</a>
     </div>
   </div>
   <div class="audit-nav-progress"><i id="auditNavProgress"></i></div>
 </nav>
 <div class="audit-experience-intro shell">
-  <div><span class="audit-intro-kicker">INTERACTIVE SOLUTION WALKTHROUGH</span><h2>Explore the audit platform, from the first signal to accountable action.</h2><p>Move through the journey, inspect the architecture and controls, test the simulated operating environment, and review the delivery blueprint. Each view is part of one connected solution story.</p></div>
+  <div><span class="audit-intro-kicker">A SHORT, INTERACTIVE CASE STUDY</span><h2>From enterprise engineering to an AI audit demonstrator.</h2><p>See the work, understand the workflow, then try the independent demo. No long technical briefing required.</p></div>
   <div class="audit-intro-status"><span class="audit-status-dot"></span><b>INTERACTIVE WORKSPACE</b><small>DEMONSTRATION DATA · HUMAN REVIEW</small></div>
 </div>
 
@@ -997,5 +995,74 @@ section[id]{scroll-margin-top:148px}
  links.forEach(a=>a.addEventListener('click',()=>active(a.getAttribute('href').slice(1))));
 })();
 </script>
+
+
+<style id="audit-ux-cleanup">
+/* Focused editorial cleanup: keep the working demo, remove repeated explainer layers. */
+body{font-size:16px;line-height:1.65}
+.shell{max-width:1420px;padding-left:30px;padding-right:30px}
+.audit-experience-nav-inner{min-height:62px;gap:20px}
+.audit-nav-context b{font-size:10px}.audit-nav-context small{font-size:9px}
+.audit-nav-links a{font-size:13px;padding:10px 12px}
+.audit-experience-intro{padding:24px 30px;margin-top:16px}
+.audit-experience-intro h2{font-size:clamp(27px,3vw,38px)}
+.audit-experience-intro p{font-size:15px;line-height:1.65}
+.hero{padding:46px 48px;gap:38px}
+.hero p,.case-intro>p{font-size:16px;line-height:1.7}
+.hero-note{font-size:14px}
+.case-intro{padding-top:34px}
+.case-intro h2{font-size:clamp(29px,3.2vw,40px)}
+.case-detail{padding:18px}
+.case-detail small{font-size:10px}.case-detail strong{font-size:14px}.case-detail p{font-size:13px;line-height:1.65}
+.panel{padding:26px;margin-bottom:18px;border-radius:16px}
+.panel-head{margin-bottom:20px}
+.panel-head h2{font-size:24px}
+.panel-head p{font-size:14px;line-height:1.7;max-width:850px}
+.micro,.project-kicker,.case-kicker,.eyebrow{font-size:10px}
+.google-project-intro{padding:22px;gap:22px}
+.google-project-intro h3{font-size:23px}.google-project-intro p{font-size:14px;line-height:1.7}
+.project-counts b{font-size:28px}.project-counts span{font-size:11px}
+.google-arch-grid article{padding:15px}
+.google-arch-grid article small{font-size:9px}.google-arch-grid article b{font-size:13px}.google-arch-grid article p{font-size:12px;line-height:1.6}
+.google-arch-note,.google-project-footer{font-size:11px;line-height:1.6}
+.google-project-card{padding:19px}.google-project-card>span{font-size:9px}.google-project-card h3{font-size:17px}.google-project-card p,.google-project-card li{font-size:13px;line-height:1.7}
+.enterprise-journey-head h3{font-size:24px}.enterprise-journey-head p{font-size:14px;line-height:1.7}
+.enterprise-flow-node b{font-size:13px}.enterprise-flow-node span{font-size:11px}
+.enterprise-detail-copy h4{font-size:19px}.enterprise-detail-copy p{font-size:14px;line-height:1.7}
+.enterprise-detail-side b,.enterprise-detail-side span{font-size:12px}
+.arch-node{padding:15px}.arch-node span{font-size:9px}.arch-node strong{font-size:13px}.arch-node small{font-size:11px;line-height:1.6}
+.arch-support{padding:15px}.arch-support b{font-size:12px}.arch-support p{font-size:11px;line-height:1.65}
+.ba-column{padding:18px}.ba-column h3{font-size:17px}.ba-column ol{font-size:13px;line-height:1.75}.ba-outcome{font-size:12px;line-height:1.6}
+.nlp-title{font-size:12px}.composer-subtitle{font-size:19px}.nlp-input{font-size:14px;min-height:110px}.nlp-hint,.picker-hint,.quick-prompt-label{font-size:10px}
+.prompt-chip{font-size:11px;padding:8px 11px}.mission-card-copy strong{font-size:12px}.mission-card-copy small{font-size:10px}.mission-desc{font-size:11px}
+.primary,.secondary{font-size:12px;min-height:40px;padding:10px 15px}
+.scope-row,.scope-row strong{font-size:12px}.statusline,.connect-hint{font-size:10px}
+.trace-event b{font-size:10px}.trace-event small,.assistant-answer{font-size:12px;line-height:1.65}
+.notice,.control-note,.sim-footnote{font-size:12px;line-height:1.7}
+.finding p,.finding small,.report{font-size:13px;line-height:1.7}
+.foot{font-size:10px}
+/* The following panels repeated the same points or added deep-dive material before the core demo. Their DOM remains available to the existing demo scripts, but they are not part of the main reading path. */
+.sidebar,.stats,.agent-story,.case-intro .journey{display:none!important}
+.layout{display:block;margin-top:20px}
+#value,#telemetry,#enterprise-operating-model,#decision-map,#regulatory,#workforce,#tool-catalogue,#notifications{display:none!important}
+#overview{scroll-margin-top:150px}
+@media(max-width:900px){
+ .shell{padding-left:18px;padding-right:18px}
+ .hero{grid-template-columns:1fr;padding:28px}
+ .audit-experience-nav-inner{display:block;padding:8px 18px 0}
+ .audit-nav-context{display:none}
+ .audit-nav-links{gap:3px;padding:5px 0 8px}
+ .audit-nav-links a{font-size:11px;padding:8px 9px}
+ .google-arch-grid{grid-template-columns:1fr}
+ .google-arch-arrow{transform:rotate(90deg);min-height:17px}
+}
+@media(max-width:620px){
+ .audit-experience-intro{margin:12px 12px 0;padding:19px}
+ .audit-experience-intro h2{font-size:25px}
+ .panel{padding:18px}
+ .panel-head h2{font-size:21px}
+ .google-project-grid{grid-template-columns:1fr}
+}
+</style>
 
 </body></html>
