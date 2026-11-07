@@ -311,7 +311,7 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
       <a href="#process" data-audit-nav="requirements">06&nbsp; Requirements</a>
       <a href="#google-projects" data-audit-nav="cloud">07&nbsp; Google Cloud</a>
       <a href="#value" data-audit-nav="delivery">08&nbsp; Delivery</a>
-    </div>>
+    </div>
   </div>
   <div class="audit-nav-progress"><i id="auditNavProgress"></i></div>
 </nav>
@@ -972,7 +972,7 @@ renderAnalytics([],[],"");
 .audit-intro-status b{font:600 8px "Roboto Mono",monospace;color:#188038}
 .audit-intro-status small{display:block;margin:9px 0 0;color:#80868b;font:7px "Roboto Mono",monospace}
 section[id]{scroll-margin-top:148px}
-@media(max-width:900px){.audit-experience-nav-inner{display:block;padding:8px 18px 0}.audit-nav-context{display:none}.audit-nav-links{gap:3px;padding:5px 0 8px}.audit-nav-links a{font-size:9px;padding:8px}.audit-experience-intro{margin:14px 18px 0;padding:20px;align-items:flex-start}.audit-intro-status{flex-basis:175px}}
+@media(max-width:900px){.audit-experience-nav-inner{display:block;padding:8px 18px 0}.audit-nav-context{display:none}.audit-nav-links{gap:3px;padding:5px 0 8px}.audit-nav-links a{font-size:11px;padding:9px}.audit-experience-intro{margin:14px 18px 0;padding:20px;align-items:flex-start}.audit-intro-status{flex-basis:175px}}
 @media(max-width:620px){.audit-experience-nav{top:64px}.audit-experience-intro{display:block}.audit-intro-status{margin-top:14px;max-width:100%}.audit-experience-intro h2{font-size:24px}.audit-experience-intro p{font-size:11px}section[id]{scroll-margin-top:132px}}
 @media(prefers-reduced-motion:reduce){.audit-nav-progress i,.audit-nav-links a{transition:none}}
 </style>
@@ -1005,7 +1005,11 @@ body{font-size:16px;line-height:1.65}
 .shell{max-width:1420px;padding-left:30px;padding-right:30px}
 .audit-experience-nav-inner{min-height:62px;gap:20px}
 .audit-nav-context b{font-size:10px}.audit-nav-context small{font-size:9px}
-.audit-nav-links a{font-size:13px;padding:10px 12px}
+.audit-nav-links a{font-size:13px;padding:10px 12px;min-height:42px}
+.audit-nav-links{flex-wrap:nowrap}
+.audit-nav-context b{font-size:11px}.audit-nav-context small{font-size:10px}
+.audit-intro-kicker{font-size:10px}
+.audit-intro-status b{font-size:10px}.audit-intro-status small{font-size:9px}
 .audit-experience-intro{padding:24px 30px;margin-top:16px}
 .audit-experience-intro h2{font-size:clamp(27px,3vw,38px)}
 .audit-experience-intro p{font-size:15px;line-height:1.65}
@@ -1043,10 +1047,8 @@ body{font-size:16px;line-height:1.65}
 .notice,.control-note,.sim-footnote{font-size:12px;line-height:1.7}
 .finding p,.finding small,.report{font-size:13px;line-height:1.7}
 .foot{font-size:10px}
-/* The following panels repeated the same points or added deep-dive material before the core demo. Their DOM remains available to the existing demo scripts, but they are not part of the main reading path. */
-.sidebar,.stats,.agent-story,.case-intro .journey{display:none!important}
+/* Keep all eight requested views and supporting panels visible and navigable. */
 .layout{display:block;margin-top:20px}
-#decision-map,#regulatory,#workforce,#tool-catalogue,#notifications{display:none!important}
 #overview{scroll-margin-top:150px}
 @media(max-width:900px){
  .shell{padding-left:18px;padding-right:18px}
@@ -1054,7 +1056,7 @@ body{font-size:16px;line-height:1.65}
  .audit-experience-nav-inner{display:block;padding:8px 18px 0}
  .audit-nav-context{display:none}
  .audit-nav-links{gap:3px;padding:5px 0 8px}
- .audit-nav-links a{font-size:11px;padding:8px 9px}
+ .audit-nav-links a{font-size:12px;padding:9px 10px}
  .google-arch-grid{grid-template-columns:1fr}
  .google-arch-arrow{transform:rotate(90deg);min-height:17px}
 }
