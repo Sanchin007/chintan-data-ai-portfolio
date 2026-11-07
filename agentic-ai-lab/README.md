@@ -15,7 +15,7 @@ The audit demonstrator is not presented as a CMA CGM production system and is no
 
 The professional experience section describes the user's hands-on work across:
 
-- Two AI agents and more than four workflows personally built.
+- 6+ AI agents and 18+ workflows built.
 - Palantir Foundry and Palantir AIP.
 - Google Gemini integrated with hybrid Google Cloud infrastructure.
 - Single-agent and multi-agent workflows, including dynamic tool selection, planning, task delegation, multi-step execution, result validation and recovery.
