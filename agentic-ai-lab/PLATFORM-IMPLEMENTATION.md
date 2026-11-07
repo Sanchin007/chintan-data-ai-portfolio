@@ -2,7 +2,9 @@
 
 This reference package closes the design-evidence gaps for continuous auditing, governed data models, Palantir Foundry, Power BI, lifecycle governance, export-control triage and value tracking.
 
-## What is implemented here versus platform-ready design
+#> **Scope note:** This blueprint documents the separate portfolio audit demonstrator only. Its Foundry and Power BI mappings are reference designs, not deployments of this demonstrator. They do not describe or qualify the author's separate hands-on professional experience with Palantir Foundry and AIP.
+
+# What is implemented here versus platform-ready design
 
 | Capability | Evidence in this repository | Runtime boundary |
 |---|---|---|
