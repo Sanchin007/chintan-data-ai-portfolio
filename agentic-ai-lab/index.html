@@ -299,6 +299,27 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif;background:radial-gradien
 </style></head>
 <body>
 <header class="topbar shell"><div class="brand"><div class="mark">✳</div><div>CHINTAN CHANGOLE<small>ENTERPRISE AI · DATA · DIGITAL TRANSFORMATION</small></div></div><div class="topright"><span class="pill"><i class="dot"></i>PRODUCTION ENGINEERING EXPERIENCE</span><span>GOOGLE CLOUD ENGAGEMENT · 2023—2026</span></div></header>
+<nav class="audit-experience-nav" aria-label="Audit solution experience">
+  <div class="audit-experience-nav-inner">
+    <div class="audit-nav-context"><span class="audit-nav-mark">✳</span><span><b>AUDIT SOLUTION EXPERIENCE</b><small>EXPLORE THE SYSTEM · 8 VIEWS</small></span></div>
+    <div class="audit-nav-links">
+      <a href="#enterprise-agent-journey" data-audit-nav="journey">01&nbsp; End-to-end journey</a>
+      <a href="#overview" data-audit-nav="demo">02&nbsp; Live demo</a>
+      <a href="#architecture" data-audit-nav="architecture">03&nbsp; Architecture</a>
+      <a href="#enterprise-operating-model" data-audit-nav="control">04&nbsp; Control plane</a>
+      <a href="#telemetry" data-audit-nav="reliability">05&nbsp; Reliability lab</a>
+      <a href="#process" data-audit-nav="requirements">06&nbsp; Requirements</a>
+      <a href="#google-projects" data-audit-nav="cloud">07&nbsp; Google Cloud</a>
+      <a href="#value" data-audit-nav="delivery">08&nbsp; Delivery</a>
+    </div>
+  </div>
+  <div class="audit-nav-progress"><i id="auditNavProgress"></i></div>
+</nav>
+<div class="audit-experience-intro shell">
+  <div><span class="audit-intro-kicker">INTERACTIVE SOLUTION WALKTHROUGH</span><h2>Explore the audit platform, from the first signal to accountable action.</h2><p>Move through the journey, inspect the architecture and controls, test the simulated operating environment, and review the delivery blueprint. Each view is part of one connected solution story.</p></div>
+  <div class="audit-intro-status"><span class="audit-status-dot"></span><b>INTERACTIVE WORKSPACE</b><small>DEMONSTRATION DATA · HUMAN REVIEW</small></div>
+</div>
+
 <main class="shell">
 
 <section class="hero"><div><div class="eyebrow">HANDS-ON ENGINEERING · ENTERPRISE AI · PRODUCTION DELIVERY</div><h1>Building enterprise AI systems from <span>architecture to production.</span></h1><p>I design, code and deliver AI-enabled data solutions across enterprise environments. My experience combines Palantir Foundry and AIP, Google Gemini and Google Cloud, with direct involvement from solution design and engineering through production releases, monitoring and continuous improvement.</p><div class="hero-actions"><a class="hero-link" href="#agent-overview">Explore my experience <span>↓</span></a><a class="hero-link secondary-link" href="#overview">Open the audit demonstrator <span>↗</span></a></div></div><aside class="hero-note"><strong>MY ENGINEERING CONTRIBUTION</strong><div class="hero-note-stat"><b>6+</b><span>AI agents built</span></div><div class="hero-note-stat"><b>18+</b><span>Workflows built</span></div><p>Hands-on development with Palantir AIP and Gemini, integrated with Foundry and Google Cloud infrastructure. The solutions are connected to enterprise systems and in active use.</p></aside></section>
@@ -929,4 +950,52 @@ renderAnalytics([],[],"");
 })();
 
 </script>
+<style id="audit-experience-design">
+.audit-experience-nav{position:sticky;top:64px;z-index:45;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid #dadce0;box-shadow:0 3px 12px rgba(60,64,67,.045)}
+.audit-experience-nav-inner{max-width:1460px;margin:auto;padding:0 26px;min-height:66px;display:flex;align-items:center;gap:24px}
+.audit-nav-context{display:flex;align-items:center;gap:10px;flex:0 0 auto;color:#202124}
+.audit-nav-mark{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#e8f0fe;color:#1a73e8;font-size:19px}
+.audit-nav-context b{display:block;font:700 9px "Roboto Mono",monospace;letter-spacing:.045em}
+.audit-nav-context small{display:block;margin-top:4px;color:#80868b;font:8px "Roboto Mono",monospace}
+.audit-nav-links{display:flex;align-items:center;gap:5px;min-width:0;overflow-x:auto;scrollbar-width:thin;padding:10px 0}
+.audit-nav-links a{white-space:nowrap;text-decoration:none;color:#5f6368;border:1px solid transparent;border-radius:8px;padding:9px 10px;font-size:10px;font-weight:600;transition:background .2s,color .2s,border-color .2s}
+.audit-nav-links a:hover{background:#f1f3f4;color:#202124}
+.audit-nav-links a.active{background:#e8f0fe;border-color:#d2e3fc;color:#1967d2}
+.audit-nav-progress{height:2px;background:#f1f3f4}
+.audit-nav-progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,#4285f4,#34a853);transition:width .12s linear}
+.audit-experience-intro{display:flex;justify-content:space-between;align-items:center;gap:28px;margin-top:22px;padding:26px 30px;border:1px solid #dbe5f3;border-radius:16px;background:linear-gradient(105deg,#fff 0%,#f8fbff 68%,#edf4ff 100%)}
+.audit-intro-kicker{font:600 8px "Roboto Mono",monospace;letter-spacing:.12em;color:#1a73e8}
+.audit-experience-intro h2{max-width:850px;margin:8px 0 7px;font-size:clamp(23px,2.4vw,32px);line-height:1.15;letter-spacing:-.035em;font-weight:600;color:#202124}
+.audit-experience-intro p{max-width:850px;margin:0;color:#5f6368;font-size:12px;line-height:1.7}
+.audit-intro-status{flex:0 0 205px;padding:14px 15px;border:1px solid #dce5ef;border-radius:12px;background:rgba(255,255,255,.8)}
+.audit-status-dot{display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:#188038;box-shadow:0 0 0 4px #e6f4ea}
+.audit-intro-status b{font:600 8px "Roboto Mono",monospace;color:#188038}
+.audit-intro-status small{display:block;margin:9px 0 0;color:#80868b;font:7px "Roboto Mono",monospace}
+section[id]{scroll-margin-top:148px}
+@media(max-width:900px){.audit-experience-nav-inner{display:block;padding:8px 18px 0}.audit-nav-context{display:none}.audit-nav-links{gap:3px;padding:5px 0 8px}.audit-nav-links a{font-size:9px;padding:8px}.audit-experience-intro{margin:14px 18px 0;padding:20px;align-items:flex-start}.audit-intro-status{flex-basis:175px}}
+@media(max-width:620px){.audit-experience-nav{top:64px}.audit-experience-intro{display:block}.audit-intro-status{margin-top:14px;max-width:100%}.audit-experience-intro h2{font-size:24px}.audit-experience-intro p{font-size:11px}section[id]{scroll-margin-top:132px}}
+@media(prefers-reduced-motion:reduce){.audit-nav-progress i,.audit-nav-links a{transition:none}}
+</style>
+
+<script id="audit-experience-navigation">
+(function(){
+ const nav=document.querySelector('.audit-experience-nav');
+ if(!nav)return;
+ const links=[...nav.querySelectorAll('[data-audit-nav]')];
+ const progress=document.getElementById('auditNavProgress');
+ const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+ function active(id){links.forEach(a=>{const yes=a.getAttribute('href')==='#'+id;a.classList.toggle('active',yes);if(yes)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}
+ if('IntersectionObserver'in window){
+  const observer=new IntersectionObserver(entries=>{
+   const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+   if(visible)active(visible.target.id);
+  },{rootMargin:'-22% 0px -62% 0px',threshold:[0,.15,.35,.6]});
+  targets.forEach(t=>observer.observe(t));
+ }
+ function update(){const doc=document.documentElement;const max=doc.scrollHeight-window.innerHeight;progress.style.width=(max>0?Math.min(100,Math.max(0,window.scrollY/max*100)):0)+'%';}
+ window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();
+ links.forEach(a=>a.addEventListener('click',()=>active(a.getAttribute('href').slice(1))));
+})();
+</script>
+
 </body></html>
