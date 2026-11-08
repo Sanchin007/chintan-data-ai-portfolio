@@ -1360,8 +1360,8 @@ main.shell{width:min(1440px,calc(100% - 48px));margin:0 auto}
 .audit-experience-nav [data-audit-view]{flex:0 0 auto;border:1px solid transparent;border-radius:999px;padding:10px 15px;background:transparent;color:#5f6368;font-size:13px;font-weight:650;white-space:nowrap;transition:.2s}
 .audit-experience-nav [data-audit-view]:hover{background:#f1f3f4;color:#202124}
 .audit-experience-nav [data-audit-view].active{background:#e8f0fe;color:#174ea6;border-color:#d2e3fc}
-.audit-view-stage{padding:28px 0 80px}
-.audit-view-panel{animation:auditPageIn .35s ease both;min-width:0}
+.audit-tab-stage{padding:28px 0 80px}
+.audit-tab-view{animation:auditPageIn .35s ease both;min-width:0}
 @keyframes auditPageIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
 .audit-view-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:8px 0 22px;padding:0 2px}
 .audit-view-heading h1{font-size:clamp(28px,4vw,42px);line-height:1.12;letter-spacing:-1.2px;margin:5px 0 8px;color:#202124}
@@ -1369,16 +1369,16 @@ main.shell{width:min(1440px,calc(100% - 48px));margin:0 auto}
 .audit-view-heading .micro{color:#1a73e8;font-size:11px;font-weight:750;letter-spacing:1.25px}
 .audit-view-status{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:#fff;color:#5f6368;font:650 10px/1.2 "Roboto Mono",monospace;white-space:nowrap}
 .audit-view-status i{width:7px;height:7px;border-radius:50%;background:#188038;box-shadow:0 0 0 4px #e6f4ea}
-.audit-view-panel>.panel,.audit-view-panel .panel{border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.96);box-shadow:0 8px 30px rgba(60,64,67,.055);padding:clamp(18px,2.4vw,30px);margin:0 0 18px}
-.audit-view-panel h2{font-size:clamp(21px,2.5vw,29px);letter-spacing:-.55px;line-height:1.2}
-.audit-view-panel h3{font-size:19px;letter-spacing:-.25px}
-.audit-view-panel p{line-height:1.65}
-.audit-view-panel button,.audit-view-panel input,.audit-view-panel select,.audit-view-panel textarea{font:inherit}
-.audit-view-panel button{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
-.audit-view-panel button:hover{transform:translateY(-1px)}
-.audit-view-panel button:focus-visible,.audit-experience-nav button:focus-visible{outline:3px solid #8ab4f8;outline-offset:3px}
-.audit-view-panel .primary,.audit-view-panel button.primary{border-radius:10px;box-shadow:0 2px 5px rgba(26,115,232,.16)}
-.audit-view-panel .grid,.audit-view-panel .card-grid{gap:14px}
+.audit-tab-view>.panel,.audit-tab-view .panel{border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.96);box-shadow:0 8px 30px rgba(60,64,67,.055);padding:clamp(18px,2.4vw,30px);margin:0 0 18px}
+.audit-tab-view h2{font-size:clamp(21px,2.5vw,29px);letter-spacing:-.55px;line-height:1.2}
+.audit-tab-view h3{font-size:19px;letter-spacing:-.25px}
+.audit-tab-view p{line-height:1.65}
+.audit-tab-view button,.audit-tab-view input,.audit-tab-view select,.audit-tab-view textarea{font:inherit}
+.audit-tab-view button{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.audit-tab-view button:hover{transform:translateY(-1px)}
+.audit-tab-view button:focus-visible,.audit-experience-nav button:focus-visible{outline:3px solid #8ab4f8;outline-offset:3px}
+.audit-tab-view .primary,.audit-tab-view button.primary{border-radius:10px;box-shadow:0 2px 5px rgba(26,115,232,.16)}
+.audit-tab-view .grid,.audit-tab-view .card-grid{gap:14px}
 .transformation-story{overflow:hidden}
 .transformation-intro{gap:30px}
 .transformation-compare{gap:16px}
@@ -1398,8 +1398,8 @@ main.shell{width:min(1440px,calc(100% - 48px));margin:0 auto}
 .review-sync-status{display:inline-flex;align-items:center;border-radius:999px;background:#f1f3f4;padding:5px 9px;color:#5f6368;font-size:11px;font-weight:700}
 .demo-target-pulse{animation:demoPulse 1.2s ease}
 @keyframes demoPulse{0%,100%{box-shadow:0 0 0 0 rgba(26,115,232,0)}35%{box-shadow:0 0 0 5px rgba(26,115,232,.18)}}
-@media(max-width:760px){main.shell{width:min(100% - 24px,1440px)}.audit-view-stage{padding-top:18px}.audit-view-heading{display:block}.audit-view-status{margin-top:12px}.audit-experience-nav{border-radius:0 0 13px 13px}.audit-experience-nav .audit-nav-links{padding:8px}.audit-experience-nav [data-audit-view]{padding:9px 12px;font-size:12px}.transformation-flow{overflow-x:auto}.transformation-node{min-width:145px}.audit-view-panel>.panel,.audit-view-panel .panel{padding:17px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.audit-view-panel,.demo-target-pulse{animation:none!important}.audit-view-panel button{transition:none}}
+@media(max-width:760px){main.shell{width:min(100% - 24px,1440px)}.audit-tab-stage{padding-top:18px}.audit-view-heading{display:block}.audit-view-status{margin-top:12px}.audit-experience-nav{border-radius:0 0 13px 13px}.audit-experience-nav .audit-nav-links{padding:8px}.audit-experience-nav [data-audit-view]{padding:9px 12px;font-size:12px}.transformation-flow{overflow-x:auto}.transformation-node{min-width:145px}.audit-tab-view>.panel,.audit-tab-view .panel{padding:17px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.audit-tab-view,.demo-target-pulse{animation:none!important}.audit-tab-view button{transition:none}}
 </style>
 
 <style id="agentic-lab-visual-redesign-v2">
@@ -1429,14 +1429,14 @@ body{background:linear-gradient(180deg,#eef4ff 0,#f7f9fc 360px,#f5f8fc 100%)!imp
 .audit-view-heading h1{font-size:clamp(32px,4vw,48px)!important;letter-spacing:-.045em!important;font-weight:650!important;color:#182536!important}
 .audit-view-heading p{max-width:800px!important;font-size:15px!important;line-height:1.75!important;color:#64748b!important}
 .audit-view-status{position:relative;z-index:1;border-radius:30px!important;padding:10px 14px!important;background:rgba(255,255,255,.8)!important;border-color:#dce5f0!important;font-size:9px!important}
-.audit-view-panel>.panel,.audit-view-panel .panel{border:1px solid var(--lab-line)!important;border-radius:var(--lab-radius)!important;background:rgba(255,255,255,.97)!important;box-shadow:0 8px 30px rgba(31,54,88,.045)!important;padding:clamp(22px,2.7vw,34px)!important;margin:0 0 20px!important}
-.audit-view-panel h2{font-size:clamp(23px,2.5vw,31px)!important;letter-spacing:-.035em!important;color:#1d2939!important}
-.audit-view-panel h3{font-size:20px!important;color:#243247!important}
-.audit-view-panel p{font-size:14px;line-height:1.75!important;color:#667085}
-.audit-view-panel .micro{font-size:10px!important;letter-spacing:.12em!important;color:#1967d2!important}
-.audit-view-panel button{border-radius:10px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease!important}
-.audit-view-panel button:hover{transform:translateY(-2px)!important}
-.audit-view-panel button:focus-visible,.audit-experience-nav button:focus-visible{outline:3px solid #8ab4f8!important;outline-offset:3px!important}
+.audit-tab-view>.panel,.audit-tab-view .panel{border:1px solid var(--lab-line)!important;border-radius:var(--lab-radius)!important;background:rgba(255,255,255,.97)!important;box-shadow:0 8px 30px rgba(31,54,88,.045)!important;padding:clamp(22px,2.7vw,34px)!important;margin:0 0 20px!important}
+.audit-tab-view h2{font-size:clamp(23px,2.5vw,31px)!important;letter-spacing:-.035em!important;color:#1d2939!important}
+.audit-tab-view h3{font-size:20px!important;color:#243247!important}
+.audit-tab-view p{font-size:14px;line-height:1.75!important;color:#667085}
+.audit-tab-view .micro{font-size:10px!important;letter-spacing:.12em!important;color:#1967d2!important}
+.audit-tab-view button{border-radius:10px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease!important}
+.audit-tab-view button:hover{transform:translateY(-2px)!important}
+.audit-tab-view button:focus-visible,.audit-experience-nav button:focus-visible{outline:3px solid #8ab4f8!important;outline-offset:3px!important}
 .transformation-story{padding:clamp(24px,3vw,38px)!important}
 .transformation-lane{padding:22px!important;border-radius:18px!important}
 .transformation-lane.before{background:linear-gradient(135deg,#fff8f6,#fff)!important;border-color:#f0ded9!important}
@@ -1461,8 +1461,8 @@ body{background:linear-gradient(180deg,#eef4ff 0,#f7f9fc 360px,#f5f8fc 100%)!imp
 .audit-tab-view:not([hidden]){animation:labViewEnter .32s ease both}
 @keyframes labViewEnter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:1050px){.audit-experience-nav-inner{display:block!important;padding:10px 20px!important}.audit-nav-context{display:none!important}.audit-nav-links{padding:4px 0!important}.demo-module-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
-@media(max-width:680px){.topbar{height:auto!important;min-height:62px!important;padding:10px 16px!important}.topright{display:none!important}.audit-tab-stage{padding:0 14px!important;margin:18px auto 50px!important}.audit-view-heading{display:block!important;min-height:unset!important;padding:25px 22px!important;border-radius:18px!important}.audit-view-heading h1{font-size:31px!important}.audit-view-heading p{font-size:14px!important}.audit-view-status{display:inline-flex!important;margin-top:16px!important}.audit-nav-links button{font-size:11px!important;padding:9px 11px!important}.demo-module-grid{grid-template-columns:1fr!important}.audit-view-panel>.panel,.audit-view-panel .panel{padding:19px!important}.transformation-lane{padding:16px!important}}
-@media(prefers-reduced-motion:reduce){.audit-tab-view:not([hidden]){animation:none!important}.audit-view-panel button{transition:none!important}}
+@media(max-width:680px){.topbar{height:auto!important;min-height:62px!important;padding:10px 16px!important}.topright{display:none!important}.audit-tab-stage{padding:0 14px!important;margin:18px auto 50px!important}.audit-view-heading{display:block!important;min-height:unset!important;padding:25px 22px!important;border-radius:18px!important}.audit-view-heading h1{font-size:31px!important}.audit-view-heading p{font-size:14px!important}.audit-view-status{display:inline-flex!important;margin-top:16px!important}.audit-nav-links button{font-size:11px!important;padding:9px 11px!important}.demo-module-grid{grid-template-columns:1fr!important}.audit-tab-view>.panel,.audit-tab-view .panel{padding:19px!important}.transformation-lane{padding:16px!important}}
+@media(prefers-reduced-motion:reduce){.audit-tab-view:not([hidden]){animation:none!important}.audit-tab-view button{transition:none!important}}
 </style>
 <script id="agentic-lab-navigation-hardening">
 (function(){
