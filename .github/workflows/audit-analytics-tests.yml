@@ -29,7 +29,7 @@ jobs:
           from pathlib import Path
           import re
           page = Path("agentic-ai-lab/index.html").read_text()
-          scripts = re.findall(r"<script\\b[^>]*>([\\s\\S]*?)</script\\s*>", page, re.IGNORECASE)
+          scripts = re.findall(r"<script\b[^>]*>([\s\S]*?)</script\s*>", page, re.IGNORECASE)
           if not scripts:
               raise SystemExit("No script blocks found in agentic-ai-lab/index.html")
           out = Path("/tmp/audit-page-scripts")
