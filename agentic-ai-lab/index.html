@@ -979,7 +979,7 @@ section[id]{scroll-margin-top:148px}
  if(!nav||!main)return;
  const tabs=[...nav.querySelectorAll('[data-audit-view]')];
  const groups=[
-  {key:'journey',title:'End-to-end agent journey',sub:'Professional engineering context and an interactive walkthrough of an enterprise agent lifecycle.',ids:['professional-experience','agent-overview','enterprise-agent-journey']},
+  {key:'journey',title:'Transformation story & agent journey',sub:'Start with the business process, see what changed, understand your engineering contribution and then explore the agent lifecycle.',ids:['enterprise-agent-journey']},
   {key:'demo',title:'Live audit workspace',sub:'Launch a mission, inspect deterministic checks, challenge evidence and prepare a human-reviewed working paper.',ids:['overview','execution','findings','report']},
   {key:'architecture',title:'System architecture',sub:'Explore the independent portfolio demonstrator architecture and its explicit integration boundaries.',ids:['architecture']},
   {key:'control',title:'Control plane & governance',sub:'Continuous controls, decision rights, regulatory context and accountable notification workflows.',ids:['enterprise-operating-model','decision-map','regulatory','notifications']},
@@ -991,6 +991,34 @@ section[id]{scroll-margin-top:148px}
  const layout=main.querySelector('.layout');
  const content=layout&&layout.querySelector('.content');
  if(!content)return;
+ content.insertAdjacentHTML('afterbegin', `<section class="panel transformation-story" id="transformation-story" aria-labelledby="transformation-story-title">
+  <div class="transformation-topline"><span class="micro">THE TRANSFORMATION · BUSINESS FIRST, TECHNOLOGY SECOND</span><span class="story-context"><i></i> PROFESSIONAL EXPERIENCE · CMA CGM ENGAGEMENT</span></div>
+  <div class="transformation-intro"><div><h2 id="transformation-story-title">From fragmented operational work to governed, AI-assisted execution.</h2><p>The story is not “we added a chatbot”. It is how business processes, enterprise data, specialist decisions and technology delivery were brought together into more structured workflows.</p></div><div class="transformation-principle"><span>DESIGN PRINCIPLE</span><b>Automate preparation. Preserve accountability.</b><small>AI supports analysis and orchestration; business owners, auditors and specialists retain decision authority.</small></div></div>
+  <div class="transformation-compare">
+   <article class="transformation-lane before"><div class="transformation-lane-head"><span>01</span><div><b>BEFORE · FRAGMENTED PROCESS</b><small>Representative manual operating pattern</small></div><em>CONTEXT SCATTERED</em></div><div class="transformation-flow"><div class="transformation-node"><small>01 · INTAKE</small><b>Request arrives</b><span>Email, spreadsheet, operational query</span></div><i>→</i><div class="transformation-node"><small>02 · DISCOVERY</small><b>Find the data</b><span>Locate reports, records and owners</span></div><i>→</i><div class="transformation-node"><small>03 · ANALYSIS</small><b>Reconcile manually</b><span>Compare sources and chase context</span></div><i>→</i><div class="transformation-node"><small>04 · REVIEW</small><b>Prepare a decision</b><span>Assemble evidence and escalate</span></div></div><p class="transformation-lane-note">Typical friction points: repeated hand-offs, inconsistent data preparation, delayed exception visibility and evidence assembled late in the process.</p></article>
+   <article class="transformation-lane after"><div class="transformation-lane-head"><span>02</span><div><b>AFTER · AI-ASSISTED WORKFLOW</b><small>Structured orchestration with human control</small></div><em>TRACEABLE · CONTROLLED</em></div><div class="transformation-flow"><div class="transformation-node"><small>01 · UNDERSTAND</small><b>Structure intent</b><span>Objective, constraints and context</span></div><i>→</i><div class="transformation-node"><small>02 · ORCHESTRATE</small><b>Retrieve & execute</b><span>Governed data, tools and workflows</span></div><i>→</i><div class="transformation-node"><small>03 · VALIDATE</small><b>Test & challenge</b><span>Rules, evidence and exception logic</span></div><i>→</i><div class="transformation-node human"><small>04 · ACCOUNTABILITY</small><b>Human decision</b><span>Review, approve, remediate</span></div></div><p class="transformation-lane-note">The target pattern improves repeatability and visibility while preserving source validation, access controls, escalation paths and accountable sign-off.</p></article>
+  </div>
+  <div class="transformation-disclaimer">This before/after is a representative process comparison, not a claim that every CMA CGM process followed this exact sequence or that all benefits were independently measured against a single baseline.</div>
+  <div class="contribution-heading"><div><span class="micro">WHAT I CONTRIBUTED</span><h3>Hands-on delivery across the solution lifecycle</h3></div><span class="contribution-tag">DESIGN · CODE · RELEASE · OPERATE</span></div>
+  <div class="contribution-grid">
+   <article><span>01 · SOLUTION DESIGN</span><b>Translate business needs into technical workflows</b><p>Worked with architects and business stakeholders to shape solution designs, agent responsibilities, workflow boundaries and integration patterns.</p></article>
+   <article><span>02 · ENGINEERING</span><b>Build agents and workflow logic</b><p>Personally wrote code and contributed to 6+ AI agents and 18+ workflows using Palantir AIP and Google Gemini in a hybrid enterprise environment.</p></article>
+   <article><span>03 · ENTERPRISE CONTEXT</span><b>Connect data, tools and business systems</b><p>Hands-on experience with Palantir Foundry, AIP, Gemini and Google Cloud capabilities, with project-specific combinations of APIs, data services and enterprise platforms.</p></article>
+   <article><span>04 · PRODUCTION LIFECYCLE</span><b>Stay involved after release</b><p>Contributed through production releases, monitoring, troubleshooting, operational support and iterative improvement with the wider engineering teams.</p></article>
+  </div>
+  <div class="transformation-proof"><div><span>DELIVERY FOOTPRINT</span><b>6+ <small>AI agents</small></b></div><div><span>WORKFLOW SCALE</span><b>18+ <small>workflows</small></b></div><div><span>BUSINESS REACH</span><b>12 <small>countries</small></b></div><div><span>ORGANISATION</span><b>8 <small>business units</small></b></div></div>
+  <div class="technical-heading"><div><span class="micro">TECHNICAL DEPTH FOR THE AUDIT INTERVIEW</span><h3>What changed in the operating model</h3></div><p>These are the engineering and control concepts behind the transformation—not a claim that every control was implemented identically in every project.</p></div>
+  <div class="technical-grid">
+   <div><b>Agent orchestration</b><span>Intent parsing · task decomposition · specialist delegation · state management · tool selection</span></div>
+   <div><b>Data & integration</b><span>Enterprise context retrieval · API integration · data quality · lineage · source reconciliation</span></div>
+   <div><b>Control design</b><span>Role-based access · least privilege · approval gates · segregation of duties · escalation</span></div>
+   <div><b>Auditability</b><span>Evidence references · decision rationale · exception queues · reviewer ownership · working papers</span></div>
+   <div><b>Resilience</b><span>Input validation · bounded retries · idempotency · exception handling · fallback paths</span></div>
+   <div><b>Operational governance</b><span>Release controls · observability · run monitoring · incident triage · continuous improvement</span></div>
+  </div>
+  <div class="impact-strip"><div><span>REPORTED PROJECT OUTCOME</span><b>35% fewer reporting inconsistencies</b><small>Reported improvement in the relevant reporting process.</small></div><div><span>AVA HYPERCARE</span><b>53% fewer emails overall</b><small>Reported reduction in AVA-related email volume.</small></div><div><span>SETUP ISSUE EMAILS</span><b>100% reduction</b><small>Reported elimination of setup-issue emails in the measured context.</small></div></div>
+  <div class="story-boundary"><b>Important distinction:</b> The professional experience above describes work in the Google Cloud / CMA CGM engagement. The interactive audit workspace elsewhere in this portfolio is a separate, independent demonstrator using synthetic data. It does not connect to CMA CGM systems or represent a deployed CMA CGM audit platform.</div>
+ </section>`);
  const source=new Map();
  [...main.querySelectorAll('.hero,#professional-experience,.stats,#agent-overview,.content > [id]')].forEach(el=>{
   if(el.id)source.set(el.id,el);
@@ -1004,7 +1032,7 @@ section[id]{scroll-margin-top:148px}
   const copy=document.createElement('div');copy.innerHTML='<span class="audit-view-index">'+String(index+1).padStart(2,'0')+' / 08 · WORKSPACE MODULE</span><h1>'+g.title+'</h1><p>'+g.sub+'</p>';
   const status=document.createElement('span');status.className='audit-view-status';status.innerHTML='<i></i> '+(g.key==='demo'?'INTERACTIVE DEMONSTRATOR':'WORKSPACE VIEW');
   head.append(copy,status);panel.append(head);
-  if(g.key==='journey'){['hero','professional-experience','stats','agent-overview'].forEach(id=>{const el=source.get(id);if(el)panel.append(el);});}
+  if(g.key==='journey'){['hero','professional-experience','stats','transformation-story','agent-overview'].forEach(id=>{const el=source.get(id);if(el)panel.append(el);});}
   g.ids.forEach(id=>{const el=source.get(id);if(el)panel.append(el);});
   stage.append(panel);
  });
@@ -1175,5 +1203,78 @@ body{font-family:"Google Sans",Roboto,Arial,sans-serif!important;font-size:15px!
 @media(max-width:900px){.audit-experience-nav-inner{display:block!important;padding:8px 16px!important}.audit-nav-context{display:none!important}.audit-nav-links{padding:4px 0!important}.audit-tab-stage{padding:0 16px!important}.audit-view-heading{display:block!important;padding:21px!important}.audit-view-status{margin-top:14px}.shell{padding-left:16px!important;padding-right:16px!important}}
 @media(max-width:620px){.audit-tab-stage{margin-top:14px!important;padding:0 12px!important}.audit-nav-links button{font-size:11px!important;padding:9px 11px!important}.panel{padding:17px!important}.audit-view-heading h1{font-size:25px!important}.audit-view-heading p{font-size:13px!important}.hero{padding:20px!important}}
 @media(prefers-reduced-motion:reduce){.audit-nav-links button{transition:none!important}}
+</style>
+
+<style id="audit-executive-transformation-redesign">
+:root{--bg:#f8f9fa;--surface:#fff;--ink:#202124;--muted:#5f6368;--line:#dadce0;--soft:#f1f3f4;--blue:#1a73e8;--green:#188038;--amber:#b06000;--red:#d93025}
+body{background:#f8f9fa!important;color:#202124!important}
+.audit-experience-nav{background:rgba(255,255,255,.97)!important;border-color:#dadce0!important;box-shadow:0 2px 10px rgba(60,64,67,.07)!important}
+.audit-nav-mark{background:conic-gradient(from 0deg,#4285f4 0 25%,#34a853 25% 50%,#fbbc04 50% 75%,#ea4335 75%)!important;color:#fff!important}
+.audit-nav-links button.active{background:#f1f3f4!important;border-color:#c4c7c5!important;color:#202124!important;box-shadow:inset 0 -2px #4285f4}
+.audit-nav-links button{color:#5f6368!important;font-size:13px!important}
+.audit-tab-stage{max-width:1500px!important;margin:20px auto 64px!important;padding:0 28px!important}
+.audit-view-heading{padding:30px 34px!important;border-radius:20px!important;background:linear-gradient(115deg,#fff 0%,#f8f9fa 72%,#f1f3f4 100%)!important;border-color:#dadce0!important}
+.audit-view-index,.micro{color:#5f6368!important;font-size:10px!important;letter-spacing:.09em}
+.audit-view-heading h1{font-size:clamp(30px,3.2vw,44px)!important;letter-spacing:-.04em!important}
+.audit-view-heading p{font-size:16px!important;max-width:980px!important}
+.audit-view-status{font-size:10px!important;background:#fff!important}
+.transformation-story{padding:30px!important;border-radius:20px!important;background:#fff!important;border:1px solid #dadce0!important;box-shadow:0 1px 2px rgba(60,64,67,.05),0 4px 14px rgba(60,64,67,.04)!important}
+.transformation-topline,.transformation-lane-head,.contribution-heading,.technical-heading{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.story-context,.contribution-tag{display:inline-flex;align-items:center;gap:8px;color:#5f6368;font:600 10px "Roboto Mono",monospace;letter-spacing:.04em}
+.story-context i{width:8px;height:8px;border-radius:50%;background:#34a853;box-shadow:0 0 0 4px #e6f4ea}
+.transformation-intro{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(250px,.6fr);gap:24px;align-items:center;margin:18px 0 24px}
+.transformation-intro h2{max-width:850px;margin:0;color:#202124;font-size:clamp(27px,3vw,38px);line-height:1.15;letter-spacing:-.04em}
+.transformation-intro p{max-width:850px;margin:12px 0 0;color:#5f6368;font-size:15px;line-height:1.75}
+.transformation-principle{padding:19px 20px;border:1px solid #dadce0;border-radius:14px;background:#f8f9fa}
+.transformation-principle span,.transformation-proof span,.impact-strip span{display:block;color:#5f6368;font:600 9px "Roboto Mono",monospace;letter-spacing:.07em}
+.transformation-principle b{display:block;margin:9px 0 6px;color:#202124;font-size:17px}
+.transformation-principle small{color:#5f6368;font-size:12px;line-height:1.6}
+.transformation-compare{display:grid;gap:14px}
+.transformation-lane{padding:18px;border:1px solid #dadce0;border-radius:16px;background:#f8f9fa;overflow:hidden}
+.transformation-lane.after{border-color:#c6e7d0;background:#f6fbf7}
+.transformation-lane-head{justify-content:flex-start;margin-bottom:16px}
+.transformation-lane-head>span{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#e8eaed;color:#5f6368;font:700 12px "Roboto Mono",monospace}
+.transformation-lane.after .transformation-lane-head>span{background:#e6f4ea;color:#188038}
+.transformation-lane-head b{display:block;color:#202124;font:700 11px "Roboto Mono",monospace;letter-spacing:.04em}
+.transformation-lane-head small{display:block;margin-top:4px;color:#5f6368;font-size:12px}
+.transformation-lane-head em{margin-left:auto;color:#80868b;font:600 9px "Roboto Mono",monospace;font-style:normal}
+.transformation-flow{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr) 20px minmax(0,1fr) 20px minmax(0,1fr);gap:6px;align-items:stretch}
+.transformation-node{position:relative;min-height:112px;padding:14px;border:1px solid #dadce0;border-radius:12px;background:#fff;animation:storyRise .7s both;animation-delay:calc(var(--n,0)*.1s)}
+.transformation-node:nth-of-type(1){--n:0}.transformation-node:nth-of-type(3){--n:1}.transformation-node:nth-of-type(5){--n:2}.transformation-node:nth-of-type(7){--n:3}
+.transformation-node small{display:block;color:#5f6368;font:600 9px "Roboto Mono",monospace}
+.transformation-node b{display:block;margin:10px 0 5px;color:#202124;font-size:14px}
+.transformation-node span{display:block;color:#5f6368;font-size:12px;line-height:1.5}
+.transformation-flow>i{display:grid;place-items:center;color:#9aa0a6;font-size:19px;font-style:normal}
+.transformation-lane.after .transformation-flow>i{color:#188038}
+.transformation-node.human{border-color:#a8dab5;background:#fff}
+.transformation-node.human:after{content:'HUMAN GATE';position:absolute;right:9px;top:9px;color:#188038;font:600 8px "Roboto Mono",monospace}
+.transformation-lane-note{margin:12px 0 0;color:#5f6368;font-size:12px;line-height:1.6}
+.transformation-disclaimer{margin:12px 0 28px;padding:12px 14px;border-left:3px solid #fbbc04;background:#fef7e0;color:#5f6368;font-size:12px;line-height:1.6}
+.contribution-heading,.technical-heading{align-items:flex-end;margin:24px 0 14px}
+.contribution-heading h3,.technical-heading h3{margin:6px 0 0;color:#202124;font-size:23px;letter-spacing:-.025em}
+.contribution-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.contribution-grid article{padding:17px;border:1px solid #dadce0;border-radius:13px;background:#fff}
+.contribution-grid article>span{display:block;color:#5f6368;font:600 9px "Roboto Mono",monospace}
+.contribution-grid article>b{display:block;margin:10px 0 7px;color:#202124;font-size:15px;line-height:1.35}
+.contribution-grid article p{margin:0;color:#5f6368;font-size:12px;line-height:1.65}
+.transformation-proof{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:14px 0 24px}
+.transformation-proof>div{padding:16px;border:1px solid #dadce0;border-radius:12px;background:#f8f9fa}
+.transformation-proof b{display:block;margin-top:8px;color:#202124;font-size:28px;letter-spacing:-.04em}
+.transformation-proof b small{font-size:12px;color:#5f6368;font-weight:500;letter-spacing:0}
+.technical-heading p{max-width:520px;margin:0;color:#5f6368;font-size:12px;line-height:1.6}
+.technical-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.technical-grid>div{padding:15px;border:1px solid #dadce0;border-radius:12px;background:#fff}
+.technical-grid b{display:block;margin-bottom:7px;color:#202124;font-size:14px}
+.technical-grid span{display:block;color:#5f6368;font-size:12px;line-height:1.6}
+.impact-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:22px}
+.impact-strip>div{padding:17px;border:1px solid #d2e3fc;border-radius:13px;background:#f8fbff}
+.impact-strip b{display:block;margin:8px 0 5px;color:#202124;font-size:19px;line-height:1.25}
+.impact-strip small{color:#5f6368;font-size:11px;line-height:1.5}
+.story-boundary{margin-top:16px;padding:15px 17px;border:1px solid #dadce0;border-radius:12px;background:#f1f3f4;color:#5f6368;font-size:12px;line-height:1.7}
+.story-boundary b{color:#202124}
+@keyframes storyRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1000px){.contribution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.transformation-intro{grid-template-columns:1fr}.transformation-flow{grid-template-columns:1fr}.transformation-flow>i{transform:rotate(90deg);min-height:16px}.transformation-node{min-height:unset}.technical-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.audit-tab-stage{padding:0 12px!important}.transformation-story{padding:18px!important}.transformation-topline,.contribution-heading,.technical-heading{display:block}.story-context,.contribution-tag{margin-top:10px}.transformation-lane{padding:13px}.transformation-lane-head em{display:none}.contribution-grid,.transformation-proof,.technical-grid,.impact-strip{grid-template-columns:1fr}.transformation-proof{grid-template-columns:repeat(2,minmax(0,1fr))}.transformation-intro h2{font-size:26px}.contribution-heading h3,.technical-heading h3{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.transformation-node{animation:none}}
 </style>
 </body></html>
