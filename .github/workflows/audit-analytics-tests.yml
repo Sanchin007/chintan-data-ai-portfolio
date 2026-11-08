@@ -27,13 +27,21 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
           page = Path("agentic-ai-lab/index.html").read_text()
-          start = page.rfind("<script>")
-          end = page.rfind("</script>")
-          script = page[start + len("<script>"):end] if start >= 0 and end > start else ""
-          Path("/tmp/audit-page.js").write_text(script)
+          scripts = re.findall(r"<script\\b[^>]*>([\\s\\S]*?)</script\\s*>", page, re.IGNORECASE)
+          if not scripts:
+              raise SystemExit("No script blocks found in agentic-ai-lab/index.html")
+          out = Path("/tmp/audit-page-scripts")
+          out.mkdir(exist_ok=True)
+          for index, script in enumerate(scripts):
+              (out / f"script-{index:02d}.js").write_text(script)
+          print(f"Extracted {len(scripts)} script blocks for syntax validation")
           PY
-          node --check /tmp/audit-page.js
+          for script in /tmp/audit-page-scripts/*.js; do
+            echo "Checking $script"
+            node --check "$script"
+          done
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
